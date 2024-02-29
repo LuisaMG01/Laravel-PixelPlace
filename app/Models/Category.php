@@ -40,10 +40,10 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
-    
-    /**Change request */
+       
     public function challenges():HasMany
     {
         return $this->hasMany(Challenge::class);
     }
+     /**Change request */
 }
