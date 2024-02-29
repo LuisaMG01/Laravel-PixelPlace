@@ -123,9 +123,9 @@ class Challenge extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function category(): HasOne
+    public function category(): BelongsTo
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
 }
