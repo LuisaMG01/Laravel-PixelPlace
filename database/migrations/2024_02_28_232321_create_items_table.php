@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('challenge_users', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id(); // Primary key column
-            $table->timestamps(); // Created_at and updated_at columns
-            $table->integer('progress'); // Progress column (commented out)
-            $table->boolean('checked'); // Checked column (commented out)
+            $table->timestamps(); // Created_at and updated_at columns  
+            $table->integer('acquire_price_coins'); // Acquire price coins column
+            $table->integer('amount'); // Acquire price gems column
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('challenge_users'); // Drop the challenge_users table
+        Schema::dropIfExists('items'); // Drop the items table
     }
 };

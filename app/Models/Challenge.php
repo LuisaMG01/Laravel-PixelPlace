@@ -111,5 +111,21 @@ class Challenge extends Model
     {
         $this->attributes['product_quantity'] = $productQuantity;
     }
+    
+    /** Model relations */
+    public function challengeUser(): HasMany
+    {
+        return $this->hasMany(ChallengeUser::class);
+    }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function category(): HasOne
+    {
+        return $this->hasOne(Category::class);
+    }
 
 }

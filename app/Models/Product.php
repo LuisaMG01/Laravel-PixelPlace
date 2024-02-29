@@ -88,4 +88,25 @@ class Product extends Model
     {
         $this->attributes['stock'] = $stock;
     }
+
+    /** Model relations */
+    public function items():HasMany
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function category():BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function review():HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function challenge():HasMany
+    {
+        return $this->hasMany(Challenge::class);
+    }
 }

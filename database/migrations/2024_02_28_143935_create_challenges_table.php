@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('max_users'); // Maximum number of users allowed for the challenge
             $table->integer('current_users'); // Current number of users participating in the challenge
             $table->string('product_name'); // Name of the product associated with the challenge
+            $table->date('expiration_date'); // Expiration date of the challenge
             $table->integer('product_quantity'); // Quantity of the product associated with the challenge
             $table->timestamps(); // Timestamps for created_at and updated_at columns
         });

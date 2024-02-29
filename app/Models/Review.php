@@ -44,4 +44,15 @@ class Review extends Model
     {
         $this->attributes['rating'] = $rating;
     }
+
+    /** Model relations */
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
