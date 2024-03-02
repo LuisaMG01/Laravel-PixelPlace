@@ -16,6 +16,10 @@ return new class extends Migration
             $table->timestamps(); // Created_at and updated_at columns
             $table->integer('progress'); // Progress column (commented out)
             $table->boolean('checked'); // Checked column (commented out)
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('challenge_id');
+            $table->foreign('challenge_id')->references('id')->on('challenges');
         });
     }
 

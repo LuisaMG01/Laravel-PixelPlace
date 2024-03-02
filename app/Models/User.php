@@ -53,5 +53,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(ChallengeUser::class);
     }
-
 }

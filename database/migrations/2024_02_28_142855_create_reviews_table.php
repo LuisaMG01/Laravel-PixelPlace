@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('description');
             $table->integer('rating');
             $table->timestamps();
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -13,8 +12,7 @@ class Category extends Model
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['name'] - string - contains the category name
-    */
-
+     */
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -34,16 +32,16 @@ class Category extends Model
     {
         $this->attribute['name'] = $name;
     }
-    
+
     /**Model relations */
-    public function products():HasMany
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }
-       
-    public function challenges():HasMany
+
+    public function challenges(): HasMany
     {
         return $this->hasMany(Challenge::class);
     }
-     /**Change request */
+    /**Change request */
 }
