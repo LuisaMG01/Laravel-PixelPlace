@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
- 
     /**
      * ITEM ATTRIBUTES
      * $this->attributes['id'] - int - contains the item primary key (id)
@@ -15,13 +14,12 @@ class Item extends Model
      * $this->attributes['acquire_price_coins'] - int - contains the acquire price coins value
      * $this->attributes['amount'] - float - contains the amount value
      */
-
     public function getAcquirePriceCoins(): int
     {
         return $this->attributes['acquire_price_coins'];
     }
 
-    public function setAcquirePriceCoins(int $acquire_price_coins): void
+    public function setAcquirePriceCoins(int $acquirePriceCoins): void
     {
         $this->attributes['acquire_price_coins'];
     }
@@ -37,7 +35,7 @@ class Item extends Model
     }
 
     /**Model relations */
-    public function product():BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }

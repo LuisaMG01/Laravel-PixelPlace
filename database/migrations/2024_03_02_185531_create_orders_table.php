@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id(); // Primary key column
             $table->timestamps(); // Created_at and updated_at columns
-            $table->integer('acquire_price_coins'); // Acquire price coins column
-            $table->integer('amount'); // Acquire price gems column
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->integer('total_coins'); // total order amount
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items'); // Drop the items table
+        Schema::dropIfExists('orders');
     }
 };
