@@ -1,12 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::get('/cart/drop/', 'App\Http\Controllers\CartController@removeAll')->name('cart.removeAll');
+Route::get('/cart/remove/{id}', 'App\Http\Controllers\CartController@removeItem')->name('cart.removeItem');
