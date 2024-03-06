@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Challenge extends Model
 {
-
-
     protected $fillable = [
         'name',
         'description',
@@ -17,11 +15,11 @@ class Challenge extends Model
         'current_users',
         'expiration_date',
         'product_name',
-        'product_quantity'
+        'product_quantity',
     ];
-    
+
     // Getters and Setters for the Challenge attributes
-    
+
     public function getName(): string
     {
         return $this->attributes['name'];
@@ -112,4 +110,19 @@ class Challenge extends Model
         $this->attributes['product_quantity'] = $productQuantity;
     }
 
+    /** Model relations */
+    public function challengeUser(): HasMany
+    {
+        return $this->hasMany(ChallengeUser::class);
+    }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
