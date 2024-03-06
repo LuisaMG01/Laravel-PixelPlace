@@ -14,7 +14,13 @@ class Order extends Model
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['total_coins'] - int - contains the total value of the order
-     */
+    */
+
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
+
     public function getTotalCoins(): int
     {
         return $this->attributes['total_coins'];

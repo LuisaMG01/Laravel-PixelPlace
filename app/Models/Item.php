@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
@@ -13,7 +14,13 @@ class Item extends Model
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['acquire_price_coins'] - int - contains the acquire price coins value
      * $this->attributes['amount'] - float - contains the amount value
-     */
+    */
+
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
+
     public function getAcquirePriceCoins(): int
     {
         return $this->attributes['acquire_price_coins'];

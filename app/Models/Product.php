@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
+    use HasFactory;
     /**
      * PRODUCT ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
@@ -16,17 +20,12 @@ class Product extends Model
      * $this->attributes['price'] - int - contains the product price
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
-     */
+    */
     protected $fillable = ['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description'];
 
     public function getId(): int
     {
         return $this->attributes['id'];
-    }
-
-    public function setId($id): void
-    {
-        $this->attributes['id'] = $id;
     }
 
     public function getName(): string

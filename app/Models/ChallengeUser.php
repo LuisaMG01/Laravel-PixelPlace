@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Represents a user's progress in a challenge.
@@ -14,7 +15,13 @@ class ChallengeUser extends Model
      * $this->attributes['id'] - int - contains the primary key (id) of the challenge user
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
-     */
+    */
+
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
+
     public function getProgress(): int
     {
         return $this->progress;
