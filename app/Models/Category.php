@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -18,7 +19,7 @@ class Category extends Model
         return $this->attributes['id'];
     }
 
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->attribute['id'] = $id;
     }
@@ -28,7 +29,7 @@ class Category extends Model
         return $this->attributes['name'];
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->attribute['name'] = $name;
     }
