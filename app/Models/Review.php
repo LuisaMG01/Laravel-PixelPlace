@@ -12,8 +12,7 @@ class Review extends Model
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['description'] - string - contains the description of the review
      * $this->attributes['rating'] - int - contains the comment rating
-    */
-
+     */
     protected $fillable = ['description', 'rating'];
 
     public function getId(): int
