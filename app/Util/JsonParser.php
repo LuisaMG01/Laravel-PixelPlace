@@ -11,4 +11,4 @@ class JsonParser
 
         return $json;
     }
-}   
+}

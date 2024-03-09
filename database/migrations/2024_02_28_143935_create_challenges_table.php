@@ -10,16 +10,16 @@ return new class extends Migration
     {
         Schema::create('challenges', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); 
-            $table->string('description'); 
-            $table->boolean('checked'); 
-            $table->integer('reward_coins'); 
-            $table->integer('max_users'); 
-            $table->integer('current_users'); 
+            $table->string('name');
+            $table->string('description');
+            $table->boolean('checked');
+            $table->integer('reward_coins');
+            $table->integer('max_users');
+            $table->integer('current_users');
             $table->string('product_name');
-            $table->date('expiration_date'); 
-            $table->integer('product_quantity'); 
-            $table->timestamps(); 
+            $table->date('expiration_date');
+            $table->integer('product_quantity');
+            $table->timestamps();
         });
     }
 
