@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -13,6 +14,10 @@ class Category extends Model
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['name'] - string - contains the category name
      */
+
+    protected $fillable = ['name'];
+
+
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -43,5 +48,4 @@ class Category extends Model
     {
         return $this->hasMany(Challenge::class);
     }
-    /**Change request */
 }
