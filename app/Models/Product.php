@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
 class Product extends Model
 {
-    /**
+    /*
      * PRODUCT ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['name'] - string - contains the product name
@@ -26,7 +27,7 @@ class Product extends Model
         return $this->attributes['id'];
     }
 
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->attributes['id'] = $id;
     }
@@ -36,7 +37,7 @@ class Product extends Model
         return $this->attributes['name'];
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
     }
@@ -46,7 +47,7 @@ class Product extends Model
         return $this->attributes['image'];
     }
 
-    public function setImage($image): void
+    public function setImage(string $image): void
     {
         $this->attributes['image'] = $image;
     }
@@ -56,7 +57,7 @@ class Product extends Model
         return $this->attributes['brand'];
     }
 
-    public function setBrand($brand): void
+    public function setBrand(string $brand): void
     {
         $this->attributes['brand'] = $brand;
     }
@@ -76,7 +77,7 @@ class Product extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice($price): void
+    public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
     }
@@ -86,12 +87,22 @@ class Product extends Model
         return $this->attributes['stock'];
     }
 
-    public function setStock($stock): void
+    public function setStock(int $stock): void
     {
         $this->attributes['stock'] = $stock;
     }
 
-    /** Model relations */
+    public function getDescription(): string
+    {
+        return $this->attributes['description'];
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->attributes['description'] = $description;
+    }
+
+    /* Model relations */
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);
@@ -105,10 +116,5 @@ class Product extends Model
     public function review(): HasMany
     {
         return $this->hasMany(Review::class);
-    }
-
-    public function challenge(): HasMany
-    {
-        return $this->hasMany(Challenge::class);
     }
 }

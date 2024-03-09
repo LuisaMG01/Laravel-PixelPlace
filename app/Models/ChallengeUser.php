@@ -5,9 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * Represents a user's progress in a challenge.
- */
 class ChallengeUser extends Model
 {
     /**
