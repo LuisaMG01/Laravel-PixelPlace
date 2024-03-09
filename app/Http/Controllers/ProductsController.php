@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Product\CreateRequest;
+use App\Http\Requests\product\CreateRequest;
 use App\Models\Product;
 use App\Util\JsonParser;
 use Illuminate\Http\RedirectResponse;
