@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('challenge_users', function (Blueprint $table) {
@@ -17,15 +14,12 @@ return new class extends Migration
             $table->integer('progress'); 
             $table->boolean('checked'); 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('challenge_id');
-            $table->foreign('challenge_id')->references('id')->on('challenges');
+            $table->foreign('challenge_id')->references('id')->on('challenges')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('challenge_users'); 
