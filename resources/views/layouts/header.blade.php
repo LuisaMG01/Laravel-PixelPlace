@@ -15,10 +15,10 @@
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> 
         <div class="navbar-nav ms-auto">
-          <a class="nav-link active" href="{{ route('product.create') }}">Crear Producto</a>
-          <a class="nav-link active" href="{{ route('product.index')}}">Listar Productos</a>
+          <a class="nav-link active" href="{{ route('product.create') }}">{{ __('app.nav_create_product') }}</a>
+          <a class="nav-link active" href="{{ route('product.index')}}">{{ __('app.nav_list_products') }}</a>
         </div>
       </div>
     </div>

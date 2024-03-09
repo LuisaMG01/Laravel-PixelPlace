@@ -25,16 +25,17 @@
   </div>
 </div>
 <div class="card">
-      <form action="" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Borrar</button>
-      </form>
-      <form action="{{ route('product.edit', ['id'=> $viewData['product']-> getId()]) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <button type="submit" class="btn btn-primary">Editar</button>
-      </form>
+  <form action="" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">Borrar</button>
+    </form>
+    <form action="{{ route('product.edit', ['id'=> $viewData['product']-> getId()]) }}" method="POST">
+      @csrf
+      @method('PUT')
+      <button type="submit" class="btn btn-primary">Editar</button>
+    </form>
 </div>
 @endsection
-        
+
+

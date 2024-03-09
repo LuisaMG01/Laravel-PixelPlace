@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Util\JsonParser;
+use App\Http\Requests\Product\CreateRequest;
 
 class ProductsController extends Controller
 {
     public function index(): view
     {
-        $viewData = [];
-        $viewData['products'] = Product::all();
+        $viewData = [
+            'products' => Product::all()
+        ];
 
         return view('product.index')->with('viewData', $viewData);
     }
@@ -24,30 +26,22 @@ class ProductsController extends Controller
         return view('product.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(CreateRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required',
-            'image' => 'required',
-            'brand' => 'required',
-            'keywords' => 'required',
-            'price' => 'required|numeric|min:1',
-            'stock' => 'required|numeric|min:0',
-            'description' => 'required',
-        ]);
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
         Product::create($request->only(['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description']));
-        Session::flash('success', 'Elemento creado satisfactoriamente');
+        Session::flash('success', __('app.success_message_store'));
 
         return redirect()->route('product.index');
     }
 
     public function show(int $id): View
     {
-        $viewData = [];
         $product = Product::findOrFail($id);
-        $viewData['product'] = $product;
+        $viewData = [
+            'product' => $product
+        ];
 
         return view('product.show')->with('viewData', $viewData);
     }
@@ -62,13 +56,15 @@ class ProductsController extends Controller
 
     public function edit(int $id): View
     {
-        $viewData = [];
         $product = Product::findOrFail($id);
-        $viewData['product'] = $product;
+        $viewData = [
+            'product' => $product
+        ];
+
         return view('product.edit')->with('viewData', $viewData);
     }
 
-    public function update(int $id, Request $request): RedirectResponse
+    public function update(Product $product, Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required',
@@ -80,7 +76,6 @@ class ProductsController extends Controller
             'description' => 'required',
         ]);
     
-        $product = Product::findOrFail($id);
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
         $product->update($request->all());

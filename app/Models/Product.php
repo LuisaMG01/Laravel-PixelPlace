@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-    /**
+    /*
      * PRODUCT ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['name'] - string - contains the product name
@@ -115,10 +115,5 @@ class Product extends Model
     public function review(): HasMany
     {
         return $this->hasMany(Review::class);
-    }
-
-    public function challenge(): HasMany
-    {
-        return $this->hasMany(Challenge::class);
     }
 }
