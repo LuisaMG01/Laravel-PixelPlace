@@ -23,6 +23,12 @@
               <input type="int" class="form-control mb-2" placeholder="Precio" name="price" value="{{ old('price') }}" />
               <input type="int" class="form-control mb-2" placeholder="Stock" name="stock" value="{{ old('stock') }}" />
               <input type="text" class="form-control mb-2" placeholder="Descripción" name="description" value="{{ old('description') }}" />
+              <label for="category">Categoría:</label>
+              <select name="category_id" id="category_id" class="form-control mb-2">
+                  @foreach($viewData['categories'] as $category)
+                      <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
+                  @endforeach
+              </select>
               <input type="submit" class="btn btn-primary" value="Crear" />
             </form>
           </div>

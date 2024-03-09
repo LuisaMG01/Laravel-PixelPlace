@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\Category;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Util\JsonParser;
+use App\Http\Requests\Product\UpdateRequest;
 use App\Http\Requests\Product\CreateRequest;
 
 class ProductsController extends Controller
@@ -15,7 +16,7 @@ class ProductsController extends Controller
     public function index(): view
     {
         $viewData = [
-            'products' => Product::all()
+            'products' => Product::all(),
         ];
 
         return view('product.index')->with('viewData', $viewData);
@@ -23,14 +24,18 @@ class ProductsController extends Controller
 
     public function create(): View
     {
-        return view('product.create');
+        $viewData = [
+            'categories' => Category::all()
+        ];
+
+        return view('product.create')->with('viewData', $viewData);
     }
 
     public function store(CreateRequest $request): RedirectResponse
     {
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
-        Product::create($request->only(['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description']));
+        Product::create($request->only(['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description','category_id']));
         Session::flash('success', __('app.success_message_store'));
 
         return redirect()->route('product.index');
@@ -64,18 +69,8 @@ class ProductsController extends Controller
         return view('product.edit')->with('viewData', $viewData);
     }
 
-    public function update(Product $product, Request $request): RedirectResponse
+    public function update(UpdateRequest $request, Product $product): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required',
-            'image' => 'required',
-            'brand' => 'required',
-            'keywords' => 'required',
-            'price' => 'required|numeric|min:1',
-            'stock' => 'required|numeric|min:0',
-            'description' => 'required',
-        ]);
-    
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
         $product->update($request->all());
