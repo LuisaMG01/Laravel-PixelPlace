@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\product\CreateRequest;
 use App\Models\Product;
+use App\Util\JsonParser;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use App\Util\JsonParser;
-use App\Http\Requests\Product\CreateRequest;
 
 class ProductsController extends Controller
 {
     public function index(): view
     {
         $viewData = [
-            'products' => Product::all()
+            'products' => Product::all(),
         ];
 
         return view('product.index')->with('viewData', $viewData);
@@ -40,7 +40,7 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $viewData = [
-            'product' => $product
+            'product' => $product,
         ];
 
         return view('product.show')->with('viewData', $viewData);
@@ -58,7 +58,7 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $viewData = [
-            'product' => $product
+            'product' => $product,
         ];
 
         return view('product.edit')->with('viewData', $viewData);
@@ -75,7 +75,7 @@ class ProductsController extends Controller
             'stock' => 'required|numeric|min:0',
             'description' => 'required',
         ]);
-    
+
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
         $product->update($request->all());

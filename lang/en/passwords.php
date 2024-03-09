@@ -2,7 +2,6 @@
 
 return [
 
-<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -14,8 +13,6 @@ return [
     |
     */
 
-=======
->>>>>>> staging
     'reset' => 'Your password has been reset.',
     'sent' => 'We have emailed your password reset link.',
     'throttled' => 'Please wait before retrying.',

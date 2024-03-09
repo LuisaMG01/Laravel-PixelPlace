@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryRequests\CreateCategoryRequest;
-use App\Http\Requests\CategoryRequests\UpdateCategoryRequest;
+use App\Http\Requests\category\CreateRequest;
+use App\Http\Requests\category\UpdateRequest;
 use App\Models\Category;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -24,7 +24,7 @@ class CategoryController extends Controller
         return view('categories.create');
     }
 
-    public function store(CreateCategoryRequest $request): RedirectResponse
+    public function store(CreateRequest $request): RedirectResponse
     {
         Category::create([
             'name' => $request->name,
@@ -48,7 +48,7 @@ class CategoryController extends Controller
         return view('categories.edit', $viewData);
     }
 
-    public function update(UpdateCategoryRequest $request, Category $category): RedirectResponse
+    public function update(UpdateRequest $request, Category $category): RedirectResponse
     {
         $category->update([
             'name' => $request->name,

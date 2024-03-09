@@ -8,6 +8,7 @@ use App\Models\ChallengeUser;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+
 class Challenge extends Model
 {
     protected $fillable = [
@@ -23,6 +24,10 @@ class Challenge extends Model
     ];
 
     // Getters and Setters for the Challenge attributes
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
 
     public function getName(): string
     {

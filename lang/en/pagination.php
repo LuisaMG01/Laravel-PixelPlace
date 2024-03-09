@@ -2,7 +2,6 @@
 
 return [
 
-<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | Pagination Language Lines
@@ -14,8 +13,6 @@ return [
     |
     */
 
-=======
->>>>>>> staging
     'previous' => '&laquo; Previous',
     'next' => 'Next &raquo;',
 

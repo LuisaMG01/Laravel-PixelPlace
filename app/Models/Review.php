@@ -20,17 +20,12 @@ class Review extends Model
         return $this->attributes['id'];
     }
 
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
-
     public function getDescription(): string
     {
         return $this->attributes['description'];
     }
 
-    public function setDescription(string $description): void
+    public function setDescription($description): void
     {
         $this->attributes['description'] = $description;
     }
@@ -40,7 +35,7 @@ class Review extends Model
         return $this->attributes['rating'];
     }
 
-    public function setRating(int $rating): void
+    public function setRating($rating): void
     {
         $this->attributes['rating'] = $rating;
     }
