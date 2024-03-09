@@ -6,6 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Challenge extends Model
 {
+
+    /**
+     * CHALLENGE ATTRIBUTES
+     * $this->attributes['id'] - int - contains the challenge primary key (id)
+     * $this->attributes['name'] - string - contains the challenge name
+     * $this->attributes['description'] - string - contains the challenge description
+     * $this->attributes['checked'] - bool - contains the challenge status
+     * $this->attributes['reward_coins'] - int - contains the challenge reward
+     * $this->attributes['max_users'] - int - contains the challenge maximum users
+     * $this->attributes['current_users'] - int - contains the challenge current users
+     * $this->attributes['expiration_date'] - datetime - contains the challenge expiration date
+     * $this->attributes['product_name'] - string - contains the challenge product name
+     * $this->attributes['product_quantity'] - int - contains the challenge product quantity
+     */
+
     protected $fillable = [
         'name',
         'description',
@@ -80,12 +95,12 @@ class Challenge extends Model
         $this->attributes['current_users'] = $currentUsers;
     }
 
-    public function getExpirationDate(): string
+    public function getExpirationDate(): date
     {
         return $this->attributes['expiration_date'];
     }
 
-    public function setExpirationDate(string $expirationDate): void
+    public function setExpirationDate(date $expirationDate): void
     {
         $this->attributes['expiration_date'] = $expirationDate;
     }

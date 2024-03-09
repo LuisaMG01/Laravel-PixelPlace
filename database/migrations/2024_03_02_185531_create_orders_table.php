@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id(); // Primary key column
-            $table->timestamps(); // Created_at and updated_at columns
-            $table->integer('total_coins'); // total order amount
+            $table->id(); 
+            $table->timestamps();
+            $table->integer('total_coins');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });

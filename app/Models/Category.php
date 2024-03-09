@@ -43,5 +43,4 @@ class Category extends Model
     {
         return $this->hasMany(Challenge::class);
     }
-    /**Change request */
 }

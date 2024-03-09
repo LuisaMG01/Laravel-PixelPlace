@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('challenge_users', function (Blueprint $table) {
-            $table->id(); // Primary key column
-            $table->timestamps(); // Created_at and updated_at columns
-            $table->integer('progress'); // Progress column (commented out)
-            $table->boolean('checked'); // Checked column (commented out)
+            $table->id(); 
+            $table->timestamps(); 
+            $table->integer('progress'); 
+            $table->boolean('checked'); 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('challenge_id');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('challenge_users'); // Drop the challenge_users table
+        Schema::dropIfExists('challenge_users'); 
     }
 };
