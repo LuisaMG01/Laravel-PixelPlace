@@ -9,10 +9,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('challenge_users', function (Blueprint $table) {
-            $table->id(); 
-            $table->timestamps(); 
-            $table->integer('progress'); 
-            $table->boolean('checked'); 
+            $table->id();
+            $table->timestamps();
+            $table->integer('progress');
+            $table->boolean('checked');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('challenge_id');
@@ -22,6 +22,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('challenge_users'); 
+        Schema::dropIfExists('challenge_users');
     }
 };
