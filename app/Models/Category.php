@@ -14,14 +14,13 @@ class Category extends Model
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['name'] - string - contains the category name
      */
+
+    protected $fillable = ['name'];
+
+
     public function getId(): int
     {
         return $this->attributes['id'];
-    }
-
-    public function setId(int $id): void
-    {
-        $this->attribute['id'] = $id;
     }
 
     public function getName(): string
@@ -29,7 +28,7 @@ class Category extends Model
         return $this->attributes['name'];
     }
 
-    public function setName(string $name): void
+    public function setName($name): void
     {
         $this->attribute['name'] = $name;
     }

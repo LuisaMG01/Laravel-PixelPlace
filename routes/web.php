@@ -1,31 +1,31 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ChallengeController;
+use Illuminate\Support\Facades\Auth;
 
-//Product routes
-Route::get('/products', 'ProductsController@index')->name('product.index');
-Route::get('/products/create', 'ProductsController@create')->name('product.create');
-Route::post('/products/store', 'ProductsController@store')->name('product.store');
-Route::get('/products/show/{id}', 'ProductsController@show')->name('product.show');
-Route::delete('products/show/{id}', 'ProductsController@destroy')->name('product.destroy');
-Route::get('/products/edit/{id}', 'ProductsController@edit')->name('product.edit');
-Route::put('products/update/{id}', 'ProductsController@update')->name('product.update'); 
-Route::get('/create', 'ChallengeController@create')
-    ->name('challenge.create');
 
-Route::get('/create', 'ChallengeController@create')
-    ->name('challenge.create');
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-Route::get('/show/{id}', 'ChallengeController@show')
-    ->name('challenge.show_challenge');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/index', 'ChallengeController@index')
-    ->name('challenge.index');
+Auth::routes();
 
-Route::post('/store', 'ChallengeController@store')
-    ->name('challenge.store');
-
-Route::delete('/delete/{id}', 'ChallengeController@delete')
-    ->name('challenge.delete');
+include __DIR__ . '/product/routes.php';
+include __DIR__ . '/category/routes.php';
+include __DIR__ . '/cart/routes.php';
+include __DIR__ . '/order/routes.php';
+include __DIR__ . '/challenge/routes.php';
+include __DIR__ . '/challengeUser/routes.php';
+include __DIR__ . '/review/routes.php';
+include __DIR__ . '/item/routes.php';
+include __DIR__ . '/admin/routes.php';
 
