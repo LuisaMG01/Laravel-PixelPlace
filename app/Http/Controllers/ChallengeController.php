@@ -18,7 +18,7 @@ class ChallengeController extends Controller
         return view('challenge.index') -> with('viewData', $viewData);
     }
 
-    public function show(Challende $challenge):View
+    public function show(Challenge $challenge):View
     {
 
         return view('challenge.show') -> with('viewData', $challenge);
@@ -29,7 +29,7 @@ class ChallengeController extends Controller
         return view('challenge.create');
     }
 
-    public function store(Request $request): 
+    public function store(Request $request): redirect
     {
 
         $viewData = new Challenge($request->only([
@@ -46,10 +46,10 @@ class ChallengeController extends Controller
 
         Challenge::create($viewData);
 
-        return back();
+        return redirect()->route('challenge.index')->with('success', 'Challenge created successfully!');
     }
 
-    public function delete( $id): redirect
+    public function delete(Challenge $challenge): redirect
     {
         $viewData = Challenge::findOrFail($id);
         $viewData -> delete();

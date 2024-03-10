@@ -30,6 +30,7 @@
 
                     {{-- Create challenge form --}}
                     <form method="POST" action="{{ route('challenge.store') }}">
+                        @csrf
                         {{-- Name input --}}
                         <input type="text" class="form-control mb-2" placeholder="Enter name" name="name" value="{{ old('name') }}" required />
 
