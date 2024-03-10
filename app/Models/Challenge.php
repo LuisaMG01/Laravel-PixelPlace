@@ -22,7 +22,7 @@ class Challenge extends Model
      * $this->attributes['max_users'] - int - contains the challenge maximum users
      * $this->attributes['current_users'] - int - contains the challenge current users
      * $this->attributes['expiration_date'] - datetime - contains the challenge expiration date
-     * $this->attributes['product_name'] - string - contains the challenge product name
+     * $this->attributes['category_id'] - int - contains the challenge categeory id
      * $this->attributes['product_quantity'] - int - contains the challenge product quantity
      */
 
@@ -34,7 +34,7 @@ class Challenge extends Model
         'max_users',
         'current_users',
         'expiration_date',
-        'product_name',
+        'category_id',
         'product_quantity',
     ];
 
@@ -114,14 +114,14 @@ class Challenge extends Model
         $this->attributes['expiration_date'] = $expirationDate;
     }
 
-    public function getProductName(): string
+    public function getCategoryId(): int
     {
-        return $this->attributes['product_name'];
+        return $this->attributes['category_id'];
     }
 
-    public function setProductName(string $productName): void
+    public function setCategoryId(string $categoryId): void
     {
-        $this->attributes['product_name'] = $productName;
+        $this->attributes['category_id'] = $categoryId;
     }
 
     public function getProductQuantity(): int

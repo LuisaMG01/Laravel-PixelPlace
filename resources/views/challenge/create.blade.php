@@ -1,60 +1,45 @@
 @extends('layouts.app')
-
-@section('title', "create")
-@section('subtitle', "create")
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h4><strong>CREATE CHALLENGE<strong></h4>
-                </div>
-                <div class="card-body">
-                    {{-- Display validation errors --}}
-                    @if($errors->any())
-                        <ul id="errors" class="alert alert-danger list-unstyled">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Crear reto</div>
+                    <div class="card-body">
+                        @if ($errors->any())
+                            <ul id="errors" class="alert alert-danger list-unstyled">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
 
-                    {{-- Display success message --}}
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                        <form method="POST" action="{{ route('challenge.store') }}">
+                            @csrf
+                            <input type="text" class="form-control mb-2" placeholder="Enter name" name="name" value="{{ old('name') }}" required />
+                            <input type="text" class="form-control mb-2" placeholder="Enter description" name="description" value="{{ old('description') }}" required />
+                            <input type="text" class="form-control mb-2" placeholder="Enter reward coins" name="reward_coins" value="{{ old('reward_coins') }}" required />
+                            <input type="text" class="form-control mb-2" placeholder="Enter max users" name="max_users" value="{{ old('max_users') }}" required />
+                            
+                            <select class="form-control mb-2" name="category_id" required>
+                                <option value="">Select a category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            
+                            <div class="mb-3">
+                                <label for="expiration_date" class="form-label">Expiration Date:</label>
+                                <input type="date" class="form-control" id="expiration_date" name="expiration_date" required>
+                            </div>
+                            <input type="text" class="form-control mb-2" placeholder="Enter category quantity" name="category_quantity" value="{{ old('category_quantity') }}" required />
 
-                    {{-- Create challenge form --}}
-                    <form method="POST" action="{{ route('challenge.store') }}">
-                        @csrf
-                        {{-- Name input --}}
-                        <input type="text" class="form-control mb-2" placeholder="Enter name" name="name" value="{{ old('name') }}" required />
-
-                        {{-- Description input --}}
-                        <input type="text" class="form-control mb-2" placeholder="Enter description" name="description" value="{{ old('description') }}" required />
-
-                        {{-- Reward coins input --}}
-                        <input type="text" class="form-control mb-2" placeholder="Enter reward coins" name="reward_coins" value="{{ old('reward_coins') }}" required />
-
-                        {{-- Max users input --}}
-                        <input type="text" class="form-control mb-2" placeholder="Enter max users" name="max_users" value="{{ old('max_users') }}" required />
-
-                        {{-- Product name input --}}
-                        <input type="text" class="form-control mb-2" placeholder="Enter product name" name="product_name" value="{{ old('product_name') }}" required />
-
-                        {{-- Product quantity input --}}
-                        <input type="text" class="form-control mb-2" placeholder="Enter product quantity" name="product_quantity" value="{{ old('product_quantity') }}" required />
-
-                        {{-- Submit button --}}
-                        <input type="submit" class="button_form" value="Send" />
-                    </form>
+                            <input type="submit" class="button_form" value="Send" />
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
 @endsection

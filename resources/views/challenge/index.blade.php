@@ -8,14 +8,14 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade">
         <div class="carousel-inner">
             {{-- Loop through challenges --}}
-            @foreach ($viewData["challenges"] as $key => $challenge)
+            @foreach ($viewData as $key => $challenge)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <div class="card-body text-center">
                         <h1>{{ $challenge["name"] }}</h1>
                         <iframe src="https://giphy.com/embed/FMapondVtL2Fi" width="480" height="361" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                         <div class="text-center">
                             {{-- Link to challenge details --}}
-                            <a href="{{ route('challenge.show_challenge', ['id'=> $challenge["id"]]) }}" class="button">See more</a>
+                            <a href="{{ route('challenge.show', ['id'=> $challenge["id"]]) }}" class="button">See more</a>
                         </div>
                     </div>
                 </div>
