@@ -25,7 +25,4 @@ include __DIR__ . '/category/routes.php';
 include __DIR__ . '/cart/routes.php';
 include __DIR__ . '/order/routes.php';
 include __DIR__ . '/challenge/routes.php';
-include __DIR__ . '/challengeUser/routes.php';
-include __DIR__ . '/review/routes.php';
-include __DIR__ . '/item/routes.php';
 include __DIR__ . '/admin/routes.php';
