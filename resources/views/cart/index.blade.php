@@ -1,6 +1,4 @@
 @extends('layouts.app')
-@section('title', $viewData['title'])
-@section('subtitle', $viewData['subtitle'])
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -84,7 +82,7 @@
                         @method('DELETE')
                         <button type="submit" class="delete-button bg-red-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">Delete Cart</button>
                     </form>
-                    <form method="GET" action="{{ route('cart.summary') }}">
+                    <form method="GET" action="{{ route('order.preorder') }}">
                         @csrf
                         <button type="submit" class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">Continue</button>
                     </form>

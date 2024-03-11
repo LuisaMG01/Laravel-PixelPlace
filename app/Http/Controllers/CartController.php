@@ -20,8 +20,6 @@ class CartController extends Controller
         }
 
         $viewData = [
-            'title' => 'Cart - Test',
-            'subtitle' => 'GamerZone',
             'products' => $products,
             'cartProducts' => $cartProducts,
         ];
@@ -52,34 +50,5 @@ class CartController extends Controller
         $request->session()->put('cart_product_data', $cartProductData);
 
         return back();
-    }
-
-    public function summary(Request $request): View|RedirectResponse
-    {
-        $productsInSession = $request->session()->get('cart_product_data');
-        $productsSummary = [];
-
-        if ($productsInSession) {
-            $total = 0;
-            $productsInCart = Product::findMany(array_keys($productsInSession));
-
-            foreach ($productsInCart as $product) {
-                $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
-                $subtotal = $product->getPrice() * $quantity;
-                $total += $subtotal;
-                $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];
-            }
-
-            $viewData = [
-                'title' => 'Cart - Summary',
-                'subtitle' => 'GamerZone',
-                'products' => $productsSummary,
-                'total' => $total,
-            ];
-
-            return view('order.summary')->with('viewData', $viewData);
-        } else {
-            return redirect()->route('cart.index');
-        }
     }
 }

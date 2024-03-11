@@ -1,11 +1,9 @@
 @extends('layouts.app')
-@section('title', $viewData['title'])
-@section('subtitle', $viewData['subtitle'])
 @section('content')
     <div class="flex justify-center">
         <div class="grid grid-cols-4 gap-4">
             <div class="col-span-3">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Order summary</h5>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Preorder</h5>
                 <div class="bg-white rounded-lg shadow-md p-6 mb-4">
                     <table class="w-full">
                         <thead>
@@ -51,7 +49,7 @@
                     </form>
                     <form method="POST" action="{{ route('order.create') }}">
                         @csrf
-                        <button type="submit" class="bg-green-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">Confirm Order</button>
+                        <button type="submit" class="delete-button bg-green-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">Confirm Order</button>
                     </form>
                 </div>
             </div>
