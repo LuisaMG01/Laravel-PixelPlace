@@ -13,7 +13,7 @@ class Review extends Model
      * $this->attributes['description'] - string - contains the description of the review
      * $this->attributes['rating'] - int - contains the comment rating
      */
-    protected $fillable = ['description', 'rating'];
+    protected $fillable = ['description', 'rating', 'product_id'];
 
     public function getId(): int
     {
@@ -43,6 +43,16 @@ class Review extends Model
     public function setRating(int $rating): void
     {
         $this->attributes['rating'] = $rating;
+    }
+
+    public function getProductId(): int
+    {
+        return $this->attributes['product_id'];
+    }
+
+    public function setProductId(int $product_id): void
+    {   
+        $this->attributes['product_id'] = $product_id;
     }
 
     /** Model relations */

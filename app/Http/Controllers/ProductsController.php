@@ -13,7 +13,7 @@ use App\Http\Requests\Product\CreateRequest;
 
 class ProductsController extends Controller
 {
-    public function index(): view
+    public function Index(): view
     {
         $viewData = [
             'products' => Product::all(),
@@ -45,7 +45,8 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $viewData = [
-            'product' => $product
+            'product' => $product,
+            'category' => Category::findOrFail($product->getCategoryId()),
         ];
 
         return view('product.show')->with('viewData', $viewData);
@@ -63,14 +64,16 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $viewData = [
-            'product' => $product
+            'product' => $product,
+            'categories' => Category::all(),
         ];
 
         return view('product.edit')->with('viewData', $viewData);
     }
 
-    public function update(UpdateRequest $request, Product $product): RedirectResponse
+    public function update(UpdateRequest $request, int $id): RedirectResponse
     {
+        $product = Product::findOrFail($id);
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
         $product->update($request->all());

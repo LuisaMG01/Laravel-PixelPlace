@@ -20,21 +20,26 @@
         </p>    
         <p class="card-text"> Precio : {{ $viewData["product"]-> getPrice() }}</p>
         <p class="card-text"> Stock : {{ $viewData["product"]-> getStock() }}</p>
+        <p class="card-text"> Categoria : {{ $viewData["category"]->getName() }}</p>
       </div>
     </div>
   </div>
 </div>
 <div class="card">
-  <form action="" method="POST">
+    <form action="" method="POST">
     @csrf
     @method('DELETE')
     <button type="submit" class="btn btn-danger">Borrar</button>
     </form>
-    <form action="{{ route('product.edit', ['id'=> $viewData['product']-> getId()]) }}" method="POST">
-      @csrf
-      @method('PUT')
-      <button type="submit" class="btn btn-primary">Editar</button>
-    </form>
+    <div class="btn-container">
+      <a href="{{ route('product.edit', ['id'=> $viewData['product']->getId()]) }}" class="btn btn-primary">Editar</a>
+    </div>
+    <div class="btn-container">
+      <a href="{{ route('review.create', ['id'=> $viewData['product']->getId()]) }}" class="btn btn-primary">Comentar</a>
+    </div>
+    <div class="btn-container">
+      <a href="{{ route('review.show', ['id'=> $viewData['product']->getId()]) }}" class="btn btn-primary">Ver Comentarios</a>
+    </div>
 </div>
 @endsection
 
