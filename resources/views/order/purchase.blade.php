@@ -2,24 +2,41 @@
 @section('title', $viewData['title'])
 @section('subtitle', $viewData['subtitle'])
 @section('content')
-<div class="card">
-    <div class="card-header">
-        Purchase Completed
-    </div>
-    <div class="card-body">
-        <div class="alert alert-success" role="alert">
-            Congratulations, purchase completed. Order number is <b>#{{ $viewData['order']->getId() }}</b>
-        </div>
-        <h5 class="card-title">Order summary</h5>
-        <p class="card-text"><b>Order ID: {{ $viewData['order']->getId() }}</b></p>
-        <p class="card-text"><b>Total: {{ $viewData['order']->getTotalCoins() }}</b></p>
-        <p class="card-text">
-            @foreach($viewData['items'] as $item)
-                <ul>
-                    <li><b>Product name: </b>{{ $item->product->getName() }} x {{ $item->getAmount() }} x {{ $item->getAcquirePriceCoins() }}</li>
-                </ul>
-            @endforeach
-        </p>
-    </div>
-</div>
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Order # {{ $viewData['order']->getId() }}</h5>
+    <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th class="text-left font-semibold">Product</th>
+                    <th class="text-left font-semibold">Price</th>
+                    <th class="text-left font-semibold">Quantity</th>
+                    <th class="text-left font-semibold">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($viewData['items'] as $item)
+                    <tr>
+                        <td class="py-4 px-2">
+                            <div class="flex items-center">
+                                <span class="font-semibold ml-8">{{ $item->product->getName() }}</span>
+                            </div>
+                        </td>
+                        <td class="py-4 px-2">{{ $item->product->getPrice() }}</td>
+                        <td class="py-4 px-2">{{ $item->getAmount() }}</td>
+                        <td class="py-4 px-2">{{ $item->getAcquirePriceCoins()*$item->getAmount() }}</td>
+                        </tr>
+                @endforeach
+                <tr>
+                    <td colspan="3" class="py-4 px-2 text-right font-semibold">Total</td>
+                    <td class="py-4 px-2">{{ $viewData['order']->getTotalCoins() }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+    <a href="{{ route('cart.index') }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Continue
+        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+    </a>
 @endsection

@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class OrderController extends Controller
 {
-    public function purchase(Request $request): View|RedirectResponse
+    public function store(Request $request): View|RedirectResponse
     {
         $productsInSession = $request->session()->get('cart_product_data');
 
@@ -25,12 +25,14 @@ class OrderController extends Controller
 
             foreach ($productsInCart as $product) {
                 $quantity = $productsInSession[$product->getId()];
+
                 $item = Item::create([
                     'amount' => $quantity,
                     'acquire_price_coins' => $product->getPrice(),
                     'product_id' => $product->getId(),
                     'order_id' => $order->getId(),
                 ]);
+
                 $newStock = $product->getStock() - $quantity;
                 $product->setStock($newStock);
                 $product->save();
@@ -42,11 +44,12 @@ class OrderController extends Controller
 
             $request->session()->forget('products');
 
-            $viewData = [];
-            $viewData['title'] = 'Cart - Test';
-            $viewData['subtitle'] = 'GamerZone';
-            $viewData['order'] = $order;
-            $viewData['items'] = $order->getItems();
+            $viewData = [
+                'title' => 'Cart - Test',
+                'subtitle' => 'GamerZone',
+                'order' => $order,
+                'items' => $order->getItems(),
+            ];
 
             return view('order.purchase')->with('viewData', $viewData);
         } else {

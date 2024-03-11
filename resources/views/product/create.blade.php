@@ -31,7 +31,7 @@
                                 value="{{ old('stock') }}" />
                             <input type="text" class="form-control mb-2" placeholder="Descripción" name="description"
                                 value="{{ old('description') }}" />
-                            <input type="submit" class="btn btn-primary" value="Crear" />
+                            <input type="submit" class="btn btn-primary" value="Crear"/>
                         </form>
                     </div>
                 </div>
