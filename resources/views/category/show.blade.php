@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>{{ $category->name }}</h1>
-    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Edit</a>
+    <a href="{{ route('categories.edit', $category->getId()) }}" class="btn btn-primary">Edit</a>
     <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display: inline;">
         @csrf
         @method('DELETE')
