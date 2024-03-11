@@ -18,6 +18,9 @@
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>
                 </form>
+                <div class="btn-container">
+                <a href="{{ route('review.edit', ['id'=> $review->getId()]) }}" class="btn btn-primary">Editar</a>
+                </div>
             </div>
         </div>
     </div>
