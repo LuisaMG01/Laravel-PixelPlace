@@ -17,4 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
             this.closest('form').submit();
         });
     });
+
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            localStorage.removeItem('selectedQuantities');
+        });
+    });
 });

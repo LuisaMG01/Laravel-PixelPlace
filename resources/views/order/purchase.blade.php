@@ -2,7 +2,7 @@
 @section('title', $viewData['title'])
 @section('subtitle', $viewData['subtitle'])
 @section('content')
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Order # {{ $viewData['order']->getId() }}</h5>
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Order # {{ $viewData['order']->getId() }}</h5>
     <div class="bg-white rounded-lg shadow-md p-6 mb-4">
         <table class="w-full">
             <thead>
@@ -18,17 +18,22 @@
                     <tr>
                         <td class="py-4 px-2">
                             <div class="flex items-center">
-                                <span class="font-semibold ml-8">{{ $item->product->getName() }}</span>
+                                <span class="ml-8">{{ $item->product->getName() }}</span>
                             </div>
                         </td>
-                        <td class="py-4 px-2">{{ $item->product->getPrice() }}</td>
+                        <td class="py-4 px-2">$ {{ $item->product->getPrice() }}</td>
                         <td class="py-4 px-2">{{ $item->getAmount() }}</td>
-                        <td class="py-4 px-2">{{ $item->getAcquirePriceCoins()*$item->getAmount() }}</td>
-                        </tr>
+                        <td class="py-4 px-2">$ {{ $item->getAcquirePriceCoins()*$item->getAmount() }}</td>
+                    </tr>
                 @endforeach
                 <tr>
-                    <td colspan="3" class="py-4 px-2 text-right font-semibold">Total</td>
-                    <td class="py-4 px-2">{{ $viewData['order']->getTotalCoins() }}</td>
+                    <td colspan="4" class="border-t border-gray-300 py-4 px-2"></td>
+                </tr>
+                <tr>
+                    <td colspan="1" class="py-4 px-2 font-semibold">Total: </td>
+                    <td></td>
+                    <td></td>
+                    <td class="py-4 px-2">$ {{ $viewData['order']->getTotalCoins() }}</td>
                 </tr>
             </tbody>
         </table>

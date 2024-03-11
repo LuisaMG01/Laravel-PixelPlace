@@ -64,7 +64,7 @@ class CartController extends Controller
             $productsInCart = Product::findMany(array_keys($productsInSession));
 
             foreach ($productsInCart as $product) {
-                $quantity = $productsInSession[$product->getId()];
+                $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
                 $subtotal = $product->getPrice() * $quantity;
                 $total += $subtotal;
                 $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];

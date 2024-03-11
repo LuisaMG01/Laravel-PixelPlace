@@ -24,7 +24,7 @@ class OrderController extends Controller
             $productsInCart = Product::findMany(array_keys($productsInSession));
 
             foreach ($productsInCart as $product) {
-                $quantity = $productsInSession[$product->getId()];
+                $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
 
                 $item = Item::create([
                     'amount' => $quantity,
@@ -42,7 +42,7 @@ class OrderController extends Controller
             $order->setTotalCoins($total);
             $order->save();
 
-            $request->session()->forget('products');
+            $request->session()->forget('cart_product_data');
 
             $viewData = [
                 'title' => 'Cart - Test',
