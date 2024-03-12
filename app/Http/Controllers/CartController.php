@@ -19,11 +19,10 @@ class CartController extends Controller
             $cartProducts = Product::findMany(array_keys($cartProductData));
         }
 
-        $viewData = [];
-        $viewData['title'] = 'Cart - Test';
-        $viewData['subtitle'] = 'GamerZone';
-        $viewData['products'] = $products;
-        $viewData['cartProducts'] = $cartProducts;
+        $viewData = [
+            'products' => $products,
+            'cartProducts' => $cartProducts,
+        ];
 
         return view('cart.index')->with('viewData', $viewData);
     }
