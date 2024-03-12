@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'success_message_store' => 'Product created successfully',
+    
+    'success_creation_review' => 'Review has been successfully created.',
+    'success_creation_product' => 'Product created successfully',
     'nav_list_products' => 'List Products',
     'nav_create_product' => 'Create Product',
     'failed' => 'These credentials do not match our records.',

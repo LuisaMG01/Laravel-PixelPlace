@@ -24,7 +24,7 @@ class ReviewsController extends Controller
     public function store(CreateRequest $request): RedirectResponse
     {
         $review = Review::create($request->only(['description', 'rating', 'product_id']));
-        Session::flash('message', 'Review with ID '.$review->id.' has been succesfully created.');
+        Session::flash('message', __('app.success_creation_product'));
 
         return redirect()->route('product.index');
     }

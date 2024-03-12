@@ -36,7 +36,7 @@ class ProductsController extends Controller
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
         Product::create($request->only(['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description','category_id']));
-        Session::flash('success', __('app.success_message_store'));
+        Session::flash('success', __('app.success_creation_product'));
 
         return redirect()->route('product.index');
     }

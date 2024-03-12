@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
 
 //Product routes
