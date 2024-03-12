@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Util;
+namespace App\Utils;
 
 class JsonParser
 {
@@ -11,4 +11,4 @@ class JsonParser
 
         return $json;
     }
-}   
+}

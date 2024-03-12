@@ -1,18 +1,18 @@
-@extends('layouts.header')
+@extends('layouts.app')
 @section('content')
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">Crear producto</div>
-          <div class="card-body">
-            @if($errors->any())
-            <ul id="errors" class="alert alert-danger list-unstyled">
-              @foreach($errors->all() as $error)
-              <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-            @endif
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Crear producto</div>
+                    <div class="card-body">
+                        @if ($errors->any())
+                            <ul id="errors" class="alert alert-danger list-unstyled">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
 
             <form method="POST" action="{{ route('product.store') }}">
               @csrf
@@ -33,8 +33,6 @@
             </form>
           </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
+    </div>
 @endsection

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\product\CreateRequest;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Util\JsonParser;
-use App\Http\Requests\Product\UpdateRequest;
-use App\Http\Requests\Product\CreateRequest;
+use App\Utils\JsonParser;
+use App\Http\Requests\product\UpdateRequest;
 
 class ProductsController extends Controller
 {

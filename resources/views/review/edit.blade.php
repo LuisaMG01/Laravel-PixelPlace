@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('layouts.app')
 @section('content')
 <form method="POST" action="{{ route('review.update', ['id'=> $viewData['review']-> getId()]) }}">
     @csrf
