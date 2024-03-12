@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\category\CreateRequest;
 use App\Http\Requests\category\UpdateRequest;
 use App\Models\Category;
-use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
@@ -14,8 +14,9 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         $viewData = [
-            'categories' => $categories
+            'categories' => $categories,
         ];
+
         return view('category.index', $viewData);
     }
 
@@ -29,22 +30,25 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
         ]);
+
         return redirect()->route('category.index')->with('success', 'Category created successfully.');
     }
 
     public function show(Category $category): View
     {
         $viewData = [
-            'category' => $category
+            'category' => $category,
         ];
+
         return view('category.show', $viewData);
     }
 
     public function edit(Category $category): View
     {
         $viewData = [
-            'category' => $category
+            'category' => $category,
         ];
+
         return view('category.edit', $viewData);
     }
 
@@ -60,6 +64,7 @@ class CategoryController extends Controller
     public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
+
         return redirect()->route('category.index')->with('success', 'Category deleted successfully.');
     }
 }

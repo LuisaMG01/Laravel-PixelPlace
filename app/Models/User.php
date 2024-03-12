@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'balance'
+        'balance',
     ];
 
     /**
@@ -43,6 +43,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'role' => 'string'
     ];
 
     /** Model relations */
@@ -54,5 +55,15 @@ class User extends Authenticatable
     public function challengeUser(): HasMany
     {
         return $this->hasMany(ChallengeUser::class);
+    }
+
+    public function getRole(): string
+    {
+        return $this->attributes['role'];
+    }
+
+    public function setRole(string $role): void
+    {
+        $this->attributes['role'] = $role;
     }
 }

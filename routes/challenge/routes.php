@@ -11,3 +11,4 @@ Route::delete('challenges/show/{id}', 'ChallengesController@destroy')->name('cha
 Route::get('/challenges/edit/{id}', 'ChallengesController@edit')->name('challenge.edit');
 Route::put('challenges/update/{id}', 'ChallengesController@update')->name('challenge.update');
 
+
