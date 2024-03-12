@@ -26,19 +26,10 @@ class Challenge extends Model
      * $this->attributes['product_quantity'] - int - contains the challenge product quantity
      */
 
-    protected $fillable = [
-        'name',
-        'description',
-        'checked',
-        'reward_coins',
-        'max_users',
-        'current_users',
-        'expiration_date',
-        'category_id',
-        'product_quantity',
-    ];
+    protected $fillable = ['name','description','checked','reward_coins','max_users','current_users','expiration_date','category_id','category_quantity'];
 
     // Getters and Setters for the Challenge attributes
+    
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -124,14 +115,14 @@ class Challenge extends Model
         $this->attributes['category_id'] = $categoryId;
     }
 
-    public function getProductQuantity(): int
+    public function getCategoryQuantity(): int
     {
-        return $this->attributes['product_quantity'];
+        return $this->attributes['category_quantity'];
     }
 
-    public function setProductQuantity(int $productQuantity): void
+    public function setCategoryQuantity(int $categoryQuantity): void
     {
-        $this->attributes['product_quantity'] = $productQuantity;
+        $this->attributes['category_quantity'] = $categoryQuantity;
     }
 
     /** Model relations */

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use App\Models\Challenge;
 use App\Models\Category;
+use Carbon\Carbon; 
 use \Illuminate\Http\RedirectResponse;
 
 class ChallengesController extends Controller
@@ -19,9 +20,14 @@ class ChallengesController extends Controller
         return view('challenge.index') -> with('viewData', $viewData);
     }
 
-    public function show(Challenge $challenge):View
+    public function show(int $id): View
     {
-        return view('challenge.show') -> with('viewData', $challenge);
+        $challenge = Challenge::findOrFail($id);        
+        $viewData = [
+            'challenge' => $challenge,
+        ];
+
+        return view('challenge.show')->with('viewData', $viewData);
     }
 
     public function create(): View
@@ -33,7 +39,6 @@ class ChallengesController extends Controller
 
     public function store(Request $request)
     {
-        logger()->info('Valor de category_id:', ['category_id' => $request->input('category_id')]);
         $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
@@ -62,12 +67,49 @@ class ChallengesController extends Controller
         return redirect()->route('challenge.index')->with('success', 'Challenge created successfully!');
     }
 
-    public function destroy(Challenge $challenge): redirect
+    public function destroy(int $id): redirect
     {
-        $viewData = Challenge::findOrFail($challenge);
+        $viewData = Challenge::findOrFail($id);
         $viewData -> delete();
 
-        return redirect()->route('challenge.index')->with('success', 'Challenge deleted successfully!');
+        return redirect()->route('challenge.index');
+    }
+
+    public function edit(int $id): View
+    {
+        $challenge = Challenge::findOrFail($id);
+        $viewData = [
+            'challenge' => $challenge,
+        ];
+
+        return view('challenge.edit')->with('viewData', $viewData);
+    }
+
+    public function update(Request $request, int $id): RedirectResponse
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'reward_coins' => 'required|numeric',
+            'max_users' => 'required|integer',
+            'category_id' => 'required',
+            'expiration_date' => 'required|date',
+            'category_quantity' => 'required|integer',
+        ]);
+
+        $challenge = Challenge::findOrFail($id);
+
+        $challenge->name = $request->input('name');
+        $challenge->description = $request->input('description');
+        $challenge->reward_coins = $request->input('reward_coins');
+        $challenge->max_users = $request->input('max_users');
+        $challenge->category_id = $request->input('category_id');
+        $challenge->expiration_date = Carbon::createFromFormat('Y-m-d', $request->input('expiration_date'));;
+        $challenge->category_quantity = $request->input('category_quantity');
+
+        $challenge->save();
+
+        return redirect()->route('challenge.index');
     }
 
 }

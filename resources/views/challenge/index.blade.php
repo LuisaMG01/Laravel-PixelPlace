@@ -15,7 +15,7 @@
                         <iframe src="https://giphy.com/embed/FMapondVtL2Fi" width="480" height="361" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                         <div class="text-center">
                             {{-- Link to challenge details --}}
-                            <a href="{{ route('challenge.show', ['id'=> $challenge["id"]]) }}" class="button">See more</a>
+                            <a href="{{ route('challenge.show', ['id'=> $challenge]) }}" class="button">See more</a>
                         </div>
                     </div>
                 </div>
