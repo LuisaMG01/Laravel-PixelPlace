@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class OrderController extends Controller
@@ -44,7 +45,7 @@ class OrderController extends Controller
 
         if ($productsInSession) {
             $order = Order::create([
-                'user_id' => 1,
+                'user_id' => Auth::user()->getId(),
                 'total_coins' => 0,
             ]);
             $total = 0;

@@ -46,6 +46,21 @@ class User extends Authenticatable
         'role' => 'string'
     ];
 
+    public function getId(): string
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getBalance(): string
+    {
+        return $this->attributes['balance'];
+    }
+
+    public function setBalance(string $balance): void
+    {
+        $this->attributes['balance'] = $balance;
+    }
+
     /** Model relations */
     public function reviews(): HasMany
     {

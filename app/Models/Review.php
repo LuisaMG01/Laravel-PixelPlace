@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Review extends Model
 {
     /**
-     * PRODUCT ATTRIBUTES
-     * $this->attributes['id'] - int - contains the product primary key (id)
+     * REVIEW ATTRIBUTES
+     * $this->attributes['id'] - int - contains the review primary key (id)
      * $this->attributes['description'] - string - contains the description of the review
      * $this->attributes['rating'] - int - contains the comment rating
      */

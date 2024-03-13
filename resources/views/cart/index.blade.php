@@ -25,15 +25,15 @@
     <div class="flex justify-center">
         <div class="grid grid-cols-4 gap-4">
             <div class="col-span-3">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Shopping cart</h5>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">{{ __('app.shopping_cart') }}</h5>
                 <div class="bg-white rounded-lg shadow-md p-6 mb-4">
                     <table class="w-full">
                         <thead>
                             <tr>
-                                <th class="text-left font-semibold">Product</th>
-                                <th class="text-left font-semibold">Price</th>
-                                <th class="text-left font-semibold">Quantity</th>
-                                <th class="text-left font-semibold">Delete item</th>
+                                <th class="text-left font-semibold">{{ __('app.cart_product_name') }}</th>
+                                <th class="text-left font-semibold">{{ __('app.cart_product_price') }}</th>
+                                <th class="text-left font-semibold">{{ __('app.cart_product_quantity') }}</th>
+                                <th class="text-left font-semibold">{{ __('app.cart_delete_item') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,7 +65,7 @@
                                     </td>
                                     <td class="py-4 px-2">
                                         <a class="delete-button" href="{{ route('cart.removeItem', ['id' => $product->getId()]) }}">
-                                            <h5 class="mb-2 text-x font-bold tracking-tight text-red-700 dark:text-white">Remove Item</h5>
+                                            <h5 class="mb-2 text-x font-bold tracking-tight text-red-700 dark:text-white">{{ __('app.cart_remove_item') }}</h5>
                                         </a>
                                     </td>
                                 </tr>
@@ -76,15 +76,15 @@
             </div>
             <div class="col-span-1">
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-lg font-semibold mb-4">Actions</h2>
+                    <h2 class="text-lg font-semibold mb-4">{{ __('app.cart_action_buttons') }}</h2>
                     <form method="POST" action="{{ route('cart.destroy') }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="delete-button bg-red-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">Delete Cart</button>
+                        <button type="submit" class="delete-button bg-red-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_delete_button') }}</button>
                     </form>
                     <form method="GET" action="{{ route('order.preorder') }}">
                         @csrf
-                        <button type="submit" class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">Continue</button>
+                        <button type="submit" class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_continue_button') }}</button>
                     </form>
                 </div>
             </div>
