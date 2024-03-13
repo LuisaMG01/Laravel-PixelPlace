@@ -127,4 +127,30 @@ class Product extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    /* Special methods*/
+    public function getRating(): float
+    {
+        $reviews = $this->review; 
+        $totalReviews = $reviews->count(); 
+
+        if ($totalReviews === 0) {
+            return 0; 
+        }
+
+        $totalRating = $reviews->sum('rating');
+
+        $averageRating = $totalRating / $totalReviews;
+
+        return round($averageRating, 1); 
+    }
+
+    public function getCategory(): string
+    {
+        $category = $this->category;
+        $category = $category->getName();
+        
+        return $category;
+    }
+
 }

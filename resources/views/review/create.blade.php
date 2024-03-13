@@ -1,29 +1,32 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Create review</div>
-                    <div class="card-body">
-                        @if($errors->any())
-                            <ul id="errors" class="alert alert-danger list-unstyled">
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-
-                        <form method="POST" action="{{ route('review.store') }}">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $viewData['productId'] }}">
-                            <textarea class="form-control mb-2" placeholder="Enter description" name="description" value="{{ old('description') }}"></textarea>
-                            <input type="numeric" class="form-control mb-2" placeholder="Enter rating (between 0 and 5)" name="rating" value="{{ old('review') }}"/>
-                            <input type="submit" class="btn btn-primary" value="Send" />
-                        </form>
+    <div class="mx-auto max-w-lg mt-10">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <h1 class="text-2xl font-semibold mb-6">Agregar Comentario</h1>
+            <form method="POST" action="{{ route('review.store') }}">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $viewData['productId'] }}">
+                <div class="mb-4">
+                    <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Descripción</label>
+                    <textarea id="description" name="description" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" placeholder="Ingresa una descripción" rows="4">{{ old('description') }}</textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Rating</label>
+                    <div class="flex">
+                        <div id="stars" class="flex">
+                            <input type="hidden" name="rating" value="0">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <svg class="star h-8 w-8 fill-current text-gray-400" data-value="{{ $i }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            @endfor
+                        </div>
+                        <div id="rating-label" class="ml-2 text-gray-700 font-semibold">0</div>
                     </div>
                 </div>
-            </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Enviar</button>
+            </form>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\product\CreateRequest;
 use App\Models\Product;
 use App\Models\Category;
@@ -13,12 +14,35 @@ use App\Http\Requests\product\UpdateRequest;
 
 class ProductsController extends Controller
 {
-    public function Index(): view
+    public function index(Request $request): view
     {
-        $viewData = [
-            'products' => Product::all(),
-        ];
+        
+        $products = Product::query();
+        $categories = Category::all();
+        
+        if ($request->filled('category')) {
+            $products->where('category_id', $request->category);
+        }
 
+        if ($request->filled('price')) {
+            $priceRange = explode('-', $request->price);
+            $products->whereBetween('price', [$priceRange[0], $priceRange[1]]);
+        }
+
+        if ($request->filled('brand')) {
+            $products->where('brand', 'like', '%' . $request->brand . '%');
+        }
+
+        if ($request->filled('name')) {
+            $products->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        $filteredProducts = $products->get();
+        
+        $viewData = [
+            'products' => $filteredProducts,
+            'categories' => $categories,
+        ];
         return view('product.index')->with('viewData', $viewData);
     }
 
