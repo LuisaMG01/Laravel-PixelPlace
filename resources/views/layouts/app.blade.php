@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class='light'>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
+    <link rel="icon" href="{{ asset('ghost.png') }}" type="image/x-icon" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 
 <body>

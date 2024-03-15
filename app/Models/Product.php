@@ -19,7 +19,7 @@ class Product extends Model
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
      */
-    protected $fillable = ['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description'];
+    protected $fillable = ['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description', 'category_id'];
 
     public function getId(): int
     {

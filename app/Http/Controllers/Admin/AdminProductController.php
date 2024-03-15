@@ -2,14 +2,60 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\product\CreateRequest;
+use App\Http\Requests\product\UpdateRequest;
+use App\Utils\JsonParser;
+use Illuminate\Support\Facades\Session;
 
 class AdminProductController extends Controller
 {
     public function index(): View
     {
-        return view('admin.adminProduct');
+        $products = Product::with('category')->paginate(5);
+        $categories = Category::all();
+
+        $viewData = [
+            'products' => $products,
+            'categories' => $categories,
+        ];
+
+        return view('admin.adminProduct', $viewData);
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        Session::flash('success', 'Product deleted successfully.');
+
+        return redirect()->route('admin.products.index');
+    }
+
+    public function update(UpdateRequest $request, $id): RedirectResponse
+    {
+        $product = Product::findOrFail($id);
+        $keys = JsonParser::parseStrToJson($request->input('keywords'));
+        $request->merge(['keywords' => $keys]);
+        $product->update($request->all());
+
+        Session::flash('success', 'Product updated successfully.');
+
+        return redirect()->route('admin.products.index');
+    }
+
+    public function store(CreateRequest $request): RedirectResponse
+    {
+        $keys = JsonParser::parseStrToJson($request->input('keywords'));
+        $request->merge(['keywords' => $keys]);
+        Product::create($request->all());
+        Session::flash('success', 'Product created successfully.');
+
+        return redirect()->route('admin.products.index');
     }
 }

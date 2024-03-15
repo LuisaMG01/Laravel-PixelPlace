@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Ramsey\Uuid\Type\Integer;
 
 class User extends Authenticatable
 {
@@ -21,8 +22,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
         'balance',
+        'role',
+        'password'
     ];
 
     /**
@@ -46,15 +48,29 @@ class User extends Authenticatable
         'role' => 'string'
     ];
 
-    /** Model relations */
-    public function reviews(): HasMany
+    public function getId(): int
     {
-        return $this->hasMany(Review::class);
+        return $this->attributes['id'];
     }
 
-    public function challengeUser(): HasMany
+    public function getName(): string
     {
-        return $this->hasMany(ChallengeUser::class);
+        return $this->attributes['name'];
+    }
+
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function getBalance(): int
+    {
+        return $this->attributes['balance'];
+    }
+
+    public function setBalance(int $balance): void
+    {
+        $this->attributes['balance'] = $balance;
     }
 
     public function getRole(): string
@@ -65,5 +81,31 @@ class User extends Authenticatable
     public function setRole(string $role): void
     {
         $this->attributes['role'] = $role;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->attributes['email'];
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->attributes['password'];
+    }
+
+    /** Model relations */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function challengeUser(): HasMany
+    {
+        return $this->hasMany(ChallengeUser::class);
     }
 }

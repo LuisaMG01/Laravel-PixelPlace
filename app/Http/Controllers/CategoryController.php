@@ -17,7 +17,7 @@ class CategoryController extends Controller
             'categories' => $categories,
         ];
 
-        return view('category.index', $viewData);
+        return view('admin.categories.index', $viewData);
     }
 
     public function create(): View
@@ -49,7 +49,7 @@ class CategoryController extends Controller
             'category' => $category,
         ];
 
-        return view('category.edit', $viewData);
+        return view('categories.edit', $viewData);
     }
 
     public function update(UpdateRequest $request, Category $category): RedirectResponse
@@ -58,7 +58,7 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
     }
 
     public function destroy(Category $category): RedirectResponse

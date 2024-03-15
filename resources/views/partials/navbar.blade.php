@@ -1,15 +1,14 @@
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+        <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="{{ asset('ghost.png') }}" class="h-8" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">PixelPlace</span>
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <div class="space-x-4">
                 @guest
                     <a href='{{ route('register') }}'
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign
-                        In</a>
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</a>
                     <a href='{{ route('login') }}'
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-4">Login</a>
                 @else
@@ -20,6 +19,11 @@
                         @csrf
                     </form>
                 @endguest
+            </div>
+            <div id="tooltip-toggle" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                Toggle dark mode
+                <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
             <button data-collapse-toggle="navbar-cta" type="button"
@@ -43,11 +47,11 @@
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                        class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Products</a>
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                        class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Challenges</a>
                 </li>
                 <li>
                     <a href="#"
