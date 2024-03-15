@@ -7,7 +7,7 @@ Route::middleware('admin')->group(function () {
     // Routes of Admin
     Route::get('/admin', 'App\Http\Controllers\Admin\HomeController@index')->name('admin.home.index');
 
-    Route::get('/admin/orders', 'App\Http\Controllers\Admin\OrderController@index')->name('admin.order.index');
+    Route::get('/admin/orders', 'App\Http\Controllers\Admin\OrderController@index')->name('admin.orders.index');
 
     Route::get('/admin/categories', 'App\Http\Controllers\Admin\CategoryController@index')->name('admin.categories.index');
     Route::put('/admin/categories/update/{id}', 'App\Http\Controllers\Admin\CategoryController@update')->name('admin.categories.update');

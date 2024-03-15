@@ -31,7 +31,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                            @foreach ($orders as $order)
+                            @foreach ($viewData['orders'] as $order)
                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                                     <td class="p-4 text-base font-semibold text-gray-900 dark:text-white">
                                         {{ $order->getId() }}
@@ -56,7 +56,7 @@
 
     <!-- Pagination -->
     <div class="flex justify-center">
-        @include('partials.pagination', ['paginator' => $orders])
+        @include('partials.pagination', ['paginator' => $viewData['orders']])
     </div>
 
     <!-- Edit Product Drawer -->

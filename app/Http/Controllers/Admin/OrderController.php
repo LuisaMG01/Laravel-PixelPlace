@@ -19,6 +19,6 @@ class OrderController extends Controller
             'users' => $users,
         ];
 
-        return view('admin.order', $viewData);
+        return view('admin.order')->with('viewData', $viewData);
     }
 }
