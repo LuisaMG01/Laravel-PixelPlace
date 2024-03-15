@@ -11,7 +11,7 @@ use Illuminate\View\View;
 use App\Http\Requests\challenge\CreateRequest;
 use App\Http\Requests\challenge\UpdateRequest;
 
-class AdminChallengeController extends Controller
+class ChallengeController extends Controller
 {
     public function index(): View
     {
@@ -23,7 +23,7 @@ class AdminChallengeController extends Controller
             'categories' => $categories,
         ];
 
-        return view('admin.adminChallenge')->with('viewData', $viewData);
+        return view('admin.challenge')->with('viewData', $viewData);
     }
 
     public function store(CreateRequest $request): RedirectResponse

@@ -10,7 +10,7 @@ use App\Http\Requests\user\CreateRequest;
 use App\Http\Requests\user\UpdateRequest;
 use Illuminate\Support\Facades\Session;
 
-class AdminUserController extends Controller
+class UserController extends Controller
 {
     public function index(): View
     {
@@ -20,10 +20,10 @@ class AdminUserController extends Controller
             'users' => $users,
         ];
 
-        return view('admin.adminUser', $viewData);
+        return view('admin.user', $viewData);
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
         $user = User::findOrFail($id);
         $user->delete();
@@ -33,7 +33,7 @@ class AdminUserController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    public function update(UpdateRequest $request, $id): RedirectResponse
+    public function update(UpdateRequest $request, int $id): RedirectResponse
     {
         $user = User::findOrFail($id);
         $user->update($request->all());

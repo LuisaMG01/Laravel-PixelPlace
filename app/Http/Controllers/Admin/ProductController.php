@@ -12,7 +12,7 @@ use App\Http\Requests\product\UpdateRequest;
 use App\Utils\JsonParser;
 use Illuminate\Support\Facades\Session;
 
-class AdminProductController extends Controller
+class ProductController extends Controller
 {
     public function index(): View
     {
@@ -24,10 +24,10 @@ class AdminProductController extends Controller
             'categories' => $categories,
         ];
 
-        return view('admin.adminProduct', $viewData);
+        return view('admin.product', $viewData);
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
         $product = Product::findOrFail($id);
         $product->delete();
@@ -37,7 +37,7 @@ class AdminProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    public function update(UpdateRequest $request, $id): RedirectResponse
+    public function update(UpdateRequest $request, int $id): RedirectResponse
     {
         $product = Product::findOrFail($id);
         $keys = JsonParser::parseStrToJson($request->input('keywords'));

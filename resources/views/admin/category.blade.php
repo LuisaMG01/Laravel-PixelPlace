@@ -109,7 +109,7 @@
                                         <span class="sr-only">Close menu</span>
                                     </button>
                                     <form id="update-form-{{ $category->getId() }}"
-                                        action="{{ route('admin.categories.update', ['id' => $category->getId()]) }}) }}"
+                                        action="{{ route('admin.categories.update', ['id' => $category->getId()]) }}"
                                         method='POST'>
                                         @csrf
                                         @method('PUT')
@@ -168,7 +168,7 @@
                                     <h3 class="mb-6 text-lg text-gray-500 dark:text-gray-400">Are you sure you want to
                                         delete this product?</h3>
                                     <form id="delete-form-{{ $category->getId() }}"
-                                        action="{{ route('admin.categories.destroy', ['id' => $category->getId()]) }}) }}"
+                                        action="{{ route('admin.categories.destroy', ['id' => $category->getId()]) }}"
                                         method='POST'>
                                         @csrf
                                         @method('DELETE')

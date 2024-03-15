@@ -11,7 +11,7 @@ use App\Http\Requests\category\UpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 
-class AdminCategoryController extends Controller
+class CategoryController extends Controller
 {
     public function index(): View
     {
@@ -19,7 +19,7 @@ class AdminCategoryController extends Controller
         $viewData = [
             'categories' => $categories,
         ];
-        return view('admin.adminCategory', $viewData);
+        return view('admin.category', $viewData);
     }
 
     public function store(CreateRequest $request): RedirectResponse
@@ -32,18 +32,16 @@ class AdminCategoryController extends Controller
         return redirect()->route('admin.categories.index');
     }
 
-    public function update(UpdateRequest $request,  $id): RedirectResponse
+    public function update(UpdateRequest $request,  int $id): RedirectResponse
     {
         $category = Category::findOrFail($id);
-        $category->update([
-            'name' => $request->name,
-        ]);
+        $category->update($request->all());
         Session::flash('success', 'Category updated successfully.');
 
         return redirect()->route('admin.categories.index');
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
         $category = Category::findOrFail($id);
         $category->delete();
