@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Challenge extends Model
 {
-
     /**
      * CHALLENGE ATTRIBUTES
      * $this->attributes['id'] - int - contains the challenge primary key (id)
@@ -22,11 +22,19 @@ class Challenge extends Model
      * $this->attributes['category_id'] - int - contains the challenge categeory id
      * $this->attributes['product_quantity'] - int - contains the challenge product quantity
      */
+    protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
-    protected $fillable = ['name','description','checked','reward_coins','max_users','current_users','expiration_date','category_id','category_quantity'];
-
-    // Getters and Setters for the Challenge attributes
+    protected static function booted()
+    {
+        static::creating(function ($challenge) 
+        {
+            $challenge->current_users = 0;
+            $challenge->checked = 0;
+        });
+    }
     
+    // Getters and Setters for the Challenge attributes
+
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -92,12 +100,12 @@ class Challenge extends Model
         $this->attributes['current_users'] = $currentUsers;
     }
 
-    public function getExpirationDate(): date
+    public function getExpirationDate(): string
     {
-        return $this->attributes['expiration_date'];
+        return $this->expiration_date;
     }
 
-    public function setExpirationDate(date $expirationDate): void
+    public function setExpirationDate(DateTime $expirationDate): void
     {
         $this->attributes['expiration_date'] = $expirationDate;
     }
