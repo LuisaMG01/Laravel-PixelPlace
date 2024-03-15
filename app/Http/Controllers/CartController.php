@@ -30,11 +30,10 @@ class CartController extends Controller
     public function add(int $id, Request $request): RedirectResponse
     {
         $cartProductData = $request->session()->get('cart_product_data');
-        $quantity = $request->input('quantity');
-        Product::checkStock($id, $quantity, $cartProductData);
+        $cartProductData[$id] = $request->input('quantity');
         $request->session()->put('cart_product_data', $cartProductData);
 
-        return redirect()->route('cart.index');
+        return back();
     }
 
     public function destroy(Request $request): RedirectResponse

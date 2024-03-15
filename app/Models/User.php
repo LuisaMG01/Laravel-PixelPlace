@@ -4,10 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Ramsey\Uuid\Type\Integer;
 
 class User extends Authenticatable
 {
@@ -23,7 +23,7 @@ class User extends Authenticatable
         'email',
         'balance',
         'role',
-        'password'
+        'password',
     ];
 
     /**
@@ -47,19 +47,9 @@ class User extends Authenticatable
         'role' => 'string',
     ];
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->attributes['id'];
-    }
-
-    public function getBalance(): string
-    {
-        return $this->attributes['balance'];
-    }
-
-    public function setBalance(string $balance): void
-    {
-        $this->attributes['balance'] = $balance;
     }
 
     public function getName(): string
@@ -72,6 +62,16 @@ class User extends Authenticatable
         $this->attributes['name'] = $name;
     }
 
+    public function getBalance(): int
+    {
+        return $this->attributes['balance'];
+    }
+
+    public function setBalance(int $balance): void
+    {
+        $this->attributes['balance'] = $balance;
+    }
+
     public function getRole(): string
     {
         return $this->attributes['role'];
@@ -82,14 +82,29 @@ class User extends Authenticatable
         $this->attributes['role'] = $role;
     }
 
-    public function checkBalance(string $id, int $orderTotal): false|true
+    public function getEmail(): string
     {
-        $user = User::findOrFail($id);
-        $balance = $user->getBalance();
-        if ($balance < $orderTotal) {
-            return false;
-        } else {
-            return true;
-        }
+        return $this->attributes['email'];
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->attributes['password'];
+    }
+
+    /** Model relations */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function challengeUser(): HasMany
+    {
+        return $this->hasMany(ChallengeUser::class);
     }
 }

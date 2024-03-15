@@ -55,7 +55,7 @@ class Order extends Model
         return $this->attributes['created_at'];
     }
 
-    public function product(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

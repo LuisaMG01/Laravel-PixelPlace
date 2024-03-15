@@ -1,27 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <h1>Available products</h1>
-            <ul>
-                @foreach ($viewData['products'] as $product)
-                    <li>
-                        Id: {{ $product->getId() }} -
-                        Name: {{ $product->getName() }} -
-                        Price: {{ $product->getPrice() }} -
-                        <form method="POST" action="{{ route('cart.add', ['id' => $product->getId()]) }}">
-                            @csrf
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <button type="submit">Add to cart</button>
-                                </div>
-                            </div>
-                        </form>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
     <div class="flex justify-center">
         <div class="grid grid-cols-4 gap-4">
             <div class="col-span-3">

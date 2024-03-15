@@ -45,8 +45,6 @@ class Review extends Model
         return $this->attributes['user_id'];
     }
 
-
-
     /** Model relations */
     public function product(): BelongsTo
     {
@@ -57,5 +55,4 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }

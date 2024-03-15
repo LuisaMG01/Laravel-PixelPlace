@@ -66,8 +66,11 @@
                     <span class="ml-2 text-sm text-gray-600">{{ $product->getRating() }}</span>
                 </div>
                 <div class="mt-2 flex justify-between items-center">
-                    <span class="text-lg font-bold text-gray-800">{{ $product->getPrice() }}</span>
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg focus:outline-none focus:shadow-outline">Add to cart</button>
+                    <span class="text-lg font-bold text-gray-800">$ {{ $product->getPrice() }}</span>
+                    <form method="POST" action="{{ route('cart.add', ['id' => $product->getId()]) }}">
+                        @csrf
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg focus:outline-none focus:shadow-outline">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>

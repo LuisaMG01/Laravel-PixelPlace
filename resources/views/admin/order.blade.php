@@ -31,13 +31,13 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                            @foreach ($viewData['orders'] as $order)
+                            @foreach ($orders as $order)
                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                                     <td class="p-4 text-base font-semibold text-gray-900 dark:text-white">
                                         {{ $order->getId() }}
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $order->getUserId() }}
+                                        {{ $order->user->getName() }}
                                     </td>
                                     <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">
                                         {{ $order->getTotalCoins() }}
@@ -55,7 +55,9 @@
     </div>
 
     <!-- Pagination -->
-    @include('partials.pagination')
+    <div class="flex justify-center">
+        @include('partials.pagination', ['paginator' => $orders])
+    </div>
 
     <!-- Edit Product Drawer -->
     <div id="drawer-update-product-default"

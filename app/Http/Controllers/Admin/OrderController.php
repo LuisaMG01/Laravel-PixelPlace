@@ -4,17 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\View\View;
 
-class AdminOrderController extends Controller
+class OrderController extends Controller
 {
     public function index(): View
     {
-        $orders = Order::all();
+        $orders = Order::with('user')->paginate(5);
+        $users = User::all();
+
         $viewData = [
             'orders' => $orders,
+            'users' => $users,
         ];
 
-        return view('admin.adminOrder')->with('viewData', $viewData);
+        return view('admin.order', $viewData);
     }
 }

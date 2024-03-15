@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use Illuminate\View\View;
 use App\Http\Requests\Review\CreateRequest;
 use App\Http\Requests\Review\UpdateRequest;
+use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class ReviewsController extends Controller
 {
     public function create(int $productId): View
     {
-        
+
         $viewData = [
             'productId' => $productId,
         ];
@@ -24,11 +23,11 @@ class ReviewsController extends Controller
         return view('review.create')->with('viewData', $viewData);
     }
 
-    public function store(CreateRequest $request): RedirectResponse 
+    public function store(CreateRequest $request): RedirectResponse
     {
         $userId = Auth::id();
         $request->merge(['user_id' => $userId]);
-        Review::create($request->only(['description', 'rating', 'product_id','user_id']));
+        Review::create($request->only(['description', 'rating', 'product_id', 'user_id']));
         Session::flash('message', __('app.success_creation_product'));
 
         return redirect()->route('product.index');

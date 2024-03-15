@@ -115,18 +115,18 @@ class Product extends Model
     /* Special methods*/
     public function getRating(): float
     {
-        $reviews = $this->review; 
-        $totalReviews = $reviews->count(); 
+        $reviews = $this->review;
+        $totalReviews = $reviews->count();
 
         if ($totalReviews === 0) {
-            return 0; 
+            return 0;
         }
 
         $totalRating = $reviews->sum('rating');
 
         $averageRating = $totalRating / $totalReviews;
 
-        return round($averageRating, 1); 
+        return round($averageRating, 1);
     }
 
     public function checkStock(int $id, int $quantity, $cartProductData): void

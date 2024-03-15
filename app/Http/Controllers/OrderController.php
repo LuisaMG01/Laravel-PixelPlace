@@ -20,7 +20,6 @@ class OrderController extends Controller
 
         if ($productsInSession) {
             $total = 0;
-            $userId = Auth::user()->getId();
             $productsInCart = Product::findMany(array_keys($productsInSession));
 
             foreach ($productsInCart as $product) {
@@ -30,12 +29,9 @@ class OrderController extends Controller
                 $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];
             }
 
-            $balanceAccount = User::checkBalance($userId, $total);
-
             $viewData = [
                 'products' => $productsSummary,
                 'total' => $total,
-                'balanceConfirmation' => $balanceAccount,
             ];
 
             return view('order.preorder')->with('viewData', $viewData);
@@ -49,10 +45,14 @@ class OrderController extends Controller
         $productsInSession = $request->session()->get('cart_product_data');
 
         if ($productsInSession) {
+            $userId = Auth::user()->getId();
+            $user = User::findOrFail($userId);
             $order = Order::create([
-                'user_id' => Auth::user()->getId(),
+                'user_id' => $userId,
                 'total_coins' => 0,
             ]);
+
+            $userBalance = $user->getBalance();
             $total = 0;
             $productsInCart = Product::findMany(array_keys($productsInSession));
 
@@ -72,6 +72,8 @@ class OrderController extends Controller
                 $total += $product->getPrice() * $quantity;
             }
 
+            $user->setBalance($userBalance - $total);
+            $user->save();
             $order->setTotalCoins($total);
             $order->save();
 

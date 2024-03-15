@@ -26,13 +26,12 @@ class Challenge extends Model
 
     protected static function booted()
     {
-        static::creating(function ($challenge) 
-        {
+        static::creating(function ($challenge) {
             $challenge->current_users = 0;
             $challenge->checked = 0;
         });
     }
-    
+
     // Getters and Setters for the Challenge attributes
 
     public function getId(): int
