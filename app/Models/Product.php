@@ -116,4 +116,13 @@ class Product extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function checkStock(int $id, int $quantity, $cartProductData): void
+    {
+        $product = Product::findOrFail($id);
+        $stock = $product->getStock();
+        if ($stock < $quantity) {
+            $cartProductData[$id] = $quantity;
+        }
+    }
 }

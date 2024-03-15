@@ -43,7 +43,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'role' => 'string'
+        'role' => 'string',
     ];
 
     public function getId(): string
@@ -80,5 +80,16 @@ class User extends Authenticatable
     public function setRole(string $role): void
     {
         $this->attributes['role'] = $role;
+    }
+
+    public function checkBalance(string $id, int $orderTotal): false|true
+    {
+        $user = User::findOrFail($id);
+        $balance = $user->getBalance();
+        if ($balance < $orderTotal) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
 use App\Models\Order;
+use Illuminate\View\View;
 
 class AdminOrderController extends Controller
 {

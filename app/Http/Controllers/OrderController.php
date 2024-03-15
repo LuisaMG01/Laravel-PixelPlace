@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class OrderController extends Controller
 
         if ($productsInSession) {
             $total = 0;
+            $userId = Auth::user()->getId();
             $productsInCart = Product::findMany(array_keys($productsInSession));
 
             foreach ($productsInCart as $product) {
@@ -28,9 +30,12 @@ class OrderController extends Controller
                 $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];
             }
 
+            $balanceAccount = User::checkBalance($userId, $total);
+
             $viewData = [
                 'products' => $productsSummary,
                 'total' => $total,
+                'balanceConfirmation' => $balanceAccount,
             ];
 
             return view('order.preorder')->with('viewData', $viewData);
