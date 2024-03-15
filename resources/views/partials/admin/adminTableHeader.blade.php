@@ -22,12 +22,13 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <span class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500" aria-current="page">Products</span>
+                        <span class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500"
+                            aria-current="page">@yield('headerEntity')</span>
                     </div>
                 </li>
             </ol>
         </nav>
-        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All products</h1>
+        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All @yield('nameTable')</h1>
     </div>
     <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
         <button id="createProductButton"
@@ -35,7 +36,7 @@
             type="button" data-drawer-target="drawer-create-product-default"
             data-drawer-show="drawer-create-product-default" aria-controls="drawer-create-product-default"
             data-drawer-placement="right">
-            Add new product
+            Add new @yield('buttonEntity')
         </button>
 
     </div>

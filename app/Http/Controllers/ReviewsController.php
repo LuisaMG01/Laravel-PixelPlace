@@ -26,33 +26,20 @@ class ReviewsController extends Controller
 
     public function store(CreateRequest $request): RedirectResponse 
     {
-        if (Auth::check())
-        {
-            $userId = Auth::id();
-            $request->merge(['user_id' => $userId]);
-            Review::create($request->only(['description', 'rating', 'product_id','user_id']));
-            Session::flash('message', __('app.success_creation_product'));
-            return redirect()->route('product.index');
-        }
-        else
-        {
-            return redirect()->route('register');
-        }
+        $userId = Auth::id();
+        $request->merge(['user_id' => $userId]);
+        Review::create($request->only(['description', 'rating', 'product_id','user_id']));
+        Session::flash('message', __('app.success_creation_product'));
 
+        return redirect()->route('product.index');
     }
 
     public function show(int $productId): view
     {
-        $userId = -1;
-        if (Auth::check())
-        {
-            $userId = Auth::id();
-        }
         $product = Product::findOrFail($productId);
         $reviews = $product->review;
         $viewData = [
             'reviews' => $reviews,
-            'userId' => $userId,
         ];
 
         return view('review.show')->with('viewData', $viewData);

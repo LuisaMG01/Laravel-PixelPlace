@@ -21,15 +21,17 @@
                 </div>
             </div>
             <div class="mt-4">
-                @if ($review->getUserId() === $viewData['userId'])
-                <form action="{{ route('review.destroy', ['id'=> $review-> getId()]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Borrar</button>
-                </form>
-                <div class="btn-container mt-2">
-                    <a href="{{ route('review.edit', ['id'=> $review->getId()]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</a>
-                </div>
+                @if (auth()->check())
+                    @if ($review->getUserId() === auth()->id())
+                    <form action="{{ route('review.destroy', ['id'=> $review-> getId()]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Borrar</button>
+                    </form>
+                    <div class="btn-container mt-2">
+                        <a href="{{ route('review.edit', ['id'=> $review->getId()]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</a>
+                    </div>
+                    @endif
                 @endif
             </div>
         </div>

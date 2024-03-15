@@ -2,25 +2,39 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Challenge extends Model
 {
-    protected $fillable = [
-        'name',
-        'description',
-        'checked',
-        'reward_coins',
-        'max_users',
-        'current_users',
-        'expiration_date',
-        'product_name',
-        'product_quantity',
-    ];
+    /**
+     * CHALLENGE ATTRIBUTES
+     * $this->attributes['id'] - int - contains the challenge primary key (id)
+     * $this->attributes['name'] - string - contains the challenge name
+     * $this->attributes['description'] - string - contains the challenge description
+     * $this->attributes['checked'] - bool - contains the challenge status
+     * $this->attributes['reward_coins'] - int - contains the challenge reward
+     * $this->attributes['max_users'] - int - contains the challenge maximum users
+     * $this->attributes['current_users'] - int - contains the challenge current users
+     * $this->attributes['expiration_date'] - datetime - contains the challenge expiration date
+     * $this->attributes['category_id'] - int - contains the challenge categeory id
+     * $this->attributes['product_quantity'] - int - contains the challenge product quantity
+     */
+    protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
+    protected static function booted()
+    {
+        static::creating(function ($challenge) 
+        {
+            $challenge->current_users = 0;
+            $challenge->checked = 0;
+        });
+    }
+    
     // Getters and Setters for the Challenge attributes
+
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -88,32 +102,32 @@ class Challenge extends Model
 
     public function getExpirationDate(): string
     {
-        return $this->attributes['expiration_date'];
+        return $this->expiration_date;
     }
 
-    public function setExpirationDate(string $expirationDate): void
+    public function setExpirationDate(DateTime $expirationDate): void
     {
         $this->attributes['expiration_date'] = $expirationDate;
     }
 
-    public function getProductName(): string
+    public function getCategoryId(): int
     {
-        return $this->attributes['product_name'];
+        return $this->attributes['category_id'];
     }
 
-    public function setProductName(string $productName): void
+    public function setCategoryId(string $categoryId): void
     {
-        $this->attributes['product_name'] = $productName;
+        $this->attributes['category_id'] = $categoryId;
     }
 
-    public function getProductQuantity(): int
+    public function getCategoryQuantity(): int
     {
-        return $this->attributes['product_quantity'];
+        return $this->attributes['category_quantity'];
     }
 
-    public function setProductQuantity(int $productQuantity): void
+    public function setCategoryQuantity(int $categoryQuantity): void
     {
-        $this->attributes['product_quantity'] = $productQuantity;
+        $this->attributes['category_quantity'] = $categoryQuantity;
     }
 
     /** Model relations */

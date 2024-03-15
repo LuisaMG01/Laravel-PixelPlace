@@ -40,25 +40,12 @@ class Review extends Model
         $this->attributes['rating'] = $rating;
     }
 
-    public function getProductId(): int
-    {
-        return $this->attributes['product_id'];
-    }
-
-    public function setProductId(int $product_id): void
-    {   
-        $this->attributes['product_id'] = $product_id;
-    }
-
     public function getUserId(): int
     {
         return $this->attributes['user_id'];
     }
 
-    public function setUserId(int $userId): void
-    {
-        $this->attributes['user_id'] = $userId;
-    }
+
 
     /** Model relations */
     public function product(): BelongsTo

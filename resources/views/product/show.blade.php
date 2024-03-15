@@ -7,7 +7,7 @@
         <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200 mb-6 lg:mb-0" src="{{ $viewData["product"]->getImage() }}">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ $viewData["product"]->getBrand() }}</h2>
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $viewData["product"]->getName() }}</h1>
-        <p class="leading-relaxed">Categoría: {{ $viewData["product"]->getCategory() }}</p>
+        <p class="leading-relaxed">Categoría: {{ $viewData["product"]->category->getName() }}</p>
         <p class="leading-relaxed">Descripción: {{ $viewData["product"]->getDescription() }}</p>
         <p class="leading-relaxed">Palabras Clave:
             @foreach($viewData["product"]->getKeywords() as $keyword)
@@ -18,9 +18,11 @@
           <span class="title-font font-medium text-2xl text-gray-900">${{ $viewData["product"]->getPrice() }}</span>
         </div>
         <div class="flex">
-          <div class="btn-container mr-8">
-            <a href="{{ route('review.create', ['id'=> $viewData['product']->getId()]) }}" class="inline-flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Comentar</a>
-          </div>
+          @auth
+            <div class="btn-container mr-8">
+              <a href="{{ route('review.create', ['id'=> $viewData['product']->getId()]) }}" class="inline-flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Comentar</a>
+            </div>
+          @endauth
           <div class="btn-container">
             <a href="{{ route('review.show', ['id'=> $viewData['product']->getId()]) }}" class="inline-flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Ver Comentarios</a>
           </div>
