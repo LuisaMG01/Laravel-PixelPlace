@@ -13,7 +13,7 @@ class Review extends Model
      * $this->attributes['description'] - string - contains the description of the review
      * $this->attributes['rating'] - int - contains the comment rating
      */
-    protected $fillable = ['description', 'rating'];
+    protected $fillable = ['description', 'rating', 'product_id', 'user_id'];
 
     public function getId(): int
     {
@@ -40,6 +40,13 @@ class Review extends Model
         $this->attributes['rating'] = $rating;
     }
 
+    public function getUserId(): int
+    {
+        return $this->attributes['user_id'];
+    }
+
+
+
     /** Model relations */
     public function product(): BelongsTo
     {
@@ -50,4 +57,5 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
+
 }

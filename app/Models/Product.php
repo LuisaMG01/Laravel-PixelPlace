@@ -26,11 +26,6 @@ class Product extends Model
         return $this->attributes['id'];
     }
 
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
-
     public function getName(): string
     {
         return $this->attributes['name'];
@@ -115,5 +110,22 @@ class Product extends Model
     public function review(): HasMany
     {
         return $this->hasMany(Review::class);
+    }
+
+    /* Special methods*/
+    public function getRating(): float
+    {
+        $reviews = $this->review; 
+        $totalReviews = $reviews->count(); 
+
+        if ($totalReviews === 0) {
+            return 0; 
+        }
+
+        $totalRating = $reviews->sum('rating');
+
+        $averageRating = $totalRating / $totalReviews;
+
+        return round($averageRating, 1); 
     }
 }

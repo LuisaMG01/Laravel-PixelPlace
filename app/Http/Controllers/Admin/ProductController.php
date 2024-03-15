@@ -51,7 +51,7 @@ class ProductController extends Controller
 
     public function store(CreateRequest $request): RedirectResponse
     {
-        $keys = JsonParser::parseStrToJson($request->input('keywords'));
+        dd($keys = JsonParser::parseStrToJson($request->input('keywords')));
         $request->merge(['keywords' => $keys]);
         Product::create($request->all());
         Session::flash('success', 'Product created successfully.');
