@@ -3,16 +3,16 @@
 <div class="container">
     <div class="mx-auto max-w-lg mt-10">
         <div class="bg-white p-8 rounded-lg shadow-md">
-            <h1 class="text-2xl font-semibold mb-6">Agregar Comentario</h1>
+            <h1 class="text-2xl font-semibold mb-6">{{ __('app.add_comment') }}</h1>
             <form method="POST" action="{{ route('review.store') }}">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $viewData['productId'] }}">
                 <div class="mb-4">
-                    <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Descripción</label>
-                    <textarea id="description" name="description" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" placeholder="Ingresa una descripción" rows="4">{{ old('description') }}</textarea>
+                    <label for="description" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.description') }}</label>
+                    <textarea id="description" name="description" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" placeholder="{{ __('app.enter_description') }}" rows="4">{{ old('description') }}</textarea>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2">Rating</label>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.rating') }}</label>
                     <div class="flex">
                         <div id="stars" class="flex">
                             <input type="hidden" name="rating" value="0">
@@ -25,7 +25,7 @@
                         <div id="rating-label" class="ml-2 text-gray-700 font-semibold">0</div>
                     </div>
                 </div>
-                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Enviar</button>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.send') }}</button>
             </form>
         </div>
     </div>

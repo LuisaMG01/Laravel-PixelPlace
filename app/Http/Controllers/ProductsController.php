@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\product\CreateRequest;
 use App\Models\Product;
 use App\Models\Category;
@@ -16,7 +17,6 @@ class ProductsController extends Controller
 {
     public function index(Request $request): view
     {
-        
         $products = Product::query();
         $categories = Category::all();
         
