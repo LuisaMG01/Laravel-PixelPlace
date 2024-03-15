@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('current_users');
             $table->string('product_name');
             $table->date('expiration_date');
-            $table->integer('product_quantity');
+            $table->integer('category_quantity');
             $table->timestamps();
         });
     }

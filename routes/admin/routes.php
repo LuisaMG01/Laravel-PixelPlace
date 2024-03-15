@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::middleware('admin')->group(function () {
 
     // Routes of Admin
@@ -22,4 +21,9 @@ Route::middleware('admin')->group(function () {
     Route::put('/admin/users/update/{id}', 'App\Http\Controllers\Admin\AdminUserController@update')->name('admin.users.update');
     Route::delete('/admin/users/destroy/{id}', 'App\Http\Controllers\Admin\AdminUserController@destroy')->name('admin.users.destroy');
     Route::post('/admin/users/store', 'App\Http\Controllers\Admin\AdminUserController@store')->name('admin.users.store');
+
+    Route::get('/admin/challenges', 'App\Http\Controllers\Admin\AdminChallengeController@index')->name('admin.challenges.index');
+    Route::post('/admin/challenges/store', 'App\Http\Controllers\Admin\AdminChallengeController@store')->name('admin.challenges.store');
+    Route::post('/admin/challenges/update/{id}', 'App\Http\Controllers\Admin\AdminChallengeController@update')->name('admin.challenges.update');
+    Route::get('/admin/challenges/destroy/{id}', 'App\Http\Controllers\Admin\AdminChallengeController@destroy')->name('admin.challenges.destroy');
 });
