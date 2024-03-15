@@ -18,7 +18,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href='{{ route('admin.product.index') }}'
+                        <a href='{{ route('admin.products.index') }}'
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-layouts" data-collapse-toggle="dropdown-layouts">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -32,7 +32,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href='#'
+                        <a href='{{ route('admin.challenges.index') }}'
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             aria-controls="dropdown-crud" data-collapse-toggle="dropdown-crud">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('admin.users.index') }}"
                             class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
                             <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('admin.categories.index') }}"
                             class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
                             <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

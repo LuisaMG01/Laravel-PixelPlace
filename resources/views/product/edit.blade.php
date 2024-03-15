@@ -44,6 +44,16 @@
             <textarea name="description" id="description" class="form-control">{{ $viewData['product']->getDescription() }}</textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Actualizar Producto</button>
-    </form>
+    <div class="form-group">
+        <label for="category_id">Categoría:</label>
+            <select name="category_id" id="category_id" class="form-control mb-2">
+                @foreach($viewData['categories'] as $category)
+                    <option value="{{ $category->getId() }}" {{ $category->getId() == $viewData['product']->getCategoryId() ? 'selected' : '' }}>
+                        {{ $category->getName() }}
+                    </option>
+                @endforeach
+            </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+</form>
 @endsection

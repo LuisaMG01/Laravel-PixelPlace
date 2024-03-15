@@ -1,0 +1,5 @@
+.star:hover ~ .star,
+.star:hover,
+.star.active {
+    fill: yellow;
+}

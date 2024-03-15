@@ -19,16 +19,11 @@ class Product extends Model
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
      */
-    protected $fillable = ['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description'];
+    protected $fillable = ['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description', 'category_id'];
 
     public function getId(): int
     {
         return $this->attributes['id'];
-    }
-
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
     }
 
     public function getName(): string
@@ -115,6 +110,23 @@ class Product extends Model
     public function review(): HasMany
     {
         return $this->hasMany(Review::class);
+    }
+
+    /* Special methods*/
+    public function getRating(): float
+    {
+        $reviews = $this->review; 
+        $totalReviews = $reviews->count(); 
+
+        if ($totalReviews === 0) {
+            return 0; 
+        }
+
+        $totalRating = $reviews->sum('rating');
+
+        $averageRating = $totalRating / $totalReviews;
+
+        return round($averageRating, 1); 
     }
 
     public function checkStock(int $id, int $quantity, $cartProductData): void

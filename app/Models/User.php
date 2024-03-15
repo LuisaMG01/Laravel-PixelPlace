@@ -4,10 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Ramsey\Uuid\Type\Integer;
 
 class User extends Authenticatable
 {
@@ -21,8 +21,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
         'balance',
+        'role',
+        'password'
     ];
 
     /**
@@ -61,15 +62,14 @@ class User extends Authenticatable
         $this->attributes['balance'] = $balance;
     }
 
-    /** Model relations */
-    public function reviews(): HasMany
+    public function getName(): string
     {
-        return $this->hasMany(Review::class);
+        return $this->attributes['name'];
     }
 
-    public function challengeUser(): HasMany
+    public function setName(string $name): void
     {
-        return $this->hasMany(ChallengeUser::class);
+        $this->attributes['name'] = $name;
     }
 
     public function getRole(): string
