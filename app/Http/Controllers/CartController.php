@@ -33,7 +33,7 @@ class CartController extends Controller
         $cartProductData[$id] = $request->input('quantity');
         $request->session()->put('cart_product_data', $cartProductData);
 
-        return redirect()->route('cart.index');
+        return back();
     }
 
     public function destroy(Request $request): RedirectResponse

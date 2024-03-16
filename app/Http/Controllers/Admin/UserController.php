@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
-use App\Models\User;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\user\CreateRequest;
 use App\Http\Requests\user\UpdateRequest;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {

@@ -5,14 +5,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('admin')->group(function () {
 
     // Routes of Admin
-    Route::get('/admin', 'App\Http\Controllers\Admin\HomeController@index')->name("admin.home.index");
+    Route::get('/admin', 'App\Http\Controllers\Admin\HomeController@index')->name('admin.home.index');
 
-    Route::get('/admin/categories', 'App\Http\Controllers\Admin\CategoryController@index')->name("admin.categories.index");
+    Route::get('/admin/orders', 'App\Http\Controllers\Admin\OrderController@index')->name('admin.orders.index');
+
+    Route::get('/admin/categories', 'App\Http\Controllers\Admin\CategoryController@index')->name('admin.categories.index');
     Route::put('/admin/categories/update/{id}', 'App\Http\Controllers\Admin\CategoryController@update')->name('admin.categories.update');
     Route::delete('/admin/categories/destroy/{id}', 'App\Http\Controllers\Admin\CategoryController@destroy')->name('admin.categories.destroy');
     Route::post('/admin/categories/store', 'App\Http\Controllers\Admin\CategoryController@store')->name('admin.categories.store');
 
-    Route::get('/admin/products', 'App\Http\Controllers\Admin\ProductController@index')->name("admin.products.index");
+    Route::get('/admin/products', 'App\Http\Controllers\Admin\ProductController@index')->name('admin.products.index');
     Route::post('/admin/products/store', 'App\Http\Controllers\Admin\ProductController@store')->name('admin.products.store');
     Route::put('/admin/products/update/{id}', 'App\Http\Controllers\Admin\ProductController@update')->name('admin.products.update');
     Route::delete('/admin/products/destroy/{id}', 'App\Http\Controllers\Admin\ProductController@destroy')->name('admin.products.destroy');

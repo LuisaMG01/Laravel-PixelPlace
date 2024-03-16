@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
-use App\Models\Product;
-use App\Models\Category;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\product\CreateRequest;
 use App\Http\Requests\product\UpdateRequest;
+use App\Models\Category;
+use App\Models\Product;
 use App\Utils\JsonParser;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
