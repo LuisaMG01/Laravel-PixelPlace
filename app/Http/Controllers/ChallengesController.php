@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\challenge\CreateRequest;
 use App\Models\Category;
 use App\Models\Challenge;
-use Carbon\Carbon;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ChallengesController extends Controller

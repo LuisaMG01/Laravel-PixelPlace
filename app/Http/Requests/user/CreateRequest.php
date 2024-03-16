@@ -17,7 +17,7 @@ class CreateRequest extends FormRequest
             'name' => 'required',
             'email' => 'required',
             'balance' => 'required|numeric|min:0',
-            'role' => 'required'
+            'role' => 'required',
         ];
     }
 }

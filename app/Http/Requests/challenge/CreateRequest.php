@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\challenge;
-use Illuminate\Support\Facades\Date;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateRequest extends FormRequest

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -13,7 +13,7 @@ class ProductsController extends Controller
     {
         $products = Product::query();
         $categories = Category::all();
-        
+
         if ($request->filled('category')) {
             $products->where('category_id', $request->category);
         }
@@ -24,19 +24,20 @@ class ProductsController extends Controller
         }
 
         if ($request->filled('brand')) {
-            $products->where('brand', 'like', '%' . $request->brand . '%');
+            $products->where('brand', 'like', '%'.$request->brand.'%');
         }
 
         if ($request->filled('name')) {
-            $products->where('name', 'like', '%' . $request->name . '%');
+            $products->where('name', 'like', '%'.$request->name.'%');
         }
 
         $filteredProducts = $products->get();
-        
+
         $viewData = [
             'products' => $filteredProducts,
             'categories' => $categories,
         ];
+
         return view('product.index')->with('viewData', $viewData);
     }
 

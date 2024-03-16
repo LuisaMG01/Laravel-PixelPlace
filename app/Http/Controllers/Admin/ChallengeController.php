@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\challenge\CreateRequest;
+use App\Http\Requests\challenge\UpdateRequest;
 use App\Models\Category;
 use App\Models\Challenge;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Http\Requests\challenge\CreateRequest;
-use App\Http\Requests\challenge\UpdateRequest;
 
 class ChallengeController extends Controller
 {

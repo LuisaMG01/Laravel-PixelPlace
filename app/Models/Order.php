@@ -50,7 +50,12 @@ class Order extends Model
         $this->attributes['total_coins'] = $totalCoins;
     }
 
-    public function product(): BelongsTo
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

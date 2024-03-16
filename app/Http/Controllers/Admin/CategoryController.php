@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
-use App\Models\Category;
 use App\Http\Requests\category\CreateRequest;
 use App\Http\Requests\category\UpdateRequest;
+use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
@@ -19,6 +18,7 @@ class CategoryController extends Controller
         $viewData = [
             'categories' => $categories,
         ];
+
         return view('admin.category', $viewData);
     }
 
@@ -32,7 +32,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index');
     }
 
-    public function update(UpdateRequest $request,  int $id): RedirectResponse
+    public function update(UpdateRequest $request, int $id): RedirectResponse
     {
         $category = Category::findOrFail($id);
         $category->update($request->all());
