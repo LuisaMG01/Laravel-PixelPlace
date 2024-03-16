@@ -135,9 +135,9 @@
                                             </svg>
                                             <span class='sr-only'>Close menu</span>
                                         </button>
-                                        <form method='POST'
-                                            action='{{ route('admin.challenges.update', ['id' => $challenge->getId()]) }}'>
+                                        <form action='{{ route('admin.challenges.update', ['id' => $challenge->getId()]) }}' id='update-form-{{ $challenge->getId() }}' method='POST'>
                                             @csrf
+                                            @method('PUT')
                                             <div class='space-y-4'>
                                                 <div>
                                                     <label for='name'
@@ -215,9 +215,9 @@
                                             </div>
                                             <div class='flex justify-center mt-10'>
                                                 <button type='submit' id='updateProductButton'
-                                                    data-drawer-target='drawer-update-product-{{ $challenge->getId() }}'
-                                                    data-drawer-show='drawer-update-product-{{ $challenge->getId() }}'
-                                                    aria-controls='drawer-update-product-{{ $challenge->getId() }}'
+                                                    data-drawer-target='drawer-update-product-default'
+                                                    data-drawer-show='drawer-update-product-default'
+                                                    aria-controls='drawer-update-product-default'
                                                     data-drawer-placement='right'
                                                     class='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
                                                     <svg class='w-4 h-4 mr-2' fill='currentColor' viewBox='0 0 20 20'
@@ -244,7 +244,7 @@
                                         </h5>
                                         <button type='submit'
                                             data-drawer-dismiss='drawer-delete-product-{{ $challenge->getId() }}'
-                                            aria-controls='drawer-delete-product-default'
+                                            aria-controls='drawer-delete-product-{{ $challenge->getId() }}'
                                             class='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white'>
                                             <svg aria-hidden='true' class='w-5 h-5' fill='currentColor'
                                                 viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
@@ -260,11 +260,17 @@
                                                 d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
                                         </svg>
                                         <h3 class='mb-6 text-lg text-gray-500 dark:text-gray-400'>Are you sure you want to
-                                            delete this product?</h3>
-                                        <a href='{{ route('admin.challenges.destroy', ['id' => $challenge->getId()]) }}'
-                                            class='text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2.5 text-center mr-2 dark:focus:ring-red-900'>
-                                            Yes, I'm sure
-                                        </a>
+                                            delete this challenge?</h3>
+                                        <form id='delete-form-{{ $challenge->getId() }}'
+                                            action='{{ route('admin.challenges.destroy', ['id' => $challenge->getId()]) }}'
+                                            method='POST'>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type='submit'
+                                                class='text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2.5 text-center mr-2 dark:focus:ring-red-900'>
+                                                Yes, I'm sure
+                                            </button>
+                                        </form>
                                         <a href='#'
                                             class='text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 border border-gray-200 font-medium inline-flex items-center rounded-lg text-sm px-3 py-2.5 text-center dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700'
                                             data-drawer-hide='drawer-delete-product-default'>
@@ -319,20 +325,20 @@
                 <div>
                     <label for='description'
                         class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Description</label>
-                    <input id='description' name = 'description' rows='4'
+                        <input id='description' name = 'description' rows='4'
                         class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                         placeholder='Enter event description here'>
                 </div>
                 <div>
-                    <label for='reward_coins' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Reward
-                        Coins</label>
+                    <label for='reward_coins'
+                        class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Reward Coins</label>
                     <input type='number' name='reward_coins' id='reward_coins'
                         class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                         placeholder='Amount of coins for the challenge'>
                 </div>
                 <div>
-                    <label for='max_users' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Maximun
-                        amount of users</label>
+                    <label for='max_users'
+                        class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Maximun amount of users</label>
                     <input type='number' name='max_users' id='max_users'
                         class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                         placeholder='Type maximun amount of users'>
@@ -344,21 +350,17 @@
                         class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'>
                 </div>
                 <div class='mb-4'>
-                    <label for='category_id'
-                        class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Category</label>
-                    <select name='category_id' id='category_id'
-                        class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                        required>
-                        <option value='' disabled selected>Select category</option>
-                        @foreach ($viewData['categories'] as $category)
-                            <option value='{{ $category->id }}'>{{ $category->name }}</option>
-                        @endforeach
-                    </select>
+                    <label for='category_id' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Category</label>
+                        <select name='category_id' id='category_id' class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' required>
+                            <option value='' disabled selected>Select category</option>
+                            @foreach($viewData['categories'] as $category)
+                                <option value='{{ $category->id }}'>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                 </div>
                 <div>
                     <label for='category_quantity'
-                        class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Quantity of products with the
-                        Category</label>
+                        class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>Quantity of products with the Category</label>
                     <input type='number' name='category_quantity' id='category_quantity'
                         class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                         placeholder = 'Amount of products'>

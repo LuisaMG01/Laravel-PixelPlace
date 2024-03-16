@@ -3,52 +3,49 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\challenge\CreateRequest;
-use App\Http\Requests\challenge\UpdateRequest;
 use App\Models\Category;
 use App\Models\Challenge;
+use App\Models\ChallengeUser; 
+use App\Models\User;// Necesitamos importar el modelo User
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class ChallengeController extends Controller
 {
-    public function index(): View
+    public function index(string $userId): View // Cambié $id a $userId para coincidir con el parámetro
     {
-        $challenges = Challenge::paginate(5);
-        $categories = Category::all();
-
+        // Aquí había un error, debería ser $userId en lugar de $id
+        $user = User::findOrFail($userId);
+        $challenges = Challenge::all();
+    
         $viewData = [
-            'challenges' => $challenges,
-            'categories' => $categories,
+            'challenges' => [],
         ];
+    
+        foreach ($challenges as $challenge) {
+            // Verificar si el usuario ha completado el desafío
+            $challengeUser = ChallengeUser::where('user_id', $user->getId())
+                                           ->where('challenge_id', $challenge->getId())
+                                           ->first();
 
-        return view('admin.challenge')->with('viewData', $viewData);
+            if (!$challengeUser || !$challengeUser->getChecked()) {
+                $viewData['challenges'][] = [
+                    'id' => $challenge->getId(),
+                    'name' => $challenge->getName(),
+                    'description' => $challenge->getDescription(),
+                    'checked' => $challenge->getChecked(),
+                    'reward_coins' => $challenge->getRewardCoins(),
+                    'max_users' => $challenge->getMaxUsers(),
+                    'current_users' => $challenge->getCurrentUsers(),
+                    'expiration_date' => $challenge->getExpirationDate(),
+                    'category_id' => $challenge->getCategoryId(),
+                    'category_quantity' => $challenge->getCategoryQuantity(),
+                ];
+            }
+        }
+
+        // Cambié el nombre de la variable de retorno para que coincida con el nombre en la vista
+        return view('challenge.index')->with('viewData', $viewData);
     }
 
-    public function store(CreateRequest $request): RedirectResponse
-    {
-
-        $challengeData = $request->all();
-
-        Challenge::create($challengeData);
-
-        return redirect()->route('admin.challenges.index')->with('success', 'Challenge created successfully!');
-    }
-
-    public function destroy(int $id): RedirectResponse
-    {
-        $viewData = Challenge::findOrFail($id);
-        $viewData->delete();
-
-        return redirect()->route('admin.challenges.index');
-    }
-
-    public function update(UpdateRequest $request, int $id): RedirectResponse
-    {
-        $data = $request->only(['name', 'description', 'reward_coins', 'max_users', 'category_id', 'expiration_date', 'category_quantity']);
-
-        Challenge::findOrFail($id)->update($data);
-
-        return redirect()->route('admin.challenges.index');
-    }
 }

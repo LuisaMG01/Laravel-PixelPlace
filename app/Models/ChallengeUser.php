@@ -31,7 +31,7 @@ class ChallengeUser extends Model
         $this->progress = $progress;
     }
 
-    public function isChecked(): bool
+    public function getChecked(): bool
     {
         return $this->checked;
     }
@@ -51,4 +51,37 @@ class ChallengeUser extends Model
     {
         return $this->belongsTo(Challenge::class);
     }
+
+    public function changeProgress(string $userId, string $productId, int $amount): void
+    {
+        $user = User::findOrFail($userId);
+        $product = Product::findOrFail($productId);
+    
+        // Obtener la categoría del producto
+        $category = $product->category;
+    
+        // Verificar si la categoría existe
+        if (!$category) {
+            throw new \Exception("El producto no tiene una categoría asociada.");
+        }
+    
+        $challenges = $category->challenges;
+    
+        foreach ($challenges as $challenge) {
+            $challengeUser = ChallengeUser::where('user_id', $user->getId())
+                                          ->where('challenge_id', $challenge->getId())
+                                          ->first();
+    
+            if ($challengeUser) {
+                $challengeUser->setProgress($challengeUser->getProgress() + $amount);
+                $challengeUser->save();
+    
+                if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
+                    $challengeUser->setChecked(true);
+                    $challengeUser->save();
+                }
+            }
+        }
+    }
+    
 }
