@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <link rel="icon" href="{{ asset('ghost.png') }}" type="image/x-icon" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
-    <link href="{{ asset('css/review.css') }}" rel="stylesheet"/>
+    <link rel="icon" href="{{ asset('icons/ghost.png') }}" type="image/x-icon" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link href="{{ asset('css/review.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -22,4 +22,5 @@
     <script src="{{ asset('js/filters.js') }}"></script>
 
 </body>
+
 </html>

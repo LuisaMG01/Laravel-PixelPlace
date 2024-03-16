@@ -14,6 +14,7 @@ class Category extends Model
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['name'] - string - contains the category name
      */
+
     protected $fillable = ['name'];
 
     public function getId(): int

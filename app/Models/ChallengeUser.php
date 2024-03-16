@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ChallengeUser extends Model
 {
     /**
-     *  CHALLENGE USER ATTRIBUTES
+     * CHALLENGE USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the primary key (id) of the challenge user
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
      */
+
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -31,7 +32,7 @@ class ChallengeUser extends Model
         $this->progress = $progress;
     }
 
-    public function isChecked(): bool
+    public function getChecked(): bool
     {
         return $this->checked;
     }
