@@ -10,10 +10,10 @@ class ImageLocalStorage implements ImageStorage
 {
     public function store(Request $request, string $productName): void
     {
-        if ($request->hasFile('profile_image')) {
+        if ($request->file('image')) {
             Storage::disk('public')->put(
                 "$productName.png",
-                file_get_contents($request->file('profile_image')->getRealPath())
+                file_get_contents($request->file('image')->getRealPath())
             );
         }
     }

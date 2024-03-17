@@ -71,7 +71,7 @@
                                         {{ $product->getStock() }}
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $product->getPrice() }}
+                                        $ {{ $product->getPrice() }}
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $product->getDescription() }}
@@ -136,7 +136,7 @@
                                         <span class="sr-only">Close menu</span>
                                     </button>
                                     <form action="{{ route('admin.products.update', ['id' => $product->getId()]) }}"
-                                        id="update-form-{{ $product->getId() }}" method='POST'>
+                                        id="update-form-{{ $product->getId() }}" method='POST' enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="space-y-4">
@@ -204,12 +204,9 @@
                                             <div>
                                                 <label for="image-{{ $product->getId() }}"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                                                <input type="text" name="image" id="image-{{ $product->getId() }}"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    value="{{ $product->getImage() }}" placeholder="Type product name"
-                                                    required="">
+                                                <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                    placeholder="Type product name" value="{{ asset('storage/' . $product->getImage()) }}">
                                             </div>
-
                                         </div>
                                         <div class="flex justify-center mt-10">
                                             <button type="submit" id="updateProductButton"
@@ -308,7 +305,7 @@
             </svg>
             <span class='sr-only'>Close menu</span>
         </button>
-        <form action="{{ route('admin.products.store') }}" method='POST'>
+        <form action="{{ route('admin.products.store') }}" method='POST' enctype="multipart/form-data">
             @csrf
             <div class="space-y-4">
                 <div>
@@ -356,7 +353,7 @@
                 <div>
                     <label for="image"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                    <input type="text" name="image" id="image"
+                    <input type="file" name="image" id="image"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Type product name" required="">
                 </div>

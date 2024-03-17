@@ -21,4 +21,15 @@ class OrderController extends Controller
 
         return view('admin.order')->with('viewData', $viewData);
     }
+
+    public function show(int $id): View
+    {
+        $order = Order::with('items')->findOrFail($id);
+
+        $viewData = [
+            'order' => $order,
+        ];
+
+        return view('admin.showOrder')->with('viewData', $viewData);
+    }
 }

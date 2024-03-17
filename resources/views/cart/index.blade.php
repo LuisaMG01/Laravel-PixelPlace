@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    @if (session('error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline">{{ session('error') }}</span>
+        </div>
+    @endif
     <div class="flex justify-center">
         <div class="grid grid-cols-4 gap-4">
             <div class="col-span-3">
@@ -60,7 +66,7 @@
                         @method('DELETE')
                         <button type="submit" class="delete-button bg-red-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_delete_button') }}</button>
                     </form>
-                    <form method="GET" action="{{ route('order.preorder') }}">
+                    <form method="GET" action="{{ route('orders.preorder') }}">
                         @csrf
                         <button type="submit" class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_continue_button') }}</button>
                     </form>

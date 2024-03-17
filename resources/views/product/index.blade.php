@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+@if (session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
+    </div>
+@endif
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div class="md:col-span-1 relative">
@@ -14,7 +20,7 @@
                                 <select name="category" id="category" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
                                     <option value="">Todas las categorías</option>
                                     @foreach ($viewData['categories'] as $category)
-                                    <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
+                                        <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -47,21 +53,21 @@
         @foreach ($viewData['products'] as $product)
         <div class="w-full bg-white border border-gray-200 rounded-lg shadow">
             <a href="{{ route('product.show', ['id' => $product->getId()]) }}">
-                <img class="w-full h-48 object-cover rounded-t-lg" src="{{ $product->getImage() }}" alt="product image">
+                <img class="w-full h-48 object-cover rounded-t-lg" src="{{ URL::asset('storage/'.$product->getName().'.png') }}" alt="product image">
             </a>
             <div class="p-4">
                 <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="text-lg font-semibold text-gray-800">{{ $product->getName() }}</a>
                 <div class="flex items-center mt-2">
                     @for ($i = 0; $i < 5; $i++)
-                    @if ($i < $product->getRating())
-                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 0l2.95 6.84 6.02.5c.91.07 1.3 1.18.63 1.79l-4.71 4.5 1.4 6.14c.21 1.02-.87 1.82-1.74 1.33L10 16.24l-5.55 3.52c-.87.49-1.95-.31-1.74-1.33l1.4-6.14-4.71-4.5c-.67-.61-.28-1.72.63-1.79l6.02-.5L10 0z"/>
-                    </svg>
-                    @else
-                    <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 0l2.95 6.84 6.02.5c.91.07 1.3 1.18.63 1.79l-4.71 4.5 1.4 6.14c.21 1.02-.87 1.82-1.74 1.33L10 16.24l-5.55 3.52c-.87.49-1.95-.31-1.74-1.33l1.4-6.14-4.71-4.5c-.67-.61-.28-1.72.63-1.79l6.02-.5L10 0z"/>
-                    </svg>
-                    @endif
+                        @if ($i < $product->getRating())
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 0l2.95 6.84 6.02.5c.91.07 1.3 1.18.63 1.79l-4.71 4.5 1.4 6.14c.21 1.02-.87 1.82-1.74 1.33L10 16.24l-5.55 3.52c-.87.49-1.95-.31-1.74-1.33l1.4-6.14-4.71-4.5c-.67-.61-.28-1.72.63-1.79l6.02-.5L10 0z"/>
+                            </svg>
+                        @else
+                            <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 0l2.95 6.84 6.02.5c.91.07 1.3 1.18.63 1.79l-4.71 4.5 1.4 6.14c.21 1.02-.87 1.82-1.74 1.33L10 16.24l-5.55 3.52c-.87.49-1.95-.31-1.74-1.33l1.4-6.14-4.71-4.5c-.67-.61-.28-1.72.63-1.79l6.02-.5L10 0z"/>
+                            </svg>
+                        @endif
                     @endfor
                     <span class="ml-2 text-sm text-gray-600">{{ $product->getRating() }}</span>
                 </div>
