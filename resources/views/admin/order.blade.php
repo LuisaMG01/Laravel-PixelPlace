@@ -30,6 +30,10 @@
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Date
                                 </th>
+                                <th scope="col"
+                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    Items
+                                </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
@@ -47,6 +51,9 @@
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $order->getCreatedAt() }}
+                                    </td>
+                                    <td class="p-4 text-base font-semibold text-red-700 whitespace-nowrap dark:text-white">
+                                        <a href="{{ route('admin.orders.show', ['id' => $order->getId()]) }}">More details...</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class CartController extends Controller
@@ -29,11 +31,17 @@ class CartController extends Controller
 
     public function add(int $id, Request $request): RedirectResponse
     {
-        $cartProductData = $request->session()->get('cart_product_data');
-        $cartProductData[$id] = $request->input('quantity');
-        $request->session()->put('cart_product_data', $cartProductData);
+        if (Auth::check()) {
+            $cartProductData = $request->session()->get('cart_product_data');
+            $cartProductData[$id] = $request->input('quantity');
+            $request->session()->put('cart_product_data', $cartProductData);
+            $product = Product::findOrFail($id);
+            Session::flash('success', $product->getName().' was added successfully.');
 
-        return back();
+            return back();
+        } else {
+            return redirect('register');
+        }
     }
 
     public function destroy(Request $request): RedirectResponse

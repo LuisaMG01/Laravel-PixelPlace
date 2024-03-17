@@ -49,7 +49,7 @@
                         <button type="submit"
                             class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.preorder_go_back_button') }}</button>
                     </form>
-                    <form method="POST" action="{{ route('order.create') }}">
+                    <form method="POST" action="{{ route('orders.create') }}">
                         @csrf
                         <button type="submit"
                             class="delete-button bg-green-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.preorder_confirm_order_button') }}</button>

@@ -48,14 +48,28 @@ class OrderController extends Controller
         if ($productsInSession) {
             $userId = Auth::user()->getId();
             $user = User::findOrFail($userId);
+            $userBalance = $user->getBalance();
+            $total = 0;
+            $productsInCart = Product::findMany(array_keys($productsInSession));
+
+            foreach ($productsInCart as $product) {
+                $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
+                $subtotal = $product->getPrice() * $quantity;
+                $total += $subtotal;
+                if ($product->getStock() < $quantity) {
+                    return redirect()->route('cart.index')->with('error', $product->getName().' out of stock');
+                }
+            }
+
+            if ($userBalance < $total) {
+                $request->session()->forget('cart_product_data');
+                return redirect()->route('cart.index')->with('error', 'Insufficient balance to complete the purchase');
+            }
+
             $order = Order::create([
                 'user_id' => $userId,
                 'total_coins' => 0,
             ]);
-
-            $userBalance = $user->getBalance();
-            $total = 0;
-            $productsInCart = Product::findMany(array_keys($productsInSession));
 
             foreach ($productsInCart as $product) {
                 $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
@@ -70,7 +84,6 @@ class OrderController extends Controller
                 $newStock = $product->getStock() - $quantity;
                 $product->setStock($newStock);
                 $product->save();
-                $total += $product->getPrice() * $quantity;
             }
 
             $user->setBalance($userBalance - $total);
@@ -92,5 +105,29 @@ class OrderController extends Controller
         } else {
             return redirect()->route('cart.index');
         }
+    }
+
+    public function index(): View
+    {
+        $userId = Auth::user()->getId();
+        $user = User::findOrFail($userId);
+        $orders = $user->orders;
+
+        $viewData = [
+            'orders' => $orders,
+        ];
+
+        return view('order.index')->with('viewData', $viewData);
+    }
+
+    public function show(int $id): View
+    {
+        $order = Order::with('items')->findOrFail($id);
+
+        $viewData = [
+            'order' => $order,
+        ];
+
+        return view('order.show')->with('viewData', $viewData);
     }
 }
