@@ -27,6 +27,6 @@ Route::middleware('admin')->group(function () {
 
     Route::get('/admin/challenges', 'App\Http\Controllers\Admin\ChallengeController@index')->name('admin.challenges.index');
     Route::post('/admin/challenges/store', 'App\Http\Controllers\Admin\ChallengeController@store')->name('admin.challenges.store');
-    Route::post('/admin/challenges/update/{id}', 'App\Http\Controllers\Admin\ChallengeController@update')->name('admin.challenges.update');
-    Route::get('/admin/challenges/destroy/{id}', 'App\Http\Controllers\Admin\ChallengeController@destroy')->name('admin.challenges.destroy');
+    Route::put('/admin/challenges/update/{id}', 'App\Http\Controllers\Admin\ChallengeController@update')->name('admin.challenges.update');
+    Route::delete('/admin/challenges/destroy/{id}', 'App\Http\Controllers\Admin\ChallengeController@destroy')->name('admin.challenges.destroy');
 });

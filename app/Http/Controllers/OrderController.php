@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChallengeUser;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
@@ -96,6 +97,9 @@ class OrderController extends Controller
                 'order' => $order,
                 'items' => $order->getItems(),
             ];
+
+            $challengeUser = new ChallengeUser();
+            $challengeUser->changeProgress($userId, $product->getId(), $quantity);
 
             return view('order.purchase')->with('viewData', $viewData);
         } else {
