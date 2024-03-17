@@ -16,14 +16,13 @@ class ChallengeUser extends Model
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
      */
-
     protected $fillable = ['progress', 'checked', 'created_at', 'updated_at'];
 
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
 
-        if (!isset($this->attributes['progress'])) {
+        if (! isset($this->attributes['progress'])) {
             $this->attributes['progress'] = 0;
         }
     }
@@ -87,29 +86,28 @@ class ChallengeUser extends Model
         $category = $product->getCategoryId();
 
         $challenges = $category->challenges;
-    
+
         foreach ($challenges as $challenge) {
             $challengeUser = ChallengeUser::where('user_id', $user->getId())
-                                          ->where('challenge_id', $challenge->getId())
-                                          ->first();
-    
-            if (!$challengeUser) {
+                ->where('challenge_id', $challenge->getId())
+                ->first();
+
+            if (! $challengeUser) {
                 $challengeUser = new ChallengeUser();
                 $challengeUser->user_id = $user->getId();
                 $challengeUser->challenge_id = $challenge->getId();
             }
-    
+
             $challengeUser->setProgress($challengeUser->getProgress() + $amount);
 
-            if($challengeUser->getProgress() >= $challenge->getCategoryQuantity()){
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
                 $challengeUser->setChecked(true);
-            }
-            else{
+            } else {
                 $challengeUser->setChecked(false);
             }
 
             $challengeUser->save();
-    
+
             if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
                 $challengeUser->setChecked(true);
                 $challengeUser->save();

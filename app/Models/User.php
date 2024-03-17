@@ -20,7 +20,6 @@ class User extends Authenticatable
      * $this->attributes['role'] - string - contains the user role
      * $this->attributes['password'] - string - contains the user password
      */
-
     protected $fillable = [
         'name',
         'email',

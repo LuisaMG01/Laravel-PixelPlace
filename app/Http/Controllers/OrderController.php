@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChallengeUser;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
@@ -10,7 +11,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use App\Models\ChallengeUser;
 
 class OrderController extends Controller
 {
@@ -84,7 +84,7 @@ class OrderController extends Controller
                 'order' => $order,
                 'items' => $order->getItems(),
             ];
-            
+
             $challengeUser = new ChallengeUser();
             $challengeUser->changeProgress($userId, $product->getId(), $quantity);
 

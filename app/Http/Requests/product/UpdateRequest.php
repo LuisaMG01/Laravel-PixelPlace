@@ -21,7 +21,7 @@ class UpdateRequest extends FormRequest
             'price' => 'required|numeric|min:1',
             'stock' => 'required|numeric|min:0',
             'description' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
         ];
     }
 }

@@ -22,7 +22,6 @@ class Challenge extends Model
      * $this->attributes['category_id'] - int - contains the challenge category id
      * $this->attributes['category_quantity'] - int - contains the challenge category quantity
      */
-
     protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
     protected static function booted()

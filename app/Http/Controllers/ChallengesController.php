@@ -12,11 +12,11 @@ class ChallengesController extends Controller
     {
         $user = User::findOrFail($userId);
 
-            $challenges = ChallengeUser::where('user_id', $userId)->get();
+        $challenges = ChallengeUser::where('user_id', $userId)->get();
 
-            $undoneChallenges = $challenges->where('checked', false)->where('progress','=', 0);
-            $doneChallenges = $challenges->where('checked', true);
-            $inProgressChallenges = $challenges->where('checked', false)->where('progress', '>', 0);
+        $undoneChallenges = $challenges->where('checked', false)->where('progress', '=', 0);
+        $doneChallenges = $challenges->where('checked', true);
+        $inProgressChallenges = $challenges->where('checked', false)->where('progress', '>', 0);
 
         $categories = Category::all();
 
@@ -42,5 +42,4 @@ class ChallengesController extends Controller
 
         return view('challenge.index')->with('viewData', $viewData);
     }
-
 }
