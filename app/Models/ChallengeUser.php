@@ -22,7 +22,7 @@ class ChallengeUser extends Model
     {
         parent::__construct($attributes);
 
-        if (! isset($this->attributes['progress'])) {
+        if (!isset($this->attributes['progress'])) {
             $this->attributes['progress'] = 0;
         }
     }
@@ -62,11 +62,6 @@ class ChallengeUser extends Model
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(string $updatedAt): void
-    {
-        $this->updated_at = $updatedAt;
-    }
-
     /** Model relations */
     public function user(): BelongsTo
     {
@@ -92,7 +87,7 @@ class ChallengeUser extends Model
                 ->where('challenge_id', $challenge->getId())
                 ->first();
 
-            if (! $challengeUser) {
+            if (!$challengeUser) {
                 $challengeUser = new ChallengeUser();
                 $challengeUser->user_id = $user->getId();
                 $challengeUser->challenge_id = $challenge->getId();
