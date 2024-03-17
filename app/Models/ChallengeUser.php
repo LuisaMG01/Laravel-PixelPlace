@@ -16,6 +16,18 @@ class ChallengeUser extends Model
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
      */
+
+    protected $fillable = ['progress', 'checked'];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        if (!isset($this->attributes['progress'])) {
+            $this->attributes['progress'] = 0;
+        }
+    }
+
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -56,15 +68,9 @@ class ChallengeUser extends Model
     {
         $user = User::findOrFail($userId);
         $product = Product::findOrFail($productId);
-    
-        // Obtener la categoría del producto
-        $category = $product->category;
-    
-        // Verificar si la categoría existe
-        if (!$category) {
-            throw new \Exception("El producto no tiene una categoría asociada.");
-        }
-    
+
+        $category = $product->getCategoryId();
+
         $challenges = $category->challenges;
     
         foreach ($challenges as $challenge) {
@@ -72,16 +78,27 @@ class ChallengeUser extends Model
                                           ->where('challenge_id', $challenge->getId())
                                           ->first();
     
-            if ($challengeUser) {
-                $challengeUser->setProgress($challengeUser->getProgress() + $amount);
-                $challengeUser->save();
+            if (!$challengeUser) {
+                $challengeUser = new ChallengeUser();
+                $challengeUser->user_id = $user->getId();
+                $challengeUser->challenge_id = $challenge->getId();
+            }
     
-                if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
-                    $challengeUser->setChecked(true);
-                    $challengeUser->save();
-                }
+            $challengeUser->setProgress($challengeUser->getProgress() + $amount);
+
+            if($challengeUser->getProgress() > $challenge->getCategoryQuantity()){
+                $challengeUser->setChecked(true);
+            }
+            else{
+                $challengeUser->setChecked(false);
+            }
+
+            $challengeUser->save();
+    
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
+                $challengeUser->setChecked(true);
+                $challengeUser->save();
             }
         }
     }
-    
 }

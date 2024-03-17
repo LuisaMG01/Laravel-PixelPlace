@@ -6,46 +6,91 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Challenge;
 use App\Models\ChallengeUser; 
-use App\Models\User;// Necesitamos importar el modelo User
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class ChallengeController extends Controller
 {
-    public function index(string $userId): View // Cambié $id a $userId para coincidir con el parámetro
+    public function indexUser(string $userId): View
     {
-        // Aquí había un error, debería ser $userId en lugar de $id
         $user = User::findOrFail($userId);
         $challenges = Challenge::all();
-    
-        $viewData = [
-            'challenges' => [],
-        ];
+        $categories = Category::all();
+        
+        $viewData['challenges'][] = $challenges; 
+        $viewData['categories'] = $categories;
     
         foreach ($challenges as $challenge) {
-            // Verificar si el usuario ha completado el desafío
             $challengeUser = ChallengeUser::where('user_id', $user->getId())
                                            ->where('challenge_id', $challenge->getId())
                                            ->first();
 
             if (!$challengeUser || !$challengeUser->getChecked()) {
                 $viewData['challenges'][] = [
-                    'id' => $challenge->getId(),
-                    'name' => $challenge->getName(),
-                    'description' => $challenge->getDescription(),
-                    'checked' => $challenge->getChecked(),
-                    'reward_coins' => $challenge->getRewardCoins(),
-                    'max_users' => $challenge->getMaxUsers(),
-                    'current_users' => $challenge->getCurrentUsers(),
-                    'expiration_date' => $challenge->getExpirationDate(),
-                    'category_id' => $challenge->getCategoryId(),
-                    'category_quantity' => $challenge->getCategoryQuantity(),
+                    'challenges' => $challenge,
                 ];
             }
         }
 
-        // Cambié el nombre de la variable de retorno para que coincida con el nombre en la vista
+        return view('challenge.indexUser')->with('viewData', $viewData);
+    }
+
+    public function index(): View
+    {
+        $challenges = Challenge::all();
+        $categories = Category::all();
+
+        $viewData = [
+            'challenges' => $challenges,
+            'categories' => $categories,
+        ];
+
         return view('challenge.index')->with('viewData', $viewData);
     }
+
+    public function filter(Request $request): View
+    {
+        $selectedCategories = $request->input('categories', []);
+
+        if (empty($selectedCategories)) {
+            $challenges = Challenge::all();
+        } else {
+            $challenges = Challenge::whereHas('categories', function($query) use ($selectedCategories) {
+            $query->whereIn('id', $selectedCategories);
+            })->get();
+        }
+
+        $categories = Category::all();
+        $viewData = [
+            'challenges' => $challenges,
+            'categories' => $categories,
+        ];
+
+        return view('challenge.index')->with('viewData', $viewData);
+    }
+
+/*    public function filter(Request $request)
+    {
+        dd($request->all());
+        $selectedCategories = $request->input('categories', []);
+        dd($selectedCategories);
+
+        if (empty($selectedCategories)) {
+            $challenges = Challenge::all();
+        } else {
+
+            $challenges = Challenge::whereHas('categories', function($query) use ($selectedCategories) {
+                $query->whereIn('id', $selectedCategories);
+            })->get();
+        }
+
+        $viewData = [
+            'challenges' => $challenges,
+            'categories' => Category::all(),
+        ];
+
+        return view('challenge.indexUser')->with('viewData', $viewData);
+    }*/
 
 }

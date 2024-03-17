@@ -96,6 +96,16 @@ class Product extends Model
         $this->attributes['description'] = $description;
     }
 
+    public function getCategoryId(): int
+    {
+        return $this->attributes['category_id'];
+    }
+
+    public function setCategoryId(int $categoryId): void
+    {
+        $this->attributes['category_id'] = $categoryId;
+    }
+
     /* Model relations */
     public function items(): HasMany
     {

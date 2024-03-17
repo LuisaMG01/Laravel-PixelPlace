@@ -74,7 +74,7 @@
                                         </td>
                                         <td
                                             class='px-4 py-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                                            {{ $challenge->category->name }}
+                                            {{ $challenge->category->getName() }}
                                         </td>
                                         <td
                                             class='px-4 py-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white'>
