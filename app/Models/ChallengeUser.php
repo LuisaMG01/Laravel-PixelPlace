@@ -62,11 +62,6 @@ class ChallengeUser extends Model
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(string $updatedAt): void
-    {
-        $this->updated_at = $updatedAt;
-    }
-
     /** Model relations */
     public function user(): BelongsTo
     {

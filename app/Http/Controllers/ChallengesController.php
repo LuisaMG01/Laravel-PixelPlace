@@ -4,31 +4,51 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Challenge;
+use App\Models\User;
+use App\Models\ChallengeUser;
 use Illuminate\View\View;
 
 class ChallengesController extends Controller
 {
     public function indexUser(string $userId): View
-    {
-        $user = User::findOrFail($userId);
+{
+    $user = User::findOrFail($userId);
 
-        $challenges = ChallengeUser::where('user_id', $userId)->get();
+    $undoneChallenges = ChallengeUser::where('user_id', $userId)
+        ->where('checked', false)
+        ->where('progress', '=', 0)
+        ->get();
 
-        $undoneChallenges = $challenges->where('checked', false)->where('progress', '=', 0);
-        $doneChallenges = $challenges->where('checked', true);
-        $inProgressChallenges = $challenges->where('checked', false)->where('progress', '>', 0);
+    // Obtener todos los desafíos que no están en progreso o terminados
+    $allUndoneChallenges = Challenge::whereDoesntHave('challengeUser', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })
+        ->where('checked', false)
+        ->get();
 
-        $categories = Category::all();
+    // Fusionar los desafíos no iniciados con los desafíos que no están en progreso o terminados
+    $undoneChallenges = $undoneChallenges->merge($allUndoneChallenges);
 
-        $viewData = [
-            'undoneChallenges' => $undoneChallenges,
-            'doneChallenges' => $doneChallenges,
-            'inProgressChallenges' => $inProgressChallenges,
-            'categories' => $categories,
-        ];
+    $doneChallenges = ChallengeUser::where('user_id', $userId)
+        ->where('checked', true)
+        ->get();
 
-        return view('challenge.indexUser')->with('viewData', $viewData);
-    }
+    $inProgressChallenges = ChallengeUser::where('user_id', $userId)
+        ->where('checked', false)
+        ->where('progress', '>', 0)
+        ->get();
+
+    $categories = Category::all();
+
+    $viewData = [
+        'undoneChallenges' => $undoneChallenges,
+        'doneChallenges' => $doneChallenges,
+        'inProgressChallenges' => $inProgressChallenges,
+        'categories' => $categories,
+    ];
+
+    return view('challenge.indexUser')->with('viewData', $viewData);
+}
 
     public function index(): View
     {
