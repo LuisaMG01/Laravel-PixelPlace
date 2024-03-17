@@ -24,14 +24,14 @@ class ProductsController extends Controller
         }
 
         if ($request->filled('brand')) {
-            $products->where('brand', 'like', '%'.$request->brand.'%');
+            $products->where('brand', 'like', '%' . $request->brand . '%');
         }
 
         if ($request->filled('name')) {
-            $products->where('name', 'like', '%'.$request->name.'%');
+            $products->where('name', 'like', '%' . $request->name . '%');
         }
 
-        $filteredProducts = $products->get();
+        $filteredProducts = $products->paginate(12);
 
         $viewData = [
             'products' => $filteredProducts,

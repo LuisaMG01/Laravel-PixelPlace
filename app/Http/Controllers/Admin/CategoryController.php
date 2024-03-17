@@ -19,7 +19,7 @@ class CategoryController extends Controller
             'categories' => $categories,
         ];
 
-        return view('admin.category', $viewData);
+        return view('admin.category')->with('viewData', $viewData);
     }
 
     public function store(CreateRequest $request): RedirectResponse

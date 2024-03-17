@@ -41,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                            @foreach ($categories as $category)
+                            @foreach ($viewData['categories'] as $category)
                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                                     <!-- Object Values -->
                                     <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
@@ -192,7 +192,7 @@
     </div>
 
     <!-- Pagination -->
-    @include('partials.pagination', ['paginator' => $categories])
+    @include('partials.pagination', ['paginator' => $viewData['categories']])
 
     <!-- Add Product Drawer -->
     <div id="drawer-create-product-default"

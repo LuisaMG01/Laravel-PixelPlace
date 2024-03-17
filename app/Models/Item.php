@@ -14,7 +14,10 @@ class Item extends Model
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['acquire_price_coins'] - int - contains the acquire price coins value
      * $this->attributes['amount'] - float - contains the amount value
+     * $this->attributes['product_id'] - int - contains the ID of the associated product
+     * $this->attributes['order_id'] - int - contains the ID of the associated order
      */
+
     public static function validate($request)
     {
         $request->validate([
@@ -57,19 +60,9 @@ class Item extends Model
         return $this->attributes['product_id'];
     }
 
-    public function setProductId($userId)
-    {
-        $this->attributes['product_id'] = $userId;
-    }
-
     public function getOrderId()
     {
         return $this->attributes['order_id'];
-    }
-
-    public function setOrderId($userId)
-    {
-        $this->attributes['order_id'] = $userId;
     }
 
     /**Model relations */

@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ChallengeUser extends Model
 {
     /**
-     *  CHALLENGE USER ATTRIBUTES
+     * CHALLENGE USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the primary key (id) of the challenge user
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
      */
 
-    protected $fillable = ['progress', 'checked'];
+    protected $fillable = ['progress', 'checked', 'created_at', 'updated_at'];
 
     public function __construct(array $attributes = [])
     {
@@ -53,6 +53,21 @@ class ChallengeUser extends Model
         $this->checked = $checked;
     }
 
+    public function getCreatedAt(): string
+    {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(string $updatedAt): void
+    {
+        $this->updated_at = $updatedAt;
+    }
+
     /** Model relations */
     public function user(): BelongsTo
     {
@@ -86,7 +101,7 @@ class ChallengeUser extends Model
     
             $challengeUser->setProgress($challengeUser->getProgress() + $amount);
 
-            if($challengeUser->getProgress() > $challenge->getCategoryQuantity()){
+            if($challengeUser->getProgress() >= $challenge->getCategoryQuantity()){
                 $challengeUser->setChecked(true);
             }
             else{

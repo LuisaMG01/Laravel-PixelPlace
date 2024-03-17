@@ -18,7 +18,9 @@ class Product extends Model
      * $this->attributes['price'] - int - contains the product price
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
+     * $this->attributes['category_id'] - int - contains the ID of the associated category
      */
+
     protected $fillable = ['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description', 'category_id'];
 
     public function getId(): int
@@ -105,6 +107,7 @@ class Product extends Model
     {
         $this->attributes['category_id'] = $categoryId;
     }
+
 
     /* Model relations */
     public function items(): HasMany

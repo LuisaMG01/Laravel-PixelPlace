@@ -30,7 +30,7 @@ class ReviewsController extends Controller
         Review::create($request->only(['description', 'rating', 'product_id', 'user_id']));
         Session::flash('message', __('app.success_creation_product'));
 
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 
     public function show(int $productId): view
@@ -49,7 +49,7 @@ class ReviewsController extends Controller
         $review = Review::findOrFail($id);
         $review->delete();
 
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 
     public function edit(int $id): View
@@ -67,6 +67,6 @@ class ReviewsController extends Controller
         $review = Review::findOrFail($id);
         $review->update($request->all());
 
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 }
