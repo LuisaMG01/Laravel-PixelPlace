@@ -24,7 +24,7 @@ class ProductController extends Controller
             'categories' => $categories,
         ];
 
-        return view('admin.product', $viewData);
+        return view('admin.product')->with('viewData', $viewData);
     }
 
     public function destroy(int $id): RedirectResponse

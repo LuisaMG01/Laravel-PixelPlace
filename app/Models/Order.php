@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Collection;
 
 class Order extends Model
 {
@@ -15,9 +16,9 @@ class Order extends Model
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['total_coins'] - int - contains the total value of the order
      * $this->attributes['user_id'] - int - contains the referenced user id
-     * $this->user - User - contains the associated User
      * $this->items - Item[] - contains the associated items
      */
+
     protected $fillable = ['total_coins', 'user_id'];
 
     public function getId(): int
@@ -30,12 +31,7 @@ class Order extends Model
         return $this->attributes['user_id'];
     }
 
-    public function setUserId($userId): void
-    {
-        $this->attributes['user_id'] = $userId;
-    }
-
-    public function getItems()
+    public function getItems(): Collection
     {
         return $this->items;
     }
@@ -53,6 +49,11 @@ class Order extends Model
     public function getCreatedAt(): string
     {
         return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
     }
 
     public function user(): BelongsTo
