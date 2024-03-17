@@ -15,7 +15,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'image' => 'required',
+            'image' => '',
             'brand' => 'required',
             'keywords' => 'required',
             'price' => 'required|numeric|min:1',

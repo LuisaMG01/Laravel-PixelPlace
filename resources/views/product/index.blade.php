@@ -1,53 +1,46 @@
 @extends('layouts.app')
 @section('content')
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div class="md:col-span-1 relative">
-                <div class="max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="px-6 py-4">
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Filtrar Productos</h2>
-                        <button id="toggleFilterBtn"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Filtrar</button>
-                        <div id="filterForm"
-                            class="hidden absolute bg-white rounded-lg border border-gray-300 shadow-md py-4 px-6 top-0 left-0 mt-12 z-10">
-                            <form action="{{ route('products.index') }}" method="GET">
-                                <div class="mb-4">
-                                    <label for="category"
-                                        class="block text-gray-700 text-sm font-bold mb-2">Categoría:</label>
-                                    <select name="category" id="category"
-                                        class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
-                                        <option value="">Todas las categorías</option>
-                                        @foreach ($viewData['categories'] as $category)
-                                            <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Precio:</label>
-                                    <input type="text" name="price" id="price"
-                                        class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
-                                        placeholder="Ej: 100-500">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="brand" class="block text-gray-700 text-sm font-bold mb-2">Marca:</label>
-                                    <input type="text" name="brand" id="brand"
-                                        class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
-                                        placeholder="Ej: Sony">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
-                                    <input type="text" name="name" id="name"
-                                        class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
-                                        placeholder="Ej: Play 5">
-                                </div>
-                                <div class="flex justify-end">
-                                    <button type="submit"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Filtrar</button>
-                                    <button type="button" id="closeFilterBtn"
-                                        class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Cerrar</button>
-                                </div>
-                            </form>
-                        </div>
+@if (session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
+    </div>
+@endif
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="md:col-span-1 relative">
+            <div class="max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="px-6 py-4">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">Filtrar Productos</h2>
+                    <button id="toggleFilterBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Filtrar</button>
+                    <div id="filterForm" class="hidden absolute bg-white rounded-lg border border-gray-300 shadow-md py-4 px-6 top-0 left-0 mt-12 z-10">
+                        <form action="{{ route('products.index') }}" method="GET">
+                            <div class="mb-4">
+                                <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Categoría:</label>
+                                <select name="category" id="category" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
+                                    <option value="">Todas las categorías</option>
+                                    @foreach ($viewData['categories'] as $category)
+                                        <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Precio:</label>
+                                <input type="text" name="price" id="price" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="Ej: 100-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="brand" class="block text-gray-700 text-sm font-bold mb-2">Marca:</label>
+                                <input type="text" name="brand" id="brand" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="Ej: Sony">
+                            </div>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
+                                <input type="text" name="name" id="name" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="Ej: Play 5">
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Filtrar</button>
+                                <button type="button" id="closeFilterBtn" class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Cerrar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -59,7 +52,7 @@
             @foreach ($viewData['products'] as $product)
                 <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
                     <a href="{{ route('products.show', ['id' => $product->getId()]) }}">
-                        <img class="p-8 rounded-t-lg" src="{{ $product->getImage() }}" alt="product image">
+                        <img class="p-8 rounded-t-lg" src="{{ URL::asset('storage/'.$product->getName().'.png') }}" alt="product image">
                     </a>
                     <div class="px-5 pb-5">
                         <a href="{{ route('products.show', ['id' => $product->getId()]) }}">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\product\CreateRequest;
 use App\Http\Requests\product\UpdateRequest;
+use App\Interfaces\ImageStorage;
 use App\Models\Category;
 use App\Models\Product;
 use App\Utils\JsonParser;
@@ -43,6 +44,8 @@ class ProductController extends Controller
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
         $product->update($request->all());
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request, $product->getName());
 
         Session::flash('success', 'Product updated successfully.');
 
@@ -53,6 +56,9 @@ class ProductController extends Controller
     {
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
+        $productName = $request->input('name');
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request, $productName);
         Product::create($request->all());
         Session::flash('success', 'Product created successfully.');
 
