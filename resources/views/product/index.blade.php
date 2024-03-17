@@ -2,7 +2,7 @@
 @section('content')
 @if (session('success'))
     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-        <strong class="font-bold">Success!</strong>
+        <strong class="font-bold">{{ __('app.success') }}</strong>
         <span class="block sm:inline">{{ session('success') }}</span>
     </div>
 @endif
@@ -11,34 +11,41 @@
         <div class="md:col-span-1 relative">
             <div class="max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-md">
                 <div class="px-6 py-4">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">Filtrar Productos</h2>
-                    <button id="toggleFilterBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Filtrar</button>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ __('app.filter_products') }}</h2>
+                    <button id="toggleFilterBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter') }}</button>
                     <div id="filterForm" class="hidden absolute bg-white rounded-lg border border-gray-300 shadow-md py-4 px-6 top-0 left-0 mt-12 z-10">
                         <form action="{{ route('products.index') }}" method="GET">
                             <div class="mb-4">
-                                <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Categoría:</label>
+                                <label for="category" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.category_index') }}:</label>
                                 <select name="category" id="category" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
-                                    <option value="">Todas las categorías</option>
+                                    <option value="">{{ __('app.all_categories') }}</option>
                                     @foreach ($viewData['categories'] as $category)
                                         <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Precio:</label>
-                                <input type="text" name="price" id="price" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="Ej: 100-500">
+                                <label for="price" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.price') }}:</label>
+                                <select name="price" id="price" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
+                                    <option value="">{{ __('app.select_price_range') }}</option>
+                                    <option value="0-49">{{ __('app.less_than_50') }}</option>
+                                    @for ($i = 50; $i <= 300; $i += 50)
+                                        <option value="{{ $i}}-{{ $i + 49 }}">{{ $i.'$' }} - {{ ($i + 49).'$' }}</option>
+                                    @endfor
+                                    <option value="301">{{ __('app.more_than_300') }}</option>
+                                </select>
                             </div>
                             <div class="mb-4">
-                                <label for="brand" class="block text-gray-700 text-sm font-bold mb-2">Marca:</label>
-                                <input type="text" name="brand" id="brand" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="Ej: Sony">
+                                <label for="brand" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.brand_index') }}:</label>
+                                <input type="text" name="brand" id="brand" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="{{ __('app.example_sony') }}">
                             </div>
                             <div class="mb-4">
-                                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
-                                <input type="text" name="name" id="name" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="Ej: Play 5">
+                                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.name') }}:</label>
+                                <input type="text" name="name" id="name" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="{{ __('app.example_play_5') }}">
                             </div>
                             <div class="flex justify-end">
-                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Filtrar</button>
-                                <button type="button" id="closeFilterBtn" class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Cerrar</button>
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter') }}</button>
+                                <button type="button" id="closeFilterBtn" class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.close') }}</button>
                             </div>
                         </form>
                     </div>
@@ -86,8 +93,7 @@
                             <form method="POST" action="{{ route('cart.add', ['id' => $product->getId()]) }}">
                                 @csrf
                                 <button type="submit"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
-                                    to cart</button>
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('app.add_to_cart') }}</button>
                             </form>
                         </div>
                     </div>

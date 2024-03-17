@@ -19,8 +19,15 @@ class ProductsController extends Controller
         }
 
         if ($request->filled('price')) {
-            $priceRange = explode('-', $request->price);
-            $products->whereBetween('price', [$priceRange[0], $priceRange[1]]);
+            $price = $request->price;
+            if ($price === '0-49') {
+                $products->where('price', '<', 50);
+            } elseif ($price === '301') {
+                $products->where('price', '>', 300);
+            } else {
+                $priceRange = explode('-', $price);
+                $products->whereBetween('price', [$priceRange[0], $priceRange[1]]);
+            }
         }
 
         if ($request->filled('brand')) {

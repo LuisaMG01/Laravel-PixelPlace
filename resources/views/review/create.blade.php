@@ -9,13 +9,13 @@
                     <input type="hidden" name="product_id" value="{{ $viewData['productId'] }}">
                     <div class="mb-4">
                         <label for="description"
-                            class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.description') }}</label>
+                            class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.description_create') }}</label>
                         <textarea id="description" name="description"
                             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                             placeholder="{{ __('app.enter_description') }}" rows="4">{{ old('description') }}</textarea>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.rating') }}</label>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.rating_create') }}</label>
                         <div class="flex">
                             <div id="stars" class="flex">
                                 <input type="hidden" name="rating" value="0">

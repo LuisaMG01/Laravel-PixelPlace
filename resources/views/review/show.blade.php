@@ -9,9 +9,9 @@
         @foreach ($viewData['reviews'] as $review)
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <p class="text-gray-700"><strong>Description:</strong> {{ $review->getDescription() }}</p>
+                    <p class="text-gray-700"><strong>{{ __('app.description_show') }}:</strong> {{ $review->getDescription() }}</p>
                     <div class="flex items-center mt-2">
-                        <p class="text-gray-700 mr-2"><strong>Rating:</strong></p>
+                        <p class="text-gray-700 mr-2"><strong>{{ __('app.rating_show') }}:</strong></p>
                         <div class="flex">
                             @for ($i = 0; $i < $review->getRating(); $i++)
                                 <svg class="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
@@ -29,11 +29,11 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Borrar</button>
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">{{ __('app.delete') }}</button>
                                 </form>
                                 <div class="btn-container mt-2">
                                     <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</a>
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ __('app.edit') }}</a>
                                 </div>
                             @endif
                         @endif
