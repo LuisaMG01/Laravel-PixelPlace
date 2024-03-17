@@ -19,9 +19,10 @@ class Challenge extends Model
      * $this->attributes['max_users'] - int - contains the challenge maximum users
      * $this->attributes['current_users'] - int - contains the challenge current users
      * $this->attributes['expiration_date'] - datetime - contains the challenge expiration date
-     * $this->attributes['category_id'] - int - contains the challenge categeory id
-     * $this->attributes['product_quantity'] - int - contains the challenge product quantity
+     * $this->attributes['category_id'] - int - contains the challenge category id
+     * $this->attributes['category_quantity'] - int - contains the challenge category quantity
      */
+
     protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
     protected static function booted()
@@ -31,8 +32,6 @@ class Challenge extends Model
             $challenge->checked = 0;
         });
     }
-
-    // Getters and Setters for the Challenge attributes
 
     public function getId(): int
     {
@@ -112,11 +111,6 @@ class Challenge extends Model
     public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
-    }
-
-    public function setCategoryId(string $categoryId): void
-    {
-        $this->attributes['category_id'] = $categoryId;
     }
 
     public function getCategoryQuantity(): int
