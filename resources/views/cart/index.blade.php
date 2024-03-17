@@ -37,10 +37,13 @@
                                                         <form method="POST" action="{{ route('cart.add', ['id' => $product->getId()]) }}">
                                                             @csrf
                                                             <select name="quantity" id="quantity_{{ $product->getId() }}" class="quantity-selector bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                                                                @for ($i = 1; $i <= 10; $i++)
-                                                                    <option value="{{ $i }}">{{ $i }}</option>
-                                                                @endfor
-                                                            </select>
+                                                            @php
+                                                                $maxQuantity = min(10, $product->getStock());
+                                                            @endphp
+                                                            @for ($i = 1; $i <= $maxQuantity; $i++)
+                                                                <option value="{{ $i }}">{{ $i }}</option>
+                                                            @endfor
+                                                        </select>
                                                         </form>
                                                     </div>
                                                 </div>

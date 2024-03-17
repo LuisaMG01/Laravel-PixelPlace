@@ -61,6 +61,7 @@ class OrderController extends Controller
             }
 
             if ($userBalance < $total) {
+                $request->session()->forget('cart_product_data');
                 return redirect()->route('cart.index')->with('error', 'Insufficient balance to complete the purchase');
             }
 
