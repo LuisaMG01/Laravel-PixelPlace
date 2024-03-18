@@ -1,11 +1,11 @@
 @extends('layouts.admin')
-@section('headerEntity', 'Products')
-@section('nameTable', 'Products')
-@section('buttonEntity', 'product')
+@section('headerEntity', __('admin.title_admin_products'))
+@section('nameTable', __('admin.name_table_admin_products'))
+@section('buttonEntity', __('admin.button_entity_admin_products'))
 @section('content')
     @if (session('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-            <strong class="font-bold">Success!</strong>
+            <strong class="font-bold">{{ __('admin.success_message_admin_products') }}</strong>
             <span class="block sm:inline">{{ session('success') }}</span>
         </div>
     @endif
@@ -24,31 +24,31 @@
                             <tr>
                                 <th scope='col'
                                     class='p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400'>
-                                    Product Name
+                                    {{ __('admin.table_header_product_name_admin_products') }}
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Brand
+                                    {{ __('admin.table_header_brand_admin_products') }}
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Keywords
+                                    {{ __('admin.table_header_keywords_admin_products') }}
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Stock
+                                    {{ __('admin.table_header_stock_admin_products') }}
                                 </th>
                                 <th scope='col'
                                     class='p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400'>
-                                    Price
+                                    {{ __('admin.table_header_price_admin_products') }}
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Description
+                                    {{ __('admin.table_header_description_admin_products') }}
                                 </th>
                                 <th scope='col'
                                     class='p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400'>
-                                    Actions
+                                    {{ __('admin.table_header_actions_admin_products') }}
                                 </th>
                             </tr>
                         </thead>
@@ -94,7 +94,7 @@
                                                     d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                                                     clip-rule="evenodd"></path>
                                             </svg>
-                                            Update
+                                            {{ __('admin.button_update_admin_products') }}
                                         </button>
 
                                         <button type="button" id="deleteProductButton"
@@ -109,7 +109,7 @@
                                                     d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
                                                     clip-rule="evenodd"></path>
                                             </svg>
-                                            Delete
+                                            {{ __('admin.button_delete_admin_products') }}
                                         </button>
                                     </td>
                                 </tr>
@@ -121,8 +121,7 @@
                                     aria-hidden="true">
                                     <h5 id="drawer-label-{{ $product->getId() }}"
                                         class="inline-flex items-center mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
-                                        Update
-                                        Product</h5>
+                                        {{ __('admin.drawer_title_update_admin_products') }}</h5>
                                     <button type="button"
                                         data-drawer-dismiss="drawer-update-product-{{ $product->getId() }}"
                                         aria-controls="drawer-update-product-{{ $product->getId() }}"
@@ -136,7 +135,8 @@
                                         <span class="sr-only">Close menu</span>
                                     </button>
                                     <form action="{{ route('admin.products.update', ['id' => $product->getId()]) }}"
-                                        id="update-form-{{ $product->getId() }}" method='POST' enctype="multipart/form-data">
+                                        id="update-form-{{ $product->getId() }}" method='POST'
+                                        enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="space-y-4">
@@ -150,7 +150,7 @@
                                             </div>
                                             <div>
                                                 <label for="category_id"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_category_admin_products') }}</label>
                                                 <select name="category_id" id="category_id"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                     @foreach ($viewData['categories'] as $category)
@@ -163,7 +163,7 @@
                                             </div>
                                             <div>
                                                 <label for="price-{{ $product->getId() }}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_price_admin_products') }}</label>
                                                 <input type="text" name="price" id="price-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                     value="{{ $product->getPrice() }}" placeholder="Price product "
@@ -171,7 +171,7 @@
                                             </div>
                                             <div>
                                                 <label for="description-{{ $product->getId() }}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_description_admin_products') }}</label>
                                                 <input type="text" name="description"
                                                     id="description-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -180,7 +180,7 @@
                                             </div>
                                             <div>
                                                 <label for="stock-{{ $product->getId() }}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_stock_admin_products') }}</label>
                                                 <input type="text" name="stock" id="stock-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                     value="{{ $product->getStock() }}" placeholder="Type product name"
@@ -188,7 +188,7 @@
                                             </div>
                                             <div>
                                                 <label for="brand-{{ $product->getId() }}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_brand_admin_products') }}</label>
                                                 <input type="text" name="brand" id="brand-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                     value="{{ $product->getBrand() }}" placeholder="Type product name"
@@ -196,7 +196,7 @@
                                             </div>
                                             <div>
                                                 <label for="keywords-{{ $product->getId() }}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keywords</label>
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_keywords_admin_products') }}</label>
                                                 <input type="text" name="keywords"
                                                     id="keywords-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -205,9 +205,11 @@
                                             </div>
                                             <div>
                                                 <label for="image-{{ $product->getId() }}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                                                <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    placeholder="Type product name" value="{{ asset('storage/' . $product->getImage()) }}">
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_image_admin_products') }}</label>
+                                                <input type="file" name="image" id="image"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                    placeholder="Type product name"
+                                                    value="{{ asset('storage/' . $product->getImage()) }}">
                                             </div>
                                         </div>
                                         <div class="flex justify-center mt-10">
@@ -226,7 +228,7 @@
                                                         d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                                                         clip-rule="evenodd"></path>
                                                 </svg>
-                                                Update
+                                                {{ __('admin.button_update_admin_products') }}
                                             </button>
                                         </div>
                                     </form>
@@ -237,7 +239,7 @@
                                     tabindex="-1" aria-labelledby="drawer-label" aria-hidden="true">
                                     <h5 id="drawer-label"
                                         class="inline-flex items-center text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
-                                        Delete item
+                                        {{ __('admin.drawer_title_delete_admin_products') }}
                                     </h5>
                                     <button type="button"
                                         data-drawer-dismiss="drawer-delete-product-{{ $product->getId() }}""
@@ -256,8 +258,8 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <h3 class="mb-6 text-lg text-gray-500 dark:text-gray-400">Are you sure you want to
-                                        delete this product?</h3>
+                                    <h3 class="mb-6 text-lg text-gray-500 dark:text-gray-400">
+                                        {{ __('admin.delete_confirmation_admin_products') }}</h3>
                                     <form id="delete-form-{{ $product->getId() }}"
                                         action="{{ route('admin.products.destroy', ['id' => $product->getId()]) }}"
                                         method='POST'>
@@ -265,13 +267,13 @@
                                         @method('DELETE')
                                         <button type="submit"
                                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2.5 text-center mr-2 dark:focus:ring-red-900">
-                                            Yes, I'm sure
+                                            {{ __('admin.delete_confirm_button_admin_products') }}
                                         </button>
                                     </form>
                                     <a href="#"
                                         class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 border border-gray-200 font-medium inline-flex items-center rounded-lg text-sm px-3 py-2.5 text-center dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                                         data-drawer-hide="drawer-delete-product-default">
-                                        No, cancel
+                                        {{ __('admin.delete_cancel_button_admin_products') }}
                                     </a>
                                 </div>
                             @endforeach
@@ -294,8 +296,8 @@
         class='fixed top-0 right-0 z-40 w-full h-screen max-w-xs p-4 overflow-y-auto transition-transform translate-x-full bg-white dark:bg-gray-800'
         tabindex='-1' aria-labelledby='drawer-label' aria-hidden='true'>
         <h5 id='drawer-label'
-            class='inline-flex items-center mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400'>New
-            Product</h5>
+            class='inline-flex items-center mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400'>
+            {{ __('admin.drawer_title_add_new_product_admin_products') }}</h5>
         <button type='button' data-drawer-dismiss='drawer-create-product-default'
             aria-controls='drawer-create-product-default'
             class='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white'>
@@ -312,56 +314,56 @@
             <div class="space-y-4">
                 <div>
                     <label for="name"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_name_admin_products') }}</label>
                     <input type="text" name="name" id="name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Type product name" required="">
                 </div>
                 <div>
                     <label for="description"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_description_admin_products') }}</label>
                     <input type="text" name="description" id="description"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Type product name" required="">
                 </div>
                 <div>
                     <label for="brand"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_brand_admin_products') }}</label>
                     <input type="text" name="brand" id="brand"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Type product name" required="">
                 </div>
                 <div>
                     <label for="price"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_price_admin_products') }}</label>
                     <input type="numeric" name="price" id="price"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Type product name" required="">
                 </div>
                 <div>
                     <label for="stock"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_stock_admin_products') }}</label>
                     <input type="numeric" name="stock" id="stock"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Type product name" required="">
                 </div>
                 <div>
                     <label for="keywords"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keywords</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_keywords_admin_products') }}</label>
                     <input type="text" name="keywords" id="keywords"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Type product name" required="">
                 </div>
                 <div>
                     <label for="image"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_image_admin_products') }}</label>
                     <input type="file" name="image" id="image"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Type product name" required="">
                 </div>
                 <div>
                     <label for="category_id"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_category_admin_products') }}</label>
                     <select name="category_id" id="category_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         @foreach ($viewData['categories'] as $category)
@@ -375,7 +377,7 @@
                         type="submit" data-drawer-target="drawer-create-product-default"
                         data-drawer-show="drawer-create-product-default" aria-controls="drawer-create-product-default"
                         data-drawer-placement="right">
-                        Add new product
+                        {{ __('admin.button_add_new_product_admin_products') }}
                     </button>
                 </div>
             </div>
