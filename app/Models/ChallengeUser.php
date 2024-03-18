@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Represents a user's progress in a challenge.
@@ -16,6 +17,16 @@ class ChallengeUser extends Model
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
      */
+    protected $fillable = ['progress', 'checked', 'created_at', 'updated_at'];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        if (!isset($this->attributes['progress'])) {
+            $this->attributes['progress'] = 0;
+        }
+    }
 
     public function getId(): int
     {
@@ -42,6 +53,16 @@ class ChallengeUser extends Model
         $this->checked = $checked;
     }
 
+    public function getCreatedAt(): string
+    {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->updated_at;
+    }
+
     /** Model relations */
     public function user(): BelongsTo
     {
@@ -51,5 +72,42 @@ class ChallengeUser extends Model
     public function challenge(): BelongsTo
     {
         return $this->belongsTo(Challenge::class);
+    }
+
+    public function changeProgress(string $userId, string $productId, int $amount): void
+    {
+        $user = User::findOrFail($userId);
+        $product = Product::findOrFail($productId);
+
+        $category = $product->getCategoryId();
+
+        $challenges = $category->challenge;
+
+        foreach ($challenges as $challenge) {
+            $challengeUser = ChallengeUser::where('user_id', $user->getId())
+                ->where('challenge_id', $challenge->getId())
+                ->first();
+
+            if (!$challengeUser) {
+                $challengeUser = new ChallengeUser();
+                $challengeUser->user_id = $user->getId();
+                $challengeUser->challenge_id = $challenge->getId();
+            }
+
+            $challengeUser->setProgress($challengeUser->getProgress() + $amount);
+
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
+                $challengeUser->setChecked(true);
+            } else {
+                $challengeUser->setChecked(false);
+            }
+
+            $challengeUser->save();
+
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
+                $challengeUser->setChecked(true);
+                $challengeUser->save();
+            }
+        }
     }
 }
