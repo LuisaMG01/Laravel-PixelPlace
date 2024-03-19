@@ -15,6 +15,7 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'shopping_cart' => 'Shopping Cart',
     'cart_product_price' => 'Price',
+    'cart_error' => 'Error!',
     'cart_product_name' => 'Product',
     'cart_product_quantity' => 'Quantity',
     'cart_delete_item' => 'Delete Item',
@@ -31,4 +32,9 @@ return [
     'preorder_action_buttons' => 'Actions',
     'preorder_go_back_button' => 'Go Back',
     'preorder_confirm_order_button' => 'Confirm Order',
+    'order_table_order' => 'Order',
+    'order_table_total' => 'Total',
+    'order_table_date' => 'Date',
+    'order_table_action' => 'Action',
+    'order_table_info' => 'More Info',
 ];

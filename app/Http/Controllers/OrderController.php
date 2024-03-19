@@ -62,6 +62,7 @@ class OrderController extends Controller
 
             if ($userBalance < $total) {
                 $request->session()->forget('cart_product_data');
+
                 return redirect()->route('cart.index')->with('error', 'Insufficient balance to complete the purchase');
             }
 
@@ -103,17 +104,24 @@ class OrderController extends Controller
         }
     }
 
-    public function index(): View
+    public function index(): View|RedirectResponse
     {
-        $userId = Auth::user()->getId();
-        $user = User::findOrFail($userId);
-        $orders = $user->orders;
+        if(Auth::check())
+        {
+            $userId = Auth::user()->getId();
+            $user = User::findOrFail($userId);
+            $orders = $user->orders;
 
-        $viewData = [
-            'orders' => $orders,
-        ];
+            $viewData = [
+                'orders' => $orders,
+            ];
 
-        return view('order.index')->with('viewData', $viewData);
+            return view('order.index')->with('viewData', $viewData);
+        }
+        else
+        {
+            return redirect()->route('home')->with('error', 'You must login first');
+        }
     }
 
     public function show(int $id): View

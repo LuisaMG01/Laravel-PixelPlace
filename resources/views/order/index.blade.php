@@ -7,16 +7,16 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Order
+                    {{ __('app.order_table_order') }}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Total
+                    {{ __('app.order_table_total') }}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Date
+                    {{ __('app.order_table_date') }}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Action
+                    {{ __('app.order_table_action') }}
                 </th>
             </tr>
         </thead>
@@ -33,7 +33,7 @@
                         {{ $order->getCreatedAt() }}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{{ route('orders.show', ['id' => $order->getId()]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">More info</a>
+                        <a href="{{ route('orders.show', ['id' => $order->getId()]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ __('app.order_table_info') }}</a>
                     </td>
                 </tr>
             @endforeach
