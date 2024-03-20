@@ -62,11 +62,6 @@ class ChallengeUser extends Model
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(string $updatedAt): void
-    {
-        $this->updated_at = $updatedAt;
-    }
-
     /** Model relations */
     public function user(): BelongsTo
     {
@@ -85,7 +80,7 @@ class ChallengeUser extends Model
 
         $category = $product->getCategoryId();
 
-        $challenges = $category->challenges;
+        $challenges = $category->challenge;
 
         foreach ($challenges as $challenge) {
             $challengeUser = ChallengeUser::where('user_id', $user->getId())

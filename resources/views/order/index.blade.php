@@ -7,16 +7,16 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    {{ __('app.order_table_order') }}
+                    {{ __('app.table_order_order_index') }}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    {{ __('app.order_table_total') }}
+                    {{ __('app.table_total_order_index') }}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    {{ __('app.order_table_date') }}
+                    {{ __('app.table_date_order_index') }}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    {{ __('app.order_table_action') }}
+                    {{ __('app.table_action_order_index') }}
                 </th>
             </tr>
         </thead>
@@ -33,7 +33,7 @@
                         {{ $order->getCreatedAt() }}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{{ route('orders.show', ['id' => $order->getId()]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ __('app.order_table_info') }}</a>
+                        <a href="{{ route('orders.show', ['id' => $order->getId()]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ __('app.table_info_order_index') }}</a>
                     </td>
                 </tr>
             @endforeach

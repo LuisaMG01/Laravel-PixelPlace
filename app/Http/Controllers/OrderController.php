@@ -99,8 +99,8 @@ class OrderController extends Controller
                 'items' => $order->getItems(),
             ];
 
-            $challengeUser = new ChallengeUser();
-            $challengeUser->changeProgress($userId, $product->getId(), $quantity);
+            //$challengeUser = new ChallengeUser();
+            //$challengeUser->changeProgress($userId, $product->getId(), $quantity);
 
             return view('order.purchase')->with('viewData', $viewData);
         } else {
@@ -110,8 +110,7 @@ class OrderController extends Controller
 
     public function index(): View|RedirectResponse
     {
-        if(Auth::check())
-        {
+        if (Auth::check()) {
             $userId = Auth::user()->getId();
             $user = User::findOrFail($userId);
             $orders = $user->orders;
@@ -121,9 +120,7 @@ class OrderController extends Controller
             ];
 
             return view('order.index')->with('viewData', $viewData);
-        }
-        else
-        {
+        } else {
             return redirect()->route('home')->with('error', 'You must login first');
         }
     }
