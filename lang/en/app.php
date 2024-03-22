@@ -13,6 +13,8 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+
+    //Cart
     'shopping_cart' => 'Shopping Cart',
     'price_cart_index' => 'Price',
     'error_cart_index' => 'Error!',
@@ -23,6 +25,8 @@ return [
     'actions_cart_index' => 'Actions',
     'delete_button_cart_index' => 'Delete Cart',
     'continue_button_cart_index' => 'Continue',
+
+    //Order
     'title_order_preorder' => 'Preorder',
     'price_order_preorder' => 'Price',
     'product_order_preorder' => 'Product',
@@ -51,4 +55,20 @@ return [
     'table_total_order_show' => 'Total',
     'table_date_order_show' => 'Date',
     'go_back_button_order_show' => 'Go Back',
+
+    // Navbar
+    'title_navbar_home' => 'PixelPlace',
+    'register_button_navbar' => 'Register',
+    'login_button_navbar' => 'Login',
+    'balance_icon_alt' => 'Balance',
+    'cart_icon_alt' => 'Cart',
+    'dropdown_avatar_alt' => 'Open user menu',
+    'settings_dropdown_navbar' => 'Settings',
+    'my_orders_dropdown_navbar' => 'My Orders',
+    'sign_out_dropdown_navbar' => 'Sign out',
+    'open_main_menu_icon_alt' => 'Open main menu',
+    'home_navbar' => 'Home',
+    'products_navbar' => 'Products',
+    'challenges_navbar' => 'Challenges',
+    'contact_navbar' => 'Contact',
 ];

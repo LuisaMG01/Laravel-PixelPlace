@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('headerEntity', 'Orders')
-@section('nameTable', 'Orders')
+@section('headerEntity', __('admin.title_admin_orders'))
+@section('nameTable', __('admin.name_table_admin_orders'))
 @section('content')
     <div
         class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
@@ -16,23 +16,23 @@
                             <tr>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Order ID
+                                    {{ __('admin.table_header_order_id_admin_orders') }}
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    User
+                                    {{ __('admin.table_header_user_admin_orders') }}
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Total
+                                    {{ __('admin.table_header_total_admin_orders') }}
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Date
+                                    {{ __('admin.table_header_date_admin_orders') }}
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Items
+                                    {{ __('admin.table_header_items_admin_orders') }}
                                 </th>
                             </tr>
                         </thead>
@@ -53,7 +53,8 @@
                                         {{ $order->getCreatedAt() }}
                                     </td>
                                     <td class="p-4 text-base font-semibold text-red-700 whitespace-nowrap dark:text-white">
-                                        <a href="{{ route('admin.orders.show', ['id' => $order->getId()]) }}">More details...</a>
+                                        <a href="{{ route('admin.orders.show', ['id' => $order->getId()]) }}">More
+                                            details...</a>
                                     </td>
                                 </tr>
                             @endforeach
