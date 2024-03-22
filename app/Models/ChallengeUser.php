@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Represents a user's progress in a challenge.
@@ -23,7 +22,7 @@ class ChallengeUser extends Model
     {
         parent::__construct($attributes);
 
-        if (!isset($this->attributes['progress'])) {
+        if (! isset($this->attributes['progress'])) {
             $this->attributes['progress'] = 0;
         }
     }
@@ -88,7 +87,7 @@ class ChallengeUser extends Model
                 ->where('challenge_id', $challenge->getId())
                 ->first();
 
-            if (!$challengeUser) {
+            if (! $challengeUser) {
                 $challengeUser = new ChallengeUser();
                 $challengeUser->user_id = $user->getId();
                 $challengeUser->challenge_id = $challenge->getId();
