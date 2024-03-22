@@ -31,4 +31,22 @@ return [
     'preorder_action_buttons' => 'Actions',
     'preorder_go_back_button' => 'Go Back',
     'preorder_confirm_order_button' => 'Confirm Order',
+
+
+    // Navbar
+    'title_navbar_home' => 'PixelPlace',
+    'register_button_navbar' => 'Register',
+    'login_button_navbar' => 'Login',
+    'balance_icon_alt' => 'Balance',
+    'cart_icon_alt' => 'Cart',
+    'dropdown_avatar_alt' => 'Open user menu',
+    'settings_dropdown_navbar' => 'Settings',
+    'my_orders_dropdown_navbar' => 'My Orders',
+    'sign_out_dropdown_navbar' => 'Sign out',
+    'open_main_menu_icon_alt' => 'Open main menu',
+    'home_navbar' => 'Home',
+    'products_navbar' => 'Products',
+    'challenges_navbar' => 'Challenges',
+    'contact_navbar' => 'Contact',
+
 ];

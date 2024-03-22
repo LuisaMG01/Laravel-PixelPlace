@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Challenge;
+use App\Models\User;
+use App\Models\ChallengeUser;
 use Illuminate\View\View;
 
 class ChallengesController extends Controller

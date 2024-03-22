@@ -42,6 +42,16 @@ class Review extends Model
         $this->attributes['rating'] = $rating;
     }
 
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
+    }
+
     public function getUserId(): int
     {
         return $this->attributes['user_id'];
