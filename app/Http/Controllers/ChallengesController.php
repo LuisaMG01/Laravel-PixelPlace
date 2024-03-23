@@ -19,14 +19,12 @@ class ChallengesController extends Controller
         ->where('progress', '=', 0)
         ->get();
 
-    // Obtener todos los desafíos que no están en progreso o terminados
     $allUndoneChallenges = Challenge::whereDoesntHave('challengeUser', function ($query) use ($userId) {
             $query->where('user_id', $userId);
         })
         ->where('checked', false)
         ->get();
 
-    // Fusionar los desafíos no iniciados con los desafíos que no están en progreso o terminados
     $undoneChallenges = $undoneChallenges->merge($allUndoneChallenges);
 
     $doneChallenges = ChallengeUser::where('user_id', $userId)

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\User; 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -16,7 +16,7 @@ class ChallengeUser extends Model
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
      */
-    protected $fillable = ['progress', 'checked', 'created_at', 'updated_at'];
+    protected $fillable = ['progress', 'checked', 'created_at', 'updated_at', 'user_id', 'challenge_id'];
 
     public function __construct(array $attributes = [])
     {
@@ -108,5 +108,37 @@ class ChallengeUser extends Model
                 $challengeUser->save();
             }
         }
+    }
+
+    public static function asignToUsers(string $id): void
+    {
+        $users = User::pluck('id');
+    
+        $users->each(function ($userId) use ($id) {
+            $challengeUserData = [
+                'user_id' => $userId,
+                'challenge_id' => $id,
+                'progress' => 0,
+                'checked' => false,
+            ];
+    
+            ChallengeUser::create($challengeUserData);
+        });
+    }
+
+    public function asignChallenges(string $id): void
+    {
+        $challenges = Challenge::where('checked', 1)->pluck('id');
+    
+        $challenges->each(function ($challengeId) use ($id) {
+            $challengeUserData = [
+                'user_id' => $id,
+                'challenge_id' => $challengeId,
+                'progress' => 0,
+                'checked' => false,
+            ];
+    
+            ChallengeUser::create($challengeUserData);
+        });
     }
 }

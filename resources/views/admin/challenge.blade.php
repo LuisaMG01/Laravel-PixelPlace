@@ -51,9 +51,9 @@
                                         <td
                                             class='max-w-sm px-4 py-2 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400'>
                                             @if ($challenge->getChecked())
-                                                Active
-                                            @else
                                                 Unactive
+                                            @else
+                                                Active
                                             @endif
                                         </td>
                                         <td

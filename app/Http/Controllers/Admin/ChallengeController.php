@@ -7,6 +7,7 @@ use App\Http\Requests\challenge\CreateRequest;
 use App\Http\Requests\challenge\UpdateRequest;
 use App\Models\Category;
 use App\Models\Challenge;
+use App\Models\ChallengeUser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -30,7 +31,8 @@ class ChallengeController extends Controller
 
         $challengeData = $request->all();
 
-        Challenge::create($challengeData);
+        $challenge = Challenge::create($challengeData);
+        ChallengeUser::asignToUsers($challenge['id']);
 
         return redirect()->route('admin.challenges.index')->with('success', 'Challenge created successfully!');
     }
