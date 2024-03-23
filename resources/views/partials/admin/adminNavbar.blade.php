@@ -20,7 +20,7 @@
                 <a href="{{ route('admin.home.index') }}" class="flex ml-2 md:mr-24">
                     <img src="{{ asset('icons/ghost.png') }}" class="h-8 mr-3" alt="FlowBite Logo" />
                     <span
-                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">PixelPlace</span>
                 </a>
             </div>
             <div class="flex items-center">

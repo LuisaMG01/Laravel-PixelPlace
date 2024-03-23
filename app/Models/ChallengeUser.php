@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Models\User; 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Represents a user's progress in a challenge.
@@ -22,7 +23,7 @@ class ChallengeUser extends Model
     {
         parent::__construct($attributes);
 
-        if (! isset($this->attributes['progress'])) {
+        if (!isset($this->attributes['progress'])) {
             $this->attributes['progress'] = 0;
         }
     }
@@ -80,14 +81,14 @@ class ChallengeUser extends Model
 
         $category = $product->getCategoryId();
 
-        $challenges = $category->challenges;
+        $challenges = $category->challenge;
 
         foreach ($challenges as $challenge) {
             $challengeUser = ChallengeUser::where('user_id', $user->getId())
                 ->where('challenge_id', $challenge->getId())
                 ->first();
 
-            if (! $challengeUser) {
+            if (!$challengeUser) {
                 $challengeUser = new ChallengeUser();
                 $challengeUser->user_id = $user->getId();
                 $challengeUser->challenge_id = $challenge->getId();
@@ -126,9 +127,9 @@ class ChallengeUser extends Model
         });
     }
 
-    public function asignChallenges(string $id): void
+    public static function asignChallenges(string $id): void
     {
-        $challenges = Challenge::where('checked', 1)->pluck('id');
+        $challenges = Challenge::where('checked', 0)->pluck('id');
     
         $challenges->each(function ($challengeId) use ($id) {
             $challengeUserData = [
