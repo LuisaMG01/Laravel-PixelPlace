@@ -4,7 +4,6 @@ namespace App\Models;
 use App\Models\User; 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Represents a user's progress in a challenge.
@@ -74,21 +73,24 @@ class ChallengeUser extends Model
         return $this->belongsTo(Challenge::class);
     }
 
-    public function changeProgress(string $userId, string $productId, int $amount): void
+    public static function changeProgress(string $userId, string $productId, int $amount): void
     {
-        $user = User::findOrFail($userId);
-        $product = Product::findOrFail($productId);
+        $user = User::find($userId);
+        $product = Product::find($productId);
+ 
+        $category_id = $product->getCategoryId();
+        $category = Category::findOrFail($category_id);
+        $challenges = $category->challenges;
 
-        $category = $product->getCategoryId();
+        foreach ($challenges as $challenge) 
+        {
 
-        $challenges = $category->challenge;
-
-        foreach ($challenges as $challenge) {
             $challengeUser = ChallengeUser::where('user_id', $user->getId())
                 ->where('challenge_id', $challenge->getId())
                 ->first();
 
-            if (!$challengeUser) {
+            if (!$challengeUser) 
+            {
                 $challengeUser = new ChallengeUser();
                 $challengeUser->user_id = $user->getId();
                 $challengeUser->challenge_id = $challenge->getId();
@@ -96,15 +98,21 @@ class ChallengeUser extends Model
 
             $challengeUser->setProgress($challengeUser->getProgress() + $amount);
 
-            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity() && $challengeUser->getChecked() === false)
+            {
                 $challengeUser->setChecked(true);
-            } else {
+                $user->setBalance($user->getBalance() + $challenge->getRewardCoins());
+                $user->save();
+            } 
+            else 
+            {
                 $challengeUser->setChecked(false);
             }
 
             $challengeUser->save();
 
-            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) 
+            {
                 $challengeUser->setChecked(true);
                 $challengeUser->save();
             }
@@ -115,7 +123,8 @@ class ChallengeUser extends Model
     {
         $users = User::pluck('id');
     
-        $users->each(function ($userId) use ($id) {
+        $users->each(function ($userId) use ($id) 
+        {
             $challengeUserData = [
                 'user_id' => $userId,
                 'challenge_id' => $id,
@@ -131,7 +140,8 @@ class ChallengeUser extends Model
     {
         $challenges = Challenge::where('checked', 0)->pluck('id');
     
-        $challenges->each(function ($challengeId) use ($id) {
+        $challenges->each(function ($challengeId) use ($id) 
+        {
             $challengeUserData = [
                 'user_id' => $id,
                 'challenge_id' => $challengeId,
