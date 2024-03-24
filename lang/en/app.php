@@ -77,4 +77,7 @@ return [
     'index_user_challenge_category' => 'Category: ',
     'index_user_challenge_goal' => 'Goal: ',
     'index_user_challenge_coins' => ' Coins',
+
+    // Command
+    'info_expired_challenges' => 'Expired challenges checked successfully.',
 ];

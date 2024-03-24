@@ -47,7 +47,7 @@ class ChallengeController extends Controller
 
     public function update(UpdateRequest $request, int $id): RedirectResponse
     {
-        $data = $request->only(['name', 'description', 'reward_coins', 'max_users', 'category_id', 'expiration_date', 'category_quantity']);
+        $data = $request->only(['name', 'description', 'reward_coins', 'max_users', 'category_id', 'expiration_date', 'category_quantity', 'checked']);
 
         Challenge::findOrFail($id)->update($data);
 

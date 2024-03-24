@@ -19,6 +19,6 @@ class CheckExpiredChallenges extends Command
             $challenge->save();
         }
 
-        $this->info('Expired challenges checked successfully.');
+        $this->info(__('app.info_expired_challenges'));
     }
 }

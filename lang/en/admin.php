@@ -128,5 +128,6 @@ return [
     'delete_cancel_button_admin_challenges' => 'No, cancel',
     'drawer_title_create_admin_challenges' => 'New Challenge',
     'action_title_add_challenge_admin_challenges' => 'Add Challenge',
+    'table_header_challenge_checked_admin_challenges' => 'Finished',
 
 ];

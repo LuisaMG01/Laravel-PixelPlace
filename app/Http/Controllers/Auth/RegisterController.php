@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'balance' => 1000,
         ]);
         
-        ChallengeUser::asignChallenges($user['id']);
+        ChallengeUser::asignChallenges($user->getId());
 
         return $user;
     }

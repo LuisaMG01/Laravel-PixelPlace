@@ -101,6 +101,8 @@ class ChallengeUser extends Model
             if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity() && $challengeUser->getChecked() === false)
             {
                 $challengeUser->setChecked(true);
+                $challenge->setCurrentUsers($challenge->getCurrentUsers() + 1);
+                $challenge->save();
                 $user->setBalance($user->getBalance() + $challenge->getRewardCoins());
                 $user->save();
             } 
@@ -110,7 +112,12 @@ class ChallengeUser extends Model
             }
 
             $challengeUser->save();
-
+            
+            if($challenge->getCurrentUsers() >= $challenge->getMaxUsers())
+            {
+                $challenge->setChecked(true);
+                $challenge->save();
+            }
             if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) 
             {
                 $challengeUser->setChecked(true);
