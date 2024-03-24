@@ -92,7 +92,7 @@ return [
     'button_add_new_user_admin_users' => 'Add new user',
     'drawer_title_add_new_user_admin_users' => 'New User',
 
-    // Orders 
+    // Orders
     'title_admin_orders' => 'Orders',
     'name_table_admin_orders' => 'Orders',
     'table_header_order_id_admin_orders' => 'Order ID',

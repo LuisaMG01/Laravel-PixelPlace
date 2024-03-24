@@ -32,7 +32,6 @@ return [
     'preorder_go_back_button' => 'Go Back',
     'preorder_confirm_order_button' => 'Confirm Order',
 
-
     // Navbar
     'title_navbar_home' => 'PixelPlace',
     'register_button_navbar' => 'Register',
@@ -51,7 +50,7 @@ return [
 
     // Challenge
     'title_index_challenge' => 'All Challenges',
-    'index_challenge_description'=> 'Description: ',
+    'index_challenge_description' => 'Description: ',
     'index_challenge_reward' => 'Reward: ',
     'index_challenge_max_users' => 'Max Users: ',
     'index_challenge_current_users' => 'Current Users: ',

@@ -2,12 +2,13 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Models\Challenge;
+use Illuminate\Console\Command;
 
 class CheckExpiredChallenges extends Command
 {
     protected $signature = 'challenge:check-expired';
+
     protected $description = 'Check if challenges are expired';
 
     public function handle()
