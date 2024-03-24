@@ -126,5 +126,7 @@ return [
     'delete_confirmation_admin_challenges' => 'Are you sure you want to delete this challenge?',
     'delete_confirm_button_admin_challenges' => 'Yes, I\'m sure',
     'delete_cancel_button_admin_challenges' => 'No, cancel',
+    'drawer_title_create_admin_challenges' => 'New Challenge',
+    'action_title_add_challenge_admin_challenges' => 'Add Challenge',
 
 ];
