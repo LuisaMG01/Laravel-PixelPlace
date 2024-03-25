@@ -36,7 +36,7 @@ class CartController extends Controller
             $cartProductData[$id] = $request->input('quantity');
             $request->session()->put('cart_product_data', $cartProductData);
             $product = Product::findOrFail($id);
-            Session::flash('success', $product->getName().' was added successfully.');
+            Session::flash('success', $product->getName());
 
             return back();
         } else {

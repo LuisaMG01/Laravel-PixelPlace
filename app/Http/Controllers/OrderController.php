@@ -57,14 +57,14 @@ class OrderController extends Controller
                 $subtotal = $product->getPrice() * $quantity;
                 $total += $subtotal;
                 if ($product->getStock() < $quantity) {
-                    return redirect()->route('cart.index')->with('error', $product->getName() . ' out of stock');
+                    return redirect()->route('cart.index')->with('stock_error', $product->getName());
                 }
             }
 
             if ($userBalance < $total) {
                 $request->session()->forget('cart_product_data');
 
-                return redirect()->route('cart.index')->with('error', 'Insufficient balance to complete the purchase');
+                return redirect()->route('cart.index')->with('balance_error', $user->getName());
             }
 
             $order = Order::create([
@@ -99,8 +99,8 @@ class OrderController extends Controller
                 'items' => $order->getItems(),
             ];
 
-            #$challengeUser = new ChallengeUser();
-            #$challengeUser->changeProgress($userId, $product->category->getId(), $quantity);
+            //$challengeUser = new ChallengeUser();
+            //$challengeUser->changeProgress($userId, $product->category->getId(), $quantity);
 
             return view('order.purchase')->with('viewData', $viewData);
         } else {

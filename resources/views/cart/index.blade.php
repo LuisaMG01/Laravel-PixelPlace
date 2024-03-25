@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    @if (session('error'))
+    @if (session('balance_error'))
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">{{ __('app.error_cart_index') }}</strong>
-            <span class="block sm:inline">{{ session('error') }}</span>
+            <span class="block sm:inline">{{ __('app.balance_error_cart_index') }}</span>
+        </div>
+    @endif
+    @if (session('stock_error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">{{ __('app.error_cart_index') }}</strong>
+            <span class="block sm:inline">{{ session('stock_error') }} {{ __('app.stock_error_cart_index') }}</span>
         </div>
     @endif
     <div class="flex justify-center">

@@ -25,6 +25,9 @@ return [
     'actions_cart_index' => 'Actions',
     'delete_button_cart_index' => 'Delete Cart',
     'continue_button_cart_index' => 'Continue',
+    'balance_error_cart_index' => 'Insufficient balance to complete the purchase',
+    'stock_error_cart_index' => 'out of stock',
+    'added_succesfully_product_index' => 'was added successfully',
 
     //Order
     'title_order_preorder' => 'Preorder',
