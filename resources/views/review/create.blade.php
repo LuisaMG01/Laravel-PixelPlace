@@ -3,19 +3,19 @@
     <div class="container">
         <div class="mx-auto max-w-lg mt-10">
             <div class="bg-white p-8 rounded-lg shadow-md">
-                <h1 class="text-2xl font-semibold mb-6">{{ __('app.add_comment') }}</h1>
+                <h1 class="text-2xl font-semibold mb-6">{{ __('app.add_comment_review_create') }}</h1>
                 <form method="POST" action="{{ route('reviews.store') }}">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $viewData['productId'] }}">
                     <div class="mb-4">
                         <label for="description"
-                            class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.description_create') }}</label>
+                            class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.description_review_create') }}</label>
                         <textarea id="description" name="description"
                             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                            placeholder="{{ __('app.enter_description') }}" rows="4">{{ old('description') }}</textarea>
+                            placeholder="{{ __('app.enter_description_review_create') }}" rows="4">{{ old('description') }}</textarea>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.rating_create') }}</label>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.rating_review_create') }}</label>
                         <div class="flex">
                             <div id="stars" class="flex">
                                 <input type="hidden" name="rating" value="0">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <button type="submit"
-                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.send') }}</button>
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.send_review_create') }}</button>
                 </form>
             </div>
         </div>
