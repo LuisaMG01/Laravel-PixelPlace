@@ -14,13 +14,25 @@ class ChallengesController extends Controller
     {
         $user = User::findOrFail($userId);
 
-        $challenges = ChallengeUser::where('user_id', $userId)->get();
+        $undoneChallengeIds = ChallengeUser::where('user_id', $userId)
+            ->where('checked', false)
+            ->where('progress', '=', 0)
+            ->pluck('challenge_id');
 
-        $undoneChallenges = $challenges->where('checked', false)->where('progress', '=', 0);
-        $doneChallenges = $challenges->where('checked', true);
-        $inProgressChallenges = $challenges->where('checked', false)->where('progress', '>', 0);
+        $doneChallengeIds = ChallengeUser::where('user_id', $userId)
+            ->where('checked', true)
+            ->pluck('challenge_id');
+
+        $inProgressChallengeIds = ChallengeUser::where('user_id', $userId)
+            ->where('checked', false)
+            ->where('progress', '>', 0)
+            ->pluck('challenge_id');
 
         $categories = Category::all();
+
+        $undoneChallenges = Challenge::whereIn('id', $undoneChallengeIds)->where('checked', 0)->get();
+        $doneChallenges = Challenge::whereIn('id', $doneChallengeIds)->get();
+        $inProgressChallenges = Challenge::whereIn('id', $inProgressChallengeIds)->where('checked', 0)->get();
 
         $viewData = [
             'undoneChallenges' => $undoneChallenges,

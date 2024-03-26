@@ -99,8 +99,7 @@ class OrderController extends Controller
                 'items' => $order->getItems(),
             ];
 
-            $challengeUser = new ChallengeUser();
-            $challengeUser->changeProgress($userId, $product->category->getId(), $quantity);
+            ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
 
             return view('order.purchase')->with('viewData', $viewData);
         } else {
