@@ -57,12 +57,13 @@ class OrderController extends Controller
                 $subtotal = $product->getPrice() * $quantity;
                 $total += $subtotal;
                 if ($product->getStock() < $quantity) {
-                    return redirect()->route('cart.index')->with('error', $product->getName() . ' out of stock');
+                    return redirect()->route('cart.index')->with('error', $product->getName().' out of stock');
                 }
             }
 
             if ($userBalance < $total) {
                 $request->session()->forget('cart_product_data');
+
                 return redirect()->route('cart.index')->with('error', 'Insufficient balance to complete the purchase');
             }
 

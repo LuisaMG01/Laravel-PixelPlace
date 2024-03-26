@@ -32,7 +32,6 @@ return [
     'preorder_go_back_button' => 'Go Back',
     'preorder_confirm_order_button' => 'Confirm Order',
 
-
     // Navbar
     'title_navbar_home' => 'PixelPlace',
     'register_button_navbar' => 'Register',
