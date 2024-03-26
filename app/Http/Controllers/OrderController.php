@@ -75,7 +75,7 @@ class OrderController extends Controller
             foreach ($productsInCart as $product) {
                 $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
 
-                $item = Item::create([
+                Item::create([
                     'amount' => $quantity,
                     'acquire_price_coins' => $product->getPrice(),
                     'product_id' => $product->getId(),
@@ -107,7 +107,7 @@ class OrderController extends Controller
         }
     }
 
-    public function index(): View | RedirectResponse
+    public function index(): View|RedirectResponse
     {
         if (Auth::check()) {
             $userId = Auth::user()->getId();

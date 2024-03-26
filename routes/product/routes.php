@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Product routes
 Route::get('/products', 'ProductsController@index')->name('products.index');
 Route::get('/products/show/{id}', 'ProductsController@show')->name('products.show');
 Route::get('/products/reviews/create/{id}', 'ReviewsController@create')->name('reviews.create');

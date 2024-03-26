@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
-    /**
+    /*
      * CATEGORY ATTRIBUTES
      * $this->attributes['id'] - int - contains the category primary key (id)
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
@@ -26,7 +26,7 @@ class Category extends Model
         return $this->attributes['name'];
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
     }

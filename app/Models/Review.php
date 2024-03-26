@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
-    /**
+    /*
      * REVIEW ATTRIBUTES
      * $this->attributes['id'] - int - contains the review primary key (id)
      * $this->attributes['description'] - string - contains the description of the review
      * $this->attributes['rating'] - int - contains the comment rating
      * $this->attributes['product_id'] - int - contains the ID of the associated product
      * $this->attributes['user_id'] - int - contains the ID of the user who made the review
+     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
+     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
     protected $fillable = ['description', 'rating', 'product_id', 'user_id'];
 
@@ -27,7 +29,7 @@ class Review extends Model
         return $this->attributes['description'];
     }
 
-    public function setDescription($description): void
+    public function setDescription(string $description): void
     {
         $this->attributes['description'] = $description;
     }
@@ -37,7 +39,7 @@ class Review extends Model
         return $this->attributes['rating'];
     }
 
-    public function setRating($rating): void
+    public function setRating(int $rating): void
     {
         $this->attributes['rating'] = $rating;
     }
@@ -62,7 +64,7 @@ class Review extends Model
         return $this->attributes['product_id'];
     }
 
-    /** Model relations */
+    /* Model relations */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
