@@ -17,7 +17,6 @@ class Item extends Model
      * $this->attributes['product_id'] - int - contains the ID of the associated product
      * $this->attributes['order_id'] - int - contains the ID of the associated order
      */
-
     public static function validate($request)
     {
         $request->validate([

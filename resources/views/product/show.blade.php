@@ -31,16 +31,25 @@
                             <a href="{{ route('reviews.show', ['id' => $viewData['product']->getId()]) }}"
                                 class="inline-flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">{{ __('app.see_comments_product_show') }}</a>
                         </div>
+                    @endauth
+                    <div class="btn-container mr-8">
+                        <a href="{{ route('reviews.show', ['id' => $viewData['product']->getId()]) }}"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4">See
+                            Comments</a>
+                    </div>
+                    <div class="btn-container inline-flex">
                         <form method="POST" action="{{ route('cart.add', ['id' => $viewData['product']->getId()]) }}">
                             @csrf
-                            <button type="submit" class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-                              {{ __('app.add_to_cart_product_show') }}
+                            <button type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('app.add_to_cart_product_show') }}
                             </button>
                         </form>
                     </div>
                 </div>
-                <div class="lg:w-1/2 w-full order-1 lg:order-2">
-                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mt-8">
+                <img class="w-full rounded-lg" src="{{ URL::asset('storage/' . $viewData['product']->getName() . '.png') }}"
+                    alt="office content 1">
             </div>
         </div>
     </section>

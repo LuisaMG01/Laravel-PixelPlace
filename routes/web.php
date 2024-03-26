@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/settings', 'UserController@settings')->name('user.settings');
+Route::put('/settings/update/{id}', 'UserController@update')->name('user.update');
 
 Auth::routes();
 

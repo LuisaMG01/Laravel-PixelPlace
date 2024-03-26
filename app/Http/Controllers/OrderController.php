@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChallengeUser;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
@@ -62,6 +63,7 @@ class OrderController extends Controller
 
             if ($userBalance < $total) {
                 $request->session()->forget('cart_product_data');
+
                 return redirect()->route('cart.index')->with('error', 'Insufficient balance to complete the purchase');
             }
 
@@ -96,6 +98,8 @@ class OrderController extends Controller
                 'order' => $order,
                 'items' => $order->getItems(),
             ];
+
+            ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
 
             return view('order.purchase')->with('viewData', $viewData);
         } else {

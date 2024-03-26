@@ -11,7 +11,7 @@ class Challenge extends Model
 {
     /**
      * CHALLENGE ATTRIBUTES
-     * $this->attributes['id'] - int - contains the challenge primary key (id)
+     * $this->attributes['id'] - string - contains the challenge primary key (string)
      * $this->attributes['name'] - string - contains the challenge name
      * $this->attributes['description'] - string - contains the challenge description
      * $this->attributes['checked'] - bool - contains the challenge status
@@ -22,7 +22,6 @@ class Challenge extends Model
      * $this->attributes['category_id'] - int - contains the challenge category id
      * $this->attributes['category_quantity'] - int - contains the challenge category quantity
      */
-
     protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
     protected static function booted()
@@ -33,7 +32,7 @@ class Challenge extends Model
         });
     }
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->attributes['id'];
     }

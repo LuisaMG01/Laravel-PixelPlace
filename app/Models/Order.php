@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Collection;
 
 class Order extends Model
 {
@@ -18,7 +18,6 @@ class Order extends Model
      * $this->attributes['user_id'] - int - contains the referenced user id
      * $this->items - Item[] - contains the associated items
      */
-
     protected $fillable = ['total_coins', 'user_id'];
 
     public function getId(): int

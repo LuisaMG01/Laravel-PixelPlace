@@ -15,7 +15,6 @@ class Review extends Model
      * $this->attributes['product_id'] - int - contains the ID of the associated product
      * $this->attributes['user_id'] - int - contains the ID of the user who made the review
      */
-
     protected $fillable = ['description', 'rating', 'product_id', 'user_id'];
 
     public function getId(): int
@@ -41,6 +40,16 @@ class Review extends Model
     public function setRating($rating): void
     {
         $this->attributes['rating'] = $rating;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
     }
 
     public function getUserId(): int
