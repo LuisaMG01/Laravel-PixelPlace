@@ -8,6 +8,7 @@
     @endif
     <div class="flex justify-center">
         <div class="grid grid-cols-4 gap-4">
+            @if(count($viewData['cartProducts']) > 0)
             <div class="col-span-3">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">{{ __('app.shopping_cart') }}</h5>
                 <div class="bg-white rounded-lg shadow-md p-6 mb-4">
@@ -37,9 +38,9 @@
                                                         <form method="POST" action="{{ route('cart.add', ['id' => $product->getId()]) }}">
                                                             @csrf
                                                             <select name="quantity" id="quantity_{{ $product->getId() }}" class="quantity-selector bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                                                            @php
+                                                            {{
                                                                 $maxQuantity = min(10, $product->getStock());
-                                                            @endphp
+                                                            }}
                                                             @for ($i = 1; $i <= $maxQuantity; $i++)
                                                                 <option value="{{ $i }}">{{ $i }}</option>
                                                             @endfor
@@ -60,21 +61,31 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="col-span-1">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-lg font-semibold mb-4">{{ __('app.cart_action_buttons') }}</h2>
-                    <form method="POST" action="{{ route('cart.destroy') }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="delete-button bg-red-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_delete_button') }}</button>
-                    </form>
-                    <form method="GET" action="{{ route('orders.preorder') }}">
-                        @csrf
-                        <button type="submit" class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_continue_button') }}</button>
-                    </form>
+                <div class="col-span-1">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-lg font-semibold mb-4">{{ __('app.cart_action_buttons') }}</h2>
+                        <form method="POST" action="{{ route('cart.destroy') }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-button bg-red-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_delete_button') }}</button>
+                        </form>
+                        <form method="GET" action="{{ route('orders.preorder') }}">
+                            @csrf
+                            <button type="submit" class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_continue_button') }}</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </div>
+            @else
+                @if (!session('error'))
+                        </div>
+                        </div>
+                        <div class="p-4 mb-4 text-lg text-purple-800 rounded-lg bg-purple-50 dark:bg-gray-800 dark:text-purple-300 text-center" role="alert">
+                            <span class="font-medium">{{ __('app.hey') }}</span> {{ __('app.cart_empty_message') }}
+                        </div>
+                @endif
+            @endif
         </div>
     </div>
 @endsection
