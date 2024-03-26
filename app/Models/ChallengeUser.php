@@ -16,7 +16,7 @@ class ChallengeUser extends Model
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
      */
-    protected $fillable = ['progress', 'checked', 'created_at', 'updated_at'];
+    protected $fillable = ['progress', 'checked', 'created_at', 'updated_at', 'user_id', 'challenge_id'];
 
     public function __construct(array $attributes = [])
     {
@@ -73,16 +73,17 @@ class ChallengeUser extends Model
         return $this->belongsTo(Challenge::class);
     }
 
-    public function changeProgress(string $userId, string $productId, int $amount): void
+    public static function changeProgress(string $userId, string $productId, int $amount): void
     {
-        $user = User::findOrFail($userId);
-        $product = Product::findOrFail($productId);
+        $user = User::find($userId);
+        $product = Product::find($productId);
 
-        $category = $product->getCategoryId();
-
-        $challenges = $category->challenge;
+        $category_id = $product->getCategoryId();
+        $category = Category::findOrFail($category_id);
+        $challenges = $category->challenges;
 
         foreach ($challenges as $challenge) {
+
             $challengeUser = ChallengeUser::where('user_id', $user->getId())
                 ->where('challenge_id', $challenge->getId())
                 ->first();
@@ -95,18 +96,58 @@ class ChallengeUser extends Model
 
             $challengeUser->setProgress($challengeUser->getProgress() + $amount);
 
-            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity() && $challengeUser->getChecked() === false) {
                 $challengeUser->setChecked(true);
+                $challenge->setCurrentUsers($challenge->getCurrentUsers() + 1);
+                $challenge->save();
+                $user->setBalance($user->getBalance() + $challenge->getRewardCoins());
+                $user->save();
             } else {
                 $challengeUser->setChecked(false);
             }
 
             $challengeUser->save();
 
+            if ($challenge->getCurrentUsers() >= $challenge->getMaxUsers()) {
+                $challenge->setChecked(true);
+                $challenge->save();
+            }
             if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity()) {
                 $challengeUser->setChecked(true);
                 $challengeUser->save();
             }
         }
+    }
+
+    public static function asignToUsers(string $id): void
+    {
+        $users = User::pluck('id');
+
+        $users->each(function ($userId) use ($id) {
+            $challengeUserData = [
+                'user_id' => $userId,
+                'challenge_id' => $id,
+                'progress' => 0,
+                'checked' => false,
+            ];
+
+            ChallengeUser::create($challengeUserData);
+        });
+    }
+
+    public static function asignChallenges(string $id): void
+    {
+        $challenges = Challenge::where('checked', 0)->pluck('id');
+
+        $challenges->each(function ($challengeId) use ($id) {
+            $challengeUserData = [
+                'user_id' => $id,
+                'challenge_id' => $challengeId,
+                'progress' => 0,
+                'checked' => false,
+            ];
+
+            ChallengeUser::create($challengeUserData);
+        });
     }
 }

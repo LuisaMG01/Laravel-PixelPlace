@@ -99,8 +99,7 @@ class OrderController extends Controller
                 'items' => $order->getItems(),
             ];
 
-            //$challengeUser = new ChallengeUser();
-            //$challengeUser->changeProgress($userId, $product->category->getId(), $quantity);
+            ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
 
             return view('order.purchase')->with('viewData', $viewData);
         } else {
@@ -108,7 +107,7 @@ class OrderController extends Controller
         }
     }
 
-    public function index(): View|RedirectResponse
+    public function index(): View | RedirectResponse
     {
         if (Auth::check()) {
             $userId = Auth::user()->getId();
