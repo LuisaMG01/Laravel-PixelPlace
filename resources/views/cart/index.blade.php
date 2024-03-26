@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    @if (session('error'))
+    @if (session('balance_error'))
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-            <strong class="font-bold">Error!</strong>
-            <span class="block sm:inline">{{ session('error') }}</span>
+            <strong class="font-bold">{{ __('app.error_cart_index') }}</strong>
+            <span class="block sm:inline">{{ __('app.balance_error_cart_index') }}</span>
+        </div>
+    @endif
+    @if (session('stock_error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">{{ __('app.error_cart_index') }}</strong>
+            <span class="block sm:inline">{{ session('stock_error') }} {{ __('app.stock_error_cart_index') }}</span>
         </div>
     @endif
     <div class="flex justify-center">
@@ -15,10 +21,10 @@
                     <table class="w-full">
                         <thead>
                             <tr>
-                                <th class="text-left font-semibold">{{ __('app.cart_product_name') }}</th>
-                                <th class="text-left font-semibold">{{ __('app.cart_product_price') }}</th>
-                                <th class="text-left font-semibold">{{ __('app.cart_product_quantity') }}</th>
-                                <th class="text-left font-semibold">{{ __('app.cart_delete_item') }}</th>
+                                <th class="text-left font-semibold">{{ __('app.name_cart_index') }}</th>
+                                <th class="text-left font-semibold">{{ __('app.price_cart_index') }}</th>
+                                <th class="text-left font-semibold">{{ __('app.quantity_cart_index') }}</th>
+                                <th class="text-left font-semibold">{{ __('app.delete_cart_index') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,10 +62,8 @@
                                         </div>
                                     </td>
                                     <td class="py-4 px-2">
-                                        <a class="delete-button"
-                                            href="{{ route('cart.removeItem', ['id' => $product->getId()]) }}">
-                                            <h5 class="mb-2 text-x font-bold tracking-tight text-red-700 dark:text-white">
-                                                {{ __('app.cart_remove_item') }}</h5>
+                                        <a class="delete-button" href="{{ route('cart.removeItem', ['id' => $product->getId()]) }}">
+                                            <h5 class="mb-2 text-x font-bold tracking-tight text-red-700 dark:text-white">{{ __('app.remove_cart_index') }}</h5>
                                         </a>
                                     </td>
                                 </tr>
@@ -70,17 +74,15 @@
             </div>
             <div class="col-span-1">
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-lg font-semibold mb-4">{{ __('app.cart_action_buttons') }}</h2>
+                    <h2 class="text-lg font-semibold mb-4">{{ __('app.actions_cart_index') }}</h2>
                     <form method="POST" action="{{ route('cart.destroy') }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"
-                            class="delete-button bg-red-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_delete_button') }}</button>
+                        <button type="submit" class="delete-button bg-red-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.delete_button_cart_index') }}</button>
                     </form>
                     <form method="GET" action="{{ route('orders.preorder') }}">
                         @csrf
-                        <button type="submit"
-                            class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.cart_continue_button') }}</button>
+                        <button type="submit" class="bg-blue-500 font-semibold text-white py-2 px-4 rounded-lg mt-4 w-full">{{ __('app.continue_button_cart_index') }}</button>
                     </form>
                 </div>
             </div>

@@ -41,6 +41,8 @@ return [
     'button_add_new_product_admin_products' => 'Add new product',
     'drawer_title_add_new_product_admin_products' => 'New Product',
 
+    // Admin 
+
     'title_admin_categories' => 'Categories',
     'name_table_admin_categories' => 'Categories',
     'button_entity_admin_categories' => 'category',
@@ -99,33 +101,5 @@ return [
     'table_header_date_admin_orders' => 'Date',
     'table_header_items_admin_orders' => 'Items',
 
-    // Challenges
-
-    'title_admin_challenges' => 'Challenges',
-    'name_table_admin_challenges' => 'Challenges',
-    'button_entity_admin_challenges' => 'challenge',
-    'table_header_challenge_name_admin_challenges' => 'Name',
-    'table_header_challenge_description_admin_challenges' => 'Description',
-    'table_header_challenge_checked_admin_challenges' => 'Finished',
-    'table_header_challenge_coins_admin_challenges' => 'Reward Coins',
-    'table_header_challenge_users_admin_challenges' => 'Amount of Users',
-    'table_header_challenge_current_users_admin_challenges' => 'Current Users',
-    'table_header_challenge_expiration_date_admin_challenges' => 'Expiration Date',
-    'table_header_challenge_category_admin_challenges' => 'Category',
-    'table_header_challenge_product_quantity_admin_challenges' => 'Goal Quantity',
-    'challenge_checked_admin_challenges' => 'Active',
-    'challenge_unchecked_admin_challenges' => 'Inactive',
-    'button_update_admin_challenges' => 'Update',
-    'button_delete_admin_challenges' => 'Delete',
-    'drawer_title_update_admin_challenges' => 'Update Challenge',
-    'action_title_admin_close_menu_challenges' => 'Close menu',
-    'button_selector_category_admin_challenges' => 'Select Category',
-    'drawer_title_delete_admin_challenges' => 'Delete Challenge',
-    'delete_confirmation_admin_challenges' => 'Are you sure you want to delete this challenge?',
-    'delete_confirm_button_admin_challenges' => 'Yes, I\'m sure',
-    'delete_cancel_button_admin_challenges' => 'No, cancel',
-    'drawer_title_create_admin_challenges' => 'New Challenge',
-    'action_title_add_challenge_admin_challenges' => 'Add Challenge',
-    'table_header_challenge_checked_admin_challenges' => 'Finished',
 
 ];

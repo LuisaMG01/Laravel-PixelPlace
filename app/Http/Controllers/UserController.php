@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\ImageStorage;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,9 @@ class UserController extends Controller
     public function update(Request $request, int $id): RedirectResponse
     {
         $user = User::findOrFail($id);
-        $user->update($request->only(['name', 'email']));
+        $user->update($request->all());
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request, $user->getName());
 
         Session::flash('message', 'Updated User Data');
 

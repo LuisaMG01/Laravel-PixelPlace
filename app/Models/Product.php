@@ -135,6 +135,16 @@ class Product extends Model
     }
 
     /* Special methods*/
+    public function getTotalSalesAttribute()
+    {
+        return $this->items->sum('amount');
+    }
+
+    public static function getTopSellingProducts($limit = 5)
+    {
+        return static::withCount('items')->orderByDesc('items_count')->limit($limit)->get();
+    }
+
     public function getRating(): float
     {
         $reviews = $this->review;
