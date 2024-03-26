@@ -41,8 +41,6 @@ return [
     'button_add_new_product_admin_products' => 'Add new product',
     'drawer_title_add_new_product_admin_products' => 'New Product',
 
-    // Category
-
     'title_admin_categories' => 'Categories',
     'name_table_admin_categories' => 'Categories',
     'button_entity_admin_categories' => 'category',
