@@ -17,6 +17,7 @@ return [
     'name_product_index' => 'Name',
     'example_play_5_product_index' => 'E.g.: Play 5',
     'close_product_index' => 'Close',
+    'add_to_cart_product_index' => 'Add to cart',
 
     //Show product messages
     'category_product_show' => 'Category',
@@ -25,6 +26,7 @@ return [
     'comment_product_show' => 'Comment',
     'see_comments_product_show' => 'See Comments',
     'add_to_cart_product_show' => 'Add to Cart',
+    
 
     //Edit review messages
     'update_review_edit' => 'Update Review',
@@ -37,6 +39,7 @@ return [
     'delete_review_show' => 'Delete',
     'edit_review_show' => 'Edit',
     'reviews_empty_message_review_show' => 'There are currently no reviews.',
+    'hey_review_show' => 'Hey!!!',
 
     //Create review messages
     'add_comment_review_create' => 'Add Comment',

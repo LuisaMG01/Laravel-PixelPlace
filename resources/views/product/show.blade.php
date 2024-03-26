@@ -1,48 +1,39 @@
 @extends('layouts.app')
 @section('content')
-
-    <section class="text-gray-700 body-font overflow-hidden bg-white">
-        <div class="container px-5 py-24 mx-auto">
-            <div class="lg:w-4/5 mx-auto flex flex-wrap">
-                <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 order-2 lg:order-1">
-                    <img alt="ecommerce"
-                        class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200 mb-6 lg:mb-0"
-                        src="{{ URL::asset('storage/'.$viewData['product']->getName().'.png') }}">
-                    <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ $viewData['product']->getBrand() }}</h2>
-                    <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $viewData['product']->getName() }}</h1>
-                    <p class="leading-relaxed">{{ __('app.category_product_show') }}: {{ $viewData['product']->category->getName() }}</p>
-                    <p class="leading-relaxed">{{ __('app.description_product_show') }}: {{ $viewData['product']->getDescription() }}</p>
-                    <p class="leading-relaxed">{{ __('app.keywords_product_show') }}:
-                        @foreach ($viewData['product']->getKeywords() as $keyword)
-                            {{ $keyword }}.
-                        @endforeach
-                    </p>
-                    <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                        <span class="title-font font-medium text-2xl text-gray-900">${{ $viewData['product']->getPrice() }}</span>
-                    </div>
-                    <div class="flex">
-                        @auth
-                            <div class="btn-container mr-8">
-                                <a href="{{ route('reviews.create', ['id' => $viewData['product']->getId()]) }}"
-                                    class="inline-flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">{{ __('app.comment_product_show') }}</a>
-                            </div>
-                        @endauth
-                        <div class="btn-container">
-                            <a href="{{ route('reviews.show', ['id' => $viewData['product']->getId()]) }}"
-                                class="inline-flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">{{ __('app.see_comments_product_show') }}</a>
+    <section class="bg-white dark:bg-gray-900">
+        <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+            <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                <h1
+                    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                    {{ $viewData['product']->getName() }}</h1>
+                <h5 class="text-xl font-bold dark:text-white">{{ $viewData['product']->getBrand() }}</h5>
+                <p class="leading-relaxed">
+                    @foreach ($viewData['product']->getKeywords() as $keyword)
+                        {{ $keyword }}.
+                    @endforeach
+                </p>
+                <p class="mb-4">{{ $viewData['product']->getDescription() }}</p>
+                <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+                    <span
+                        class="title-font font-medium text-2xl text-gray-900">${{ $viewData['product']->getPrice() }}</span>
+                </div>
+                <!--Buttons -->
+                <div class="flex">
+                    @auth
+                        <div class="btn-container mr-8">
+                            <a href="{{ route('reviews.create', ['id' => $viewData['product']->getId()]) }}"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('app.comment_product_show') }}</a>
                         </div>
                     @endauth
                     <div class="btn-container mr-8">
                         <a href="{{ route('reviews.show', ['id' => $viewData['product']->getId()]) }}"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4">See
-                            Comments</a>
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4">{{ __('app.see_comments_product_show') }}</a>
                     </div>
                     <div class="btn-container inline-flex">
                         <form method="POST" action="{{ route('cart.add', ['id' => $viewData['product']->getId()]) }}">
                             @csrf
                             <button type="submit"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('app.add_to_cart_product_show') }}
-                            </button>
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('app.add_to_cart_product_show') }}</button>
                         </form>
                     </div>
                 </div>
