@@ -38,14 +38,13 @@ return [
     'comment_product_show' => 'Comment',
     'see_comments_product_show' => 'See Comments',
     'add_to_cart_product_show' => 'Add to Cart',
-    
 
     //Edit review messages
     'update_review_edit' => 'Update Review',
     'description_review_edit' => 'Description',
     'rating_review_edit' => 'Rating',
     'update_button_review_edit' => 'Update Review',
-    
+
     //Show review messages
     'comment_settings_review_show' => 'Comment settings',
     'delete_review_show' => 'Delete',
@@ -74,6 +73,7 @@ return [
     'balance_error_cart_index' => 'Insufficient balance to complete the purchase',
     'stock_error_cart_index' => 'out of stock',
     'added_succesfully_product_index' => 'was added successfully',
+    'empty_cart_index' => 'You do not have any items in your cart, please add products to be able to purchase them',
 
     //Order
     'title_order_preorder' => 'Preorder',
@@ -104,7 +104,6 @@ return [
     'table_total_order_show' => 'Total',
     'table_date_order_show' => 'Date',
     'go_back_button_order_show' => 'Go Back',
-
 
     //Order messages
     'orders_empty_message' => 'There are currently no orders.',

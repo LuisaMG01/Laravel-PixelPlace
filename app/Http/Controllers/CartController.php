@@ -51,7 +51,7 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    public function removeItem(Request $request, string $id): RedirectResponse
+    public function removeItem(Request $request, int $id): RedirectResponse
     {
         $cartProductData = $request->session()->get('cart_product_data');
         unset($cartProductData[$id]);

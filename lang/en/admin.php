@@ -41,7 +41,7 @@ return [
     'button_add_new_product_admin_products' => 'Add new product',
     'drawer_title_add_new_product_admin_products' => 'New Product',
 
-    // Admin 
+    // Admin
 
     'title_admin_categories' => 'Categories',
     'name_table_admin_categories' => 'Categories',
@@ -100,6 +100,5 @@ return [
     'table_header_total_admin_orders' => 'Total',
     'table_header_date_admin_orders' => 'Date',
     'table_header_items_admin_orders' => 'Items',
-
 
 ];
