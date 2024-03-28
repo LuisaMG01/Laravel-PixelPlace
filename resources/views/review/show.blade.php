@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @if(count($viewData['reviews']) > 0)
+    @if (count($viewData['reviews']) > 0)
         @foreach ($viewData['reviews'] as $review)
             <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
                 <div class="max-w-2xl mx-auto px-4">
@@ -15,19 +15,19 @@
                                 <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
                                         title="February 8th, 2022">{{ $review->getCreatedAt() }}</time></p>
                             </div>
-                            <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
-                                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                                type="button">
-                                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                    viewBox="0 0 16 3">
-                                    <path
-                                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                                </svg>
-                                <span class="sr-only">{{ __('comment_settings_review_show') }}</span>
-                            </button>
-                            <!-- Dropdown menu -->
                             @if (auth()->check())
                                 @if ($review->getUserId() === auth()->id())
+                                    <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
+                                        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                        type="button">
+                                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="currentColor" viewBox="0 0 16 3">
+                                            <path
+                                                d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                                        </svg>
+                                        <span class="sr-only">{{ __('comment_settings_review_show') }}</span>
+                                    </button>
+                                    <!-- Dropdown menu -->
                                     <div id="dropdownComment1"
                                         class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
@@ -65,8 +65,10 @@
             </section>
         @endforeach
     @else
-        <div class="p-4 mb-4 text-lg text-purple-800 rounded-lg bg-purple-50 dark:bg-gray-800 dark:text-purple-300 text-center" role="alert">
-            <span class="font-medium">{{ __('app.hey_review_show') }}</span> {{ __('app.reviews_empty_message_review_show') }}
+        <div class="p-4 mb-4 text-lg text-purple-800 rounded-lg bg-purple-50 dark:bg-gray-800 dark:text-purple-300 text-center"
+            role="alert">
+            <span class="font-medium">{{ __('app.hey_review_show') }}</span>
+            {{ __('app.reviews_empty_message_review_show') }}
         </div>
     @endif
     <!-- Pagination -->

@@ -2,6 +2,41 @@
 
 return [
 
+    // Home messages
+    'title_home' => 'Join the Gamer Revolution at PixelPlace!',
+    'principal_banner_home_text' => 'At
+    PixelPlace, we don\'t just sell gamer products, we build a community! Take part in thrilling challenges
+    and showcase your skills. Ready for the challenge? Complete our challenges and secure a discount on your
+    next purchase!',
+    'see_products_home_button' => 'See Products',
+    'login_home_button' => 'Login',
+    'register_home_button' => 'Register',
+    'title_second_banner_home' => 'Why Choose PixelPlace?',
+    'content_second_banner_home' => 'Discover why gamers all over the world trust
+    PixelPlace for their gaming needs. From top-quality products to unparalleled customer service, we\'ve got
+    everything you need to take your gaming experience to the next level.',
+    'subtitle_one_second_banner_home' => 'Top-Quality Products',
+    'content_one_second_banner_home' => 'Explore our curated selection of top-quality gaming gear,
+    from cutting-edge peripherals to high-performance hardware, all designed to elevate your gaming
+    experience.',
+    'subtitle_two_second_banner_home' => 'Fast and Secure Shipping',
+    'content_two_second_banner_home' => 'Enjoy fast and secure shipping options worldwide. With our
+    efficient logistics network, your gaming gear will be at your doorstep in no time, ready to fuel
+    your gaming adventures.',
+    'subtitle_three_second_baner_home' => '24/7 Customer Support',
+    'content_three_second_banner_home' => 'Got questions or need assistance? Our dedicated customer
+    support team is available 24/7 to provide you with expert assistance and ensure a seamless shopping
+    experience.',
+
+    // Footter messages
+    'caption_footer' => '© 2024',
+    'all_rights_footer' => 'All Rights
+    Reserved.',
+
+    // Pagination messages
+    'showing_pagination' => 'Showing',
+    'of_pagination' => 'of',
+
     //Index product messages
     'success_product_index' => 'Success!',
     'filter_products_product_index' => 'Filter Products',

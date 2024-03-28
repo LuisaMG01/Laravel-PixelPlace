@@ -3,6 +3,12 @@
 @section('nameTable', __('admin.name_table_admin_challenges'))
 @section('buttonEntity', __('admin.button_entity_admin_challenges'))
 @section('content')
+    @if (session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">{{ __('admin.success_message_admin_categories') }}</strong>
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
     <div
         class='p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700'>
         <!--Table Header-->

@@ -10,6 +10,7 @@ use App\Models\Challenge;
 use App\Models\ChallengeUser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
 
 class ChallengeController extends Controller
 {
@@ -30,14 +31,16 @@ class ChallengeController extends Controller
     {
         $challenge = Challenge::create($request->all());
         ChallengeUser::asignToUsers($challenge['id']);
+        Session::flash('success', __('admin.added_succesfully_admin_challenge'));
 
-        return redirect()->route('admin.challenges.index')->with('success', 'Challenge created successfully!');
+        return redirect()->route('admin.challenges.index');
     }
 
     public function destroy(int $id): RedirectResponse
     {
-        $viewData = Challenge::findOrFail($id);
-        $viewData->delete();
+        $challenge = Challenge::findOrFail($id);
+        $challenge->delete();
+        Session::flash('success', __('admin.deleted_succesfully_admin_challenge'));
 
         return redirect()->route('admin.challenges.index');
     }
@@ -47,6 +50,7 @@ class ChallengeController extends Controller
         $data = $request->only(['name', 'description', 'reward_coins', 'max_users', 'category_id', 'expiration_date', 'category_quantity', 'checked']);
 
         Challenge::findOrFail($id)->update($data);
+        Session::flash('success', __('admin.updated_succesfully_admin_challenge'));
 
         return redirect()->route('admin.challenges.index');
     }

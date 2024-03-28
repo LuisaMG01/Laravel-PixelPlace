@@ -28,7 +28,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        Session::flash('success', 'User deleted successfully.');
+        Session::flash('success', __('admin.deleted_succesfully_admin_user'));
 
         return redirect()->route('admin.users.index');
     }
@@ -38,7 +38,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
 
-        Session::flash('success', 'User updated successfully.');
+        Session::flash('success', __('admin.updated_succesfully_admin_user'));
 
         return redirect()->route('admin.users.index');
     }
@@ -47,7 +47,7 @@ class UserController extends Controller
     {
         User::create($request->all());
 
-        Session::flash('success', 'User updated successfully.');
+        Session::flash('success', __('admin.added_succesfully_admin_user'));
 
         return redirect()->route('admin.users.index');
     }
