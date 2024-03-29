@@ -13,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     public function index(): View
     {

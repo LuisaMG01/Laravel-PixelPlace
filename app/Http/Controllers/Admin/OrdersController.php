@@ -7,7 +7,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\View\View;
 
-class OrderController extends Controller
+class OrdersController extends Controller
 {
     public function index(): View
     {

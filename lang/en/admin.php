@@ -44,6 +44,12 @@ return [
     'added_succesfully_admin_product' => 'Product created successfully.',
     'updated_succesfully_admin_product' => 'Product updated successfully.',
     'deleted_succesfully_admin_product' => 'Product deleted successfully.',
+    'name_placeholder_admin_product' => 'Type product name',
+    'price_placeholder_admin_product' => 'Type product price',
+    'description_placeholder_admin_product' => 'Type product description',
+    'brand_placeholder_admin_product' => 'Type product brand',
+    'keywords_placeholder_admin_product' => 'Type product keywords',
+    'stock_placeholder_admin_product' => 'Type product stock',
 
     // Category messages
     'title_admin_categories' => 'Categories',
@@ -70,6 +76,7 @@ return [
     'added_succesfully_admin_category' => 'Category created successfully.',
     'updated_succesfully_admin_category' => 'Category updated successfully.',
     'deleted_succesfully_admin_category' => 'Category deleted successfully.',
+    'name_placeholder_admin_category' => 'Type category name',
 
     // User messages
     'title_admin_users' => 'Users',
@@ -99,6 +106,12 @@ return [
     'added_succesfully_admin_user' => 'User created successfully.',
     'updated_succesfully_admin_user' => 'User updated successfully.',
     'deleted_succesfully_admin_user' => 'User deleted successfully.',
+    'nickname_placeholder_admin_user' => 'Type user nickname',
+    'email_placeholder_admin_user' => 'Type user email',
+    'balance_placeholder_admin_user' => 'Type user balance',
+    'password_placeholder_admin_user' => 'Type user password',
+    'select_admin_admin_user' => 'admin',
+    'select_client_admin_user' => 'client',
 
     // Order Messages
     'title_admin_orders' => 'Orders',
@@ -139,5 +152,9 @@ return [
     'added_succesfully_admin_challenge' => 'Challenge created successfully.',
     'updated_succesfully_admin_challenge' => 'Challenge updated successfully.',
     'deleted_succesfully_admin_challenge' => 'Challenge deleted successfully.',
-
+    'name_placeholder_admin_challenge' => 'Type challenge name',
+    'description_placeholder_admin_challenge' => 'Type challenge description',
+    'reward_coins_placeholder_admin_challenge' => 'Type challenge reward coins',
+    'amount_users_placeholder_admin_challenge' => 'Type challenge amount users',
+    'goal_quantity_placeholder_admin_challenge' => 'Type challenge goal quantity',
 ];

@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Session;
 
-class ChallengeController extends Controller
+class ChallengesController extends Controller
 {
     public function index(): View
     {

@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
     public function index(): View
     {

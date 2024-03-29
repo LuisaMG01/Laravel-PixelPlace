@@ -112,7 +112,7 @@ class OrderController extends Controller
         if (Auth::check()) {
             $userId = Auth::user()->getId();
             $user = User::findOrFail($userId);
-            $orders = $user->orders;
+            $orders = $user->orders()->paginate(8);
 
             $viewData = [
                 'orders' => $orders,
