@@ -11,7 +11,7 @@ use App\Models\ChallengeUser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class ChallengeController extends Controller
+class ChallengesController extends Controller
 {
     public function index(): View
     {

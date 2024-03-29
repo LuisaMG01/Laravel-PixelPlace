@@ -85,6 +85,8 @@ class OrderController extends Controller
                 $newStock = $product->getStock() - $quantity;
                 $product->setStock($newStock);
                 $product->save();
+                
+                ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
             }
 
             $user->setBalance($userBalance - $total);
@@ -98,8 +100,6 @@ class OrderController extends Controller
                 'order' => $order,
                 'items' => $order->getItems(),
             ];
-
-            ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
 
             return view('order.purchase')->with('viewData', $viewData);
         } else {
