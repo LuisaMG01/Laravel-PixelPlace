@@ -52,11 +52,11 @@ return [
     'title_index_challenge' => 'All Challenges',
     'index_challenge_description' => 'Description: ',
     'index_challenge_reward' => 'Reward: ',
-    'index_challenge_max_users' => 'Max Users: ',
+    'index_challenge_max_users' => 'Maximum amount of Users: ',
     'index_challenge_current_users' => 'Current Users: ',
     'index_challenge_expiration_date' => 'Expiration Date: ',
-    'index_challenge_category' => 'Category: ',
-    'index_challenge_goal' => 'Goal: ',
+    'index_challenge_category' => 'Category of the challenge: ',
+    'index_challenge_goal' => 'Goal (quantity of products to buy): ',
     'index_challenge_coins' => ' Coins',
     'title_index_user_challenge' => 'Browse the buttons to see your challenges',
     'index_user_challenge_undone_challenge' => 'Undone',
@@ -74,7 +74,7 @@ return [
     'index_user_challenge_current_users' => 'Current Users: ',
     'index_user_challenge_expiration_date' => 'Expiration Date: ',
     'index_user_challenge_category' => 'Category of the challenge: ',
-    'index_user_challenge_goal' => 'Goal (quantity of products to buy of the category): ',
+    'index_user_challenge_goal' => 'Goal (quantity of products to buy): ',
     'index_user_challenge_coins' => ' Coins',
 
     // Command
