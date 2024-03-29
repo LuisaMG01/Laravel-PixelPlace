@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Review\CreateRequest;
-use App\Http\Requests\Review\UpdateRequest;
+use App\Http\Requests\review\CreateRequest;
+use App\Http\Requests\review\UpdateRequest;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\RedirectResponse;

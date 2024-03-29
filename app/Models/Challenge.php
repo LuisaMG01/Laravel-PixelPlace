@@ -21,6 +21,8 @@ class Challenge extends Model
      * $this->attributes['expiration_date'] - datetime - contains the challenge expiration date
      * $this->attributes['category_id'] - int - contains the challenge category id
      * $this->attributes['category_quantity'] - int - contains the challenge category quantity
+     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
+     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
     protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
@@ -120,6 +122,16 @@ class Challenge extends Model
     public function setCategoryQuantity(int $categoryQuantity): void
     {
         $this->attributes['category_quantity'] = $categoryQuantity;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->updated_at;
     }
 
     /** Model relations */

@@ -1,18 +1,6 @@
 <?php
 
 return [
-    'add_comment' => 'Add Comment',
-    'description' => 'Description',
-    'enter_description' => 'Enter a description',
-    'rating' => 'Rating',
-    'send' => 'Send',
-    'success_creation_review' => 'Review has been created successfully.',
-    'success_creation_product' => 'Product has been created successfully',
-    'nav_list_products' => 'List Products',
-    'nav_create_product' => 'Create Product',
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
     //Index product messages
     'success_product_index' => 'Success!',
@@ -38,14 +26,13 @@ return [
     'comment_product_show' => 'Comment',
     'see_comments_product_show' => 'See Comments',
     'add_to_cart_product_show' => 'Add to Cart',
-    
 
     //Edit review messages
     'update_review_edit' => 'Update Review',
     'description_review_edit' => 'Description',
     'rating_review_edit' => 'Rating',
     'update_button_review_edit' => 'Update Review',
-    
+
     //Show review messages
     'comment_settings_review_show' => 'Comment settings',
     'delete_review_show' => 'Delete',
@@ -60,7 +47,7 @@ return [
     'rating_review_create' => 'Rating',
     'send_review_create' => 'Send',
 
-    //Cart
+    // Index cart messages
     'shopping_cart' => 'Shopping Cart',
     'price_cart_index' => 'Price',
     'error_cart_index' => 'Error!',
@@ -75,7 +62,7 @@ return [
     'stock_error_cart_index' => 'out of stock',
     'added_succesfully_product_index' => 'was added successfully',
 
-    //Order
+    // Index order messages
     'title_order_preorder' => 'Preorder',
     'price_order_preorder' => 'Price',
     'product_order_preorder' => 'Product',
@@ -104,11 +91,9 @@ return [
     'table_total_order_show' => 'Total',
     'table_date_order_show' => 'Date',
     'go_back_button_order_show' => 'Go Back',
-
-
-    //Order messages
     'orders_empty_message' => 'There are currently no orders.',
-    // Navbar
+
+    // Navbar messages
     'title_navbar_home' => 'PixelPlace',
     'register_button_navbar' => 'Register',
     'login_button_navbar' => 'Login',
@@ -124,7 +109,7 @@ return [
     'challenges_navbar' => 'Challenges',
     'contact_navbar' => 'Contact',
 
-    // Challenge
+    // Index challenge messages
     'title_index_challenge' => 'All Challenges',
     'index_challenge_description' => 'Description: ',
     'index_challenge_reward' => 'Reward: ',
