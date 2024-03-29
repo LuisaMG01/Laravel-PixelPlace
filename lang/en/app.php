@@ -76,6 +76,8 @@ return [
     'index_user_challenge_category' => 'Category of the challenge: ',
     'index_user_challenge_goal' => 'Goal (quantity of products to buy): ',
     'index_user_challenge_coins' => ' Coins',
+    'index_user_challenge_progress' => 'March to the Goal: ',
+    'index_user_products_word' => ' Products.',
 
     // Command
     'info_expired_challenges' => 'Expired challenges checked successfully.',

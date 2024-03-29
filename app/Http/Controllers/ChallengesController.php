@@ -34,14 +34,24 @@ class ChallengesController extends Controller
         $doneChallenges = Challenge::whereIn('id', $doneChallengeIds)->get();
         $inProgressChallenges = Challenge::whereIn('id', $inProgressChallengeIds)->where('checked', 0)->get();
 
+        $progressData = [];
+        foreach ($inProgressChallenges as $challenge) {
+            $progress = ChallengeUser::where('user_id', $userId)
+                ->where('challenge_id', $challenge->id)
+                ->value('progress');
+
+            $progressData[$challenge->id] = $progress;
+        }
+
         $viewData = [
             'undoneChallenges' => $undoneChallenges,
             'doneChallenges' => $doneChallenges,
             'inProgressChallenges' => $inProgressChallenges,
+            'progressData' => $progressData,
             'categories' => $categories,
         ];
-
-        return view('challenge.indexUser')->with('viewData', $viewData);
+        
+        return view('challenge.authIndex')->with('viewData', $viewData);
     }
 
     public function index(): View
@@ -54,6 +64,6 @@ class ChallengesController extends Controller
             'categories' => $categories,
         ];
 
-        return view('challenge.index')->with('viewData', $viewData);
+        return view('challenge.noAuthIndex')->with('viewData', $viewData);
     }
 }

@@ -57,17 +57,14 @@ class OrderController extends Controller
                 $subtotal = $product->getPrice() * $quantity;
                 $total += $subtotal;
                 if ($product->getStock() < $quantity) {
-                    return redirect()->route('cart.index')->with('error', $product->getName().' out of stock');
+                    return redirect()->route('cart.index')->with('stock_error', $product->getName());
                 }
             }
 
             if ($userBalance < $total) {
                 $request->session()->forget('cart_product_data');
-<<<<<<< HEAD
 
-=======
->>>>>>> b3a7e7c (Validations)
-                return redirect()->route('cart.index')->with('error', 'Insufficient balance to complete the purchase');
+                return redirect()->route('cart.index')->with('balance_error', $user->getName());
             }
 
             $order = Order::create([
@@ -88,6 +85,8 @@ class OrderController extends Controller
                 $newStock = $product->getStock() - $quantity;
                 $product->setStock($newStock);
                 $product->save();
+                
+                ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
             }
 
             $user->setBalance($userBalance - $total);
@@ -102,25 +101,27 @@ class OrderController extends Controller
                 'items' => $order->getItems(),
             ];
 
-            ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
-
             return view('order.purchase')->with('viewData', $viewData);
         } else {
             return redirect()->route('cart.index');
         }
     }
 
-    public function index(): View
+    public function index(): View | RedirectResponse
     {
-        $userId = Auth::user()->getId();
-        $user = User::findOrFail($userId);
-        $orders = $user->orders;
+        if (Auth::check()) {
+            $userId = Auth::user()->getId();
+            $user = User::findOrFail($userId);
+            $orders = $user->orders;
 
-        $viewData = [
-            'orders' => $orders,
-        ];
+            $viewData = [
+                'orders' => $orders,
+            ];
 
-        return view('order.index')->with('viewData', $viewData);
+            return view('order.index')->with('viewData', $viewData);
+        } else {
+            return redirect()->route('home')->with('error', 'You must login first');
+        }
     }
 
     public function show(int $id): View
