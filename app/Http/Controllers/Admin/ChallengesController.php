@@ -11,7 +11,7 @@ use App\Models\ChallengeUser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class ChallengeController extends Controller
+class ChallengesController extends Controller
 {
     public function index(): View
     {
@@ -28,7 +28,10 @@ class ChallengeController extends Controller
 
     public function store(CreateRequest $request): RedirectResponse
     {
-        $challenge = Challenge::create($request->all());
+
+        $challengeData = $request->all();
+
+        $challenge = Challenge::create($challengeData);
         ChallengeUser::asignToUsers($challenge['id']);
 
         return redirect()->route('admin.challenges.index')->with('success', 'Challenge created successfully!');
@@ -50,5 +53,4 @@ class ChallengeController extends Controller
 
         return redirect()->route('admin.challenges.index');
     }
-
 }

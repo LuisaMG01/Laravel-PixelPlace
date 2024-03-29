@@ -2,7 +2,43 @@
 
 return [
 
+    // Home messages
+    'title_home' => 'Join the Gamer Revolution at PixelPlace!',
+    'principal_banner_home_text' => 'At
+    PixelPlace, we don\'t just sell gamer products, we build a community! Take part in thrilling challenges
+    and showcase your skills. Ready for the challenge? Complete our challenges and secure a discount on your
+    next purchase!',
+    'see_products_home_button' => 'See Products',
+    'login_home_button' => 'Login',
+    'register_home_button' => 'Register',
+    'title_second_banner_home' => 'Why Choose PixelPlace?',
+    'content_second_banner_home' => 'Discover why gamers all over the world trust
+    PixelPlace for their gaming needs. From top-quality products to unparalleled customer service, we\'ve got
+    everything you need to take your gaming experience to the next level.',
+    'subtitle_one_second_banner_home' => 'Top-Quality Products',
+    'content_one_second_banner_home' => 'Explore our curated selection of top-quality gaming gear,
+    from cutting-edge peripherals to high-performance hardware, all designed to elevate your gaming
+    experience.',
+    'subtitle_two_second_banner_home' => 'Fast and Secure Shipping',
+    'content_two_second_banner_home' => 'Enjoy fast and secure shipping options worldwide. With our
+    efficient logistics network, your gaming gear will be at your doorstep in no time, ready to fuel
+    your gaming adventures.',
+    'subtitle_three_second_banner_home' => '24/7 Customer Support',
+    'content_three_second_banner_home' => 'Got questions or need assistance? Our dedicated customer
+    support team is available 24/7 to provide you with expert assistance and ensure a seamless shopping
+    experience.',
+
+    // Footer messages
+    'caption_footer' => '© 2024',
+    'all_rights_footer' => 'All Rights
+    Reserved.',
+
+    // Pagination messages
+    'showing_pagination' => 'Showing',
+    'of_pagination' => 'of',
+
     //Index product messages
+    'success_creation_review' => 'Review has been created successfully',
     'success_product_index' => 'Success!',
     'filter_products_product_index' => 'Filter Products',
     'filter_product_index' => 'Filter',
@@ -26,6 +62,7 @@ return [
     'comment_product_show' => 'Comment',
     'see_comments_product_show' => 'See Comments',
     'add_to_cart_product_show' => 'Add to Cart',
+    'success_product_review' => 'Success!',
 
     //Edit review messages
     'update_review_edit' => 'Update Review',
@@ -63,7 +100,7 @@ return [
     'added_succesfully_product_index' => 'was added successfully',
     'empty_cart_index' => 'You do not have any items in your cart, please add products to be able to purchase them',
 
-    // Index order messages
+    // Order messages
     'title_order_preorder' => 'Preorder',
     'price_order_preorder' => 'Price',
     'product_order_preorder' => 'Product',
@@ -79,13 +116,13 @@ return [
     'table_action_order_index' => 'Action',
     'table_info_order_index' => 'More Info',
     'title_order_index' => 'Order #',
-    'table_procuct_order_purchase' => 'Product',
+    'table_product_order_purchase' => 'Product',
     'table_price_order_purchase' => 'Price',
     'table_quantity_order_purchase' => 'Quantity',
     'table_subtotal_order_purchase' => 'Subtotal',
     'table_total_order_purchase' => 'Total',
     'title_order_show' => 'Order #',
-    'table_procuct_order_show' => 'Product',
+    'table_product_order_show' => 'Product',
     'table_adquire_price_order_show' => 'Adquire Price',
     'table_quantity_order_show' => 'Quantity',
     'table_subtotal_order_show' => 'Subtotal',
@@ -114,11 +151,11 @@ return [
     'title_index_challenge' => 'All Challenges',
     'index_challenge_description' => 'Description: ',
     'index_challenge_reward' => 'Reward: ',
-    'index_challenge_max_users' => 'Max Users: ',
+    'index_challenge_max_users' => 'Maximum amount of Users: ',
     'index_challenge_current_users' => 'Current Users: ',
     'index_challenge_expiration_date' => 'Expiration Date: ',
-    'index_challenge_category' => 'Category: ',
-    'index_challenge_goal' => 'Goal: ',
+    'index_challenge_category' => 'Category of the challenge: ',
+    'index_challenge_goal' => 'Goal (quantity of products to buy): ',
     'index_challenge_coins' => ' Coins',
     'title_index_user_challenge' => 'Browse the buttons to see your challenges',
     'index_user_challenge_undone_challenge' => 'Undone',
@@ -131,13 +168,15 @@ return [
     'index_user_challenge_not_done_challenge' => 'You have no done challenges',
     'index_user_challenge_not_in_progress_challenge' => 'You have no in progress challenges',
     'index_user_challenge_description' => 'Description: ',
-    'index_user_challenge_reward' => 'Reward: ',
-    'index_user_challenge_max_users' => 'Max Users: ',
+    'index_user_challenge_reward' => 'Reward Coins: ',
+    'index_user_challenge_max_users' => 'Maximum amount of Users: ',
     'index_user_challenge_current_users' => 'Current Users: ',
     'index_user_challenge_expiration_date' => 'Expiration Date: ',
-    'index_user_challenge_category' => 'Category: ',
-    'index_user_challenge_goal' => 'Goal: ',
+    'index_user_challenge_category' => 'Category of the challenge: ',
+    'index_user_challenge_goal' => 'Goal (quantity of products to buy): ',
     'index_user_challenge_coins' => ' Coins',
+    'index_user_challenge_progress' => 'March to the Goal: ',
+    'index_user_products_word' => ' Products.',
 
     // Command
     'info_expired_challenges' => 'Expired challenges checked successfully.',

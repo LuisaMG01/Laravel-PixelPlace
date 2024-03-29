@@ -11,34 +11,10 @@ class ProductsController extends Controller
 {
     public function index(Request $request): view
     {
-        $products = Product::query();
         $categories = Category::all();
 
-        if ($request->filled('category')) {
-            $products->where('category_id', $request->category);
-        }
-
-        if ($request->filled('price')) {
-            $price = $request->price;
-            if ($price === '0-49') {
-                $products->where('price', '<', 50);
-            } elseif ($price === '301') {
-                $products->where('price', '>', 300);
-            } else {
-                $priceRange = explode('-', $price);
-                $products->whereBetween('price', [$priceRange[0], $priceRange[1]]);
-            }
-        }
-
-        if ($request->filled('brand')) {
-            $products->where('brand', 'like', '%'.$request->brand.'%');
-        }
-
-        if ($request->filled('name')) {
-            $products->where('name', 'like', '%'.$request->name.'%');
-        }
-
-        $filteredProducts = $products->paginate(12);
+        $filteredProducts = Product::filters($request);
+        $filteredProducts = $filteredProducts->paginate(12);
 
         $viewData = [
             'products' => $filteredProducts,
