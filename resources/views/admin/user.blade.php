@@ -126,7 +126,8 @@
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_nickname_admin_users') }}</label>
                                                 <input type="text" name="name" id="name-{{ $user->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    value="{{ $user->getName() }}" placeholder="Type product name"
+                                                    value="{{ $user->getName() }}"
+                                                    placeholder="{{ __('admin.nickname_placeholder_admin_user') }}"
                                                     required="">
                                             </div>
                                             <div>
@@ -135,9 +136,11 @@
                                                 <select id="role-{{ $user->getId() }}" name="role"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                     <option value="admin"
-                                                        {{ $user->getRole() === 'admin' ? 'selected' : '' }}>Admin</option>
+                                                        {{ $user->getRole() === 'admin' ? 'selected' : '' }}>
+                                                        {{ __('admin.select_admin_admin_user') }}</option>
                                                     <option value="client"
-                                                        {{ $user->getRole() === 'client' ? 'selected' : '' }}>Client
+                                                        {{ $user->getRole() === 'client' ? 'selected' : '' }}>
+                                                        {{ __('admin.select_client_admin_user') }}
                                                     </option>
                                                 </select>
                                             </div>
@@ -147,7 +150,8 @@
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_email_admin_users') }}</label>
                                                 <input type="email" name="email" id="email-{{ $user->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    value="{{ $user->getEmail() }}" placeholder="Price product "
+                                                    value="{{ $user->getEmail() }}"
+                                                    placeholder="{{ __('admin.email_placeholder_admin_user') }}"
                                                     required="">
                                             </div>
                                             <div>
@@ -155,7 +159,8 @@
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_balance_admin_users') }}</label>
                                                 <input type="numeric" name="balance" id="balance-{{ $user->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    value="{{ $user->getBalance() }}" placeholder="Type product name"
+                                                    value="{{ $user->getBalance() }}"
+                                                    placeholder="{{ __('admin.balance_placeholder_admin_user') }}"
                                                     required="">
                                             </div>
                                         </div>
@@ -198,7 +203,6 @@
                                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                                 clip-rule="evenodd"></path>
                                         </svg>
-                                        <span class="sr-only">Close menu</span>
                                     </button>
                                     <svg class="w-10 h-10 mt-8 mb-4 text-red-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -261,36 +265,36 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.table_header_user_nickname_admin_users') }}</label>
                     <input type="text" name="name" id="name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.nickname_placeholder_admin_user') }}" required="">
                 </div>
                 <div>
                     <label for="email"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.table_header_user_email_admin_users') }}</label>
                     <input type="email" name="email" id="email"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.email_placeholder_admin_user') }}" required="">
                 </div>
                 <div>
                     <label for="balance"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.table_header_user_balance_admin_users') }}</label>
                     <input type="numeric" name="balance" id="balance"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.balance_placeholder_admin_user') }}" required="">
                 </div>
                 <div>
                     <label for="password"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.table_header_user_password_admin_users') }}</label>
                     <input type="password" name="password" id="password"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.password_placeholder_admin_user') }}" required="">
                 </div>
                 <div>
                     <label for="role"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.table_header_user_role_admin_users') }}</label>
                     <select name="role" id="role"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option>admin</option>
-                        <option>client</option>
+                        <option>{{ __('admin.select_admin_admin_user') }}</option>
+                        <option>{{ __('admin.select_client_admin_user') }}</option>
                     </select>
                 </div>
                 <div class="flex justify-center mt-10">

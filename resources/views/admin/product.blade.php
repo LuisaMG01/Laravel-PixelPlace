@@ -145,7 +145,8 @@
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                                                 <input type="text" name="name" id="name-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    value="{{ $product->getName() }}" placeholder="Type product name"
+                                                    value="{{ $product->getName() }}"
+                                                    placeholder="{{ __('admin.name_placeholder_admin_product') }}"
                                                     required="">
                                             </div>
                                             <div>
@@ -166,7 +167,8 @@
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_price_admin_products') }}</label>
                                                 <input type="text" name="price" id="price-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    value="{{ $product->getPrice() }}" placeholder="Price product "
+                                                    value="{{ $product->getPrice() }}"
+                                                    placeholder="{{ __('admin.price_placeholder_admin_product') }}"
                                                     required="">
                                             </div>
                                             <div>
@@ -176,14 +178,16 @@
                                                     id="description-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                     value="{{ $product->getDescription() }}"
-                                                    placeholder="Type product name" required="">
+                                                    placeholder="{{ __('admin.description_placeholder_admin_product') }}"
+                                                    required="">
                                             </div>
                                             <div>
                                                 <label for="stock-{{ $product->getId() }}"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_stock_admin_products') }}</label>
                                                 <input type="text" name="stock" id="stock-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    value="{{ $product->getStock() }}" placeholder="Type product name"
+                                                    value="{{ $product->getStock() }}"
+                                                    placeholder="{{ __('admin.stock_placeholder_admin_product') }}"
                                                     required="">
                                             </div>
                                             <div>
@@ -191,7 +195,8 @@
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_brand_admin_products') }}</label>
                                                 <input type="text" name="brand" id="brand-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    value="{{ $product->getBrand() }}" placeholder="Type product name"
+                                                    value="{{ $product->getBrand() }}"
+                                                    placeholder="{{ __('admin.brand_placeholder_admin_product') }}"
                                                     required="">
                                             </div>
                                             <div>
@@ -201,14 +206,14 @@
                                                     id="keywords-{{ $product->getId() }}"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                     value="{{ implode(', ', $product->getKeywords()) }}"
-                                                    placeholder="Type product name" required="">
+                                                    placeholder="{{ __('admin.keywords_placeholder_admin_product') }}"
+                                                    required="">
                                             </div>
                                             <div>
                                                 <label for="image-{{ $product->getId() }}"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_image_admin_products') }}</label>
                                                 <input type="file" name="image" id="image"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    placeholder="Type product name"
                                                     value="{{ asset('storage/' . $product->getImage()) }}">
                                             </div>
                                         </div>
@@ -317,49 +322,49 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_name_admin_products') }}</label>
                     <input type="text" name="name" id="name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.name_placeholder_admin_product') }}" required="">
                 </div>
                 <div>
                     <label for="description"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_description_admin_products') }}</label>
                     <input type="text" name="description" id="description"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.description_placeholder_admin_product') }}" required="">
                 </div>
                 <div>
                     <label for="brand"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_brand_admin_products') }}</label>
                     <input type="text" name="brand" id="brand"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.brand_placeholder_admin_product') }}" required="">
                 </div>
                 <div>
                     <label for="price"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_price_admin_products') }}</label>
                     <input type="numeric" name="price" id="price"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.price_placeholder_admin_product') }}" required="">
                 </div>
                 <div>
                     <label for="stock"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_stock_admin_products') }}</label>
                     <input type="numeric" name="stock" id="stock"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.stock_placeholder_admin_product') }}" required="">
                 </div>
                 <div>
                     <label for="keywords"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_keywords_admin_products') }}</label>
                     <input type="text" name="keywords" id="keywords"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        placeholder="{{ __('admin.keywords_placeholder_admin_product') }}" required="">
                 </div>
                 <div>
                     <label for="image"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('admin.input_label_image_admin_products') }}</label>
                     <input type="file" name="image" id="image"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name" required="">
+                        required="">
                 </div>
                 <div>
                     <label for="category_id"

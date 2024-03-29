@@ -75,7 +75,7 @@ class OrderController extends Controller
             foreach ($productsInCart as $product) {
                 $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
 
-                Item::create([
+                $item = Item::create([
                     'amount' => $quantity,
                     'acquire_price_coins' => $product->getPrice(),
                     'product_id' => $product->getId(),
@@ -85,6 +85,8 @@ class OrderController extends Controller
                 $newStock = $product->getStock() - $quantity;
                 $product->setStock($newStock);
                 $product->save();
+                
+                ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
             }
 
             $user->setBalance($userBalance - $total);
@@ -99,15 +101,13 @@ class OrderController extends Controller
                 'items' => $order->getItems(),
             ];
 
-            ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
-
             return view('order.purchase')->with('viewData', $viewData);
         } else {
             return redirect()->route('cart.index');
         }
     }
 
-    public function index(): View|RedirectResponse
+    public function index(): View | RedirectResponse
     {
         if (Auth::check()) {
             $userId = Auth::user()->getId();

@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
     public function index(): View
     {
@@ -27,7 +27,7 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
         ]);
-        Session::flash('success', 'Category created successfully.');
+        Session::flash('success', __('admin.added_succesfully_admin_category'));
 
         return redirect()->route('admin.categories.index');
     }
@@ -36,7 +36,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->update($request->all());
-        Session::flash('success', 'Category updated successfully.');
+        Session::flash('success', __('admin.updated_succesfully_admin_category'));
 
         return redirect()->route('admin.categories.index');
     }
@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        Session::flash('success', 'Category deleted successfully.');
+        Session::flash('success', __('admin.deleted_succesfully_admin_category'));
 
         return redirect()->route('admin.categories.index');
     }

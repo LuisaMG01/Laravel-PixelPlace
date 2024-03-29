@@ -13,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     public function index(): View
     {
@@ -33,7 +33,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        Session::flash('success', 'Product deleted successfully.');
+        Session::flash('success', __('admin.deleted_succesfully_admin_product'));
 
         return redirect()->route('admin.products.index');
     }
@@ -47,7 +47,7 @@ class ProductController extends Controller
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request, $product->getName());
 
-        Session::flash('success', 'Product updated successfully.');
+        Session::flash('success', __('admin.updated_succesfully_admin_product'));
 
         return redirect()->route('admin.products.index');
     }
@@ -60,7 +60,7 @@ class ProductController extends Controller
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request, $productName);
         Product::create($request->all());
-        Session::flash('success', 'Product created successfully.');
+        Session::flash('success', __('admin.added_succesfully_admin_product'));
 
         return redirect()->route('admin.products.index');
     }
