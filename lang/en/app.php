@@ -38,6 +38,7 @@ return [
     'comment_product_show' => 'Comment',
     'see_comments_product_show' => 'See Comments',
     'add_to_cart_product_show' => 'Add to Cart',
+    'success_product_review' => 'Success!',
     
 
     //Edit review messages
