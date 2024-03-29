@@ -28,10 +28,7 @@ class ChallengeController extends Controller
 
     public function store(CreateRequest $request): RedirectResponse
     {
-
-        $challengeData = $request->all();
-
-        $challenge = Challenge::create($challengeData);
+        $challenge = Challenge::create($request->all());
         ChallengeUser::asignToUsers($challenge['id']);
 
         return redirect()->route('admin.challenges.index')->with('success', 'Challenge created successfully!');
@@ -53,4 +50,5 @@ class ChallengeController extends Controller
 
         return redirect()->route('admin.challenges.index');
     }
+
 }

@@ -13,7 +13,6 @@ class CartController extends Controller
 {
     public function index(Request $request): View
     {
-        $products = Product::all();
         $cartProducts = [];
         $cartProductData = $request->session()->get('cart_product_data');
 
@@ -22,7 +21,6 @@ class CartController extends Controller
         }
 
         $viewData = [
-            'products' => $products,
             'cartProducts' => $cartProducts,
         ];
 

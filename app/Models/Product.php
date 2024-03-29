@@ -19,6 +19,8 @@ class Product extends Model
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
      * $this->attributes['category_id'] - int - contains the ID of the associated category
+     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
+     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
 
     protected $fillable = ['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description', 'category_id'];
@@ -63,7 +65,7 @@ class Product extends Model
         return json_decode($this->attributes['keywords'], true);
     }
 
-    public function setKeywords($keywords): void
+    public function setKeywords(array $keywords): void
     {
         $this->attributes['keywords'] = $keywords;
     }
@@ -140,7 +142,7 @@ class Product extends Model
         return $this->items->sum('amount');
     }
 
-    public static function getTopSellingProducts($limit = 5)
+    public static function getTopSellingProducts(int $limit = 5)
     {
         return static::withCount('items')->orderByDesc('items_count')->limit($limit)->get();
     }

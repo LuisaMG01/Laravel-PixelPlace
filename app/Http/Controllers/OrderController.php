@@ -66,7 +66,7 @@ class OrderController extends Controller
             foreach ($productsSummary as $product) {
                 $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
 
-                $item = Item::create([
+                Item::create([
                     'amount' => $quantity,
                     'acquire_price_coins' => $product->getPrice(),
                     'product_id' => $product->getId(),

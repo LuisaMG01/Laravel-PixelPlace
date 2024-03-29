@@ -5,16 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
+/*
  * Represents a user's progress in a challenge.
  */
+
 class ChallengeUser extends Model
 {
-    /**
+    /*
      * CHALLENGE USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the primary key (id) of the challenge user
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
+     * $this->attributes[user_id] - int - contains the ID of the user who made the challengeUser
+     * $this->attributes[challenge_id] - int - contains the ID of the challenge that is associated with the challengeUser
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
+     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
+     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
     protected $fillable = ['progress', 'checked', 'created_at', 'updated_at', 'user_id', 'challenge_id'];
 

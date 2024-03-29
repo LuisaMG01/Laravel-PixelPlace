@@ -1,6 +1,8 @@
 <?php
 
 return [
+
+    // Menu messages
     'sidebar_home' => 'Home',
     'sidebar_products_index' => 'Products',
     'sidebar_challenges_index' => 'Challenges',
@@ -9,8 +11,7 @@ return [
     'sidebar_orders_index' => 'Orders',
     'sidebar_settings' => 'Settings',
 
-    // Products
-
+    // Product messages
     'title_admin_products' => 'Products',
     'name_table_admin_products' => 'Products',
     'button_entity_admin_products' => 'product',
@@ -41,7 +42,7 @@ return [
     'button_add_new_product_admin_products' => 'Add new product',
     'drawer_title_add_new_product_admin_products' => 'New Product',
 
-    // Admin
+    // Admin 
 
     'title_admin_categories' => 'Categories',
     'name_table_admin_categories' => 'Categories',
@@ -65,8 +66,7 @@ return [
     'button_add_new_category_admin_categories' => 'Add new category',
     'drawer_title_add_new_category_admin_categories' => 'New Category',
 
-    // Users
-
+    // User messages
     'title_admin_users' => 'Users',
     'name_table_admin_users' => 'Users',
     'button_entity_admin_users' => 'user',
@@ -92,7 +92,7 @@ return [
     'button_add_new_user_admin_users' => 'Add new user',
     'drawer_title_add_new_user_admin_users' => 'New User',
 
-    // Orders
+    // Order Messages
     'title_admin_orders' => 'Orders',
     'name_table_admin_orders' => 'Orders',
     'table_header_order_id_admin_orders' => 'Order ID',
@@ -100,5 +100,6 @@ return [
     'table_header_total_admin_orders' => 'Total',
     'table_header_date_admin_orders' => 'Date',
     'table_header_items_admin_orders' => 'Items',
+
 
 ];
