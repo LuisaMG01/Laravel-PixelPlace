@@ -9,45 +9,43 @@
                             <div class="flex items-center">
                                 <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                     <img class="mr-2 w-6 h-6 rounded-full"
-                                        src="{{ URL::asset('storage/' . $review->user->getName() . '.png') }}"
-                                        alt="Michael Gough">{{ $review->user->getName() }}
+                                        src="{{ URL::asset('storage/' . $review->user->getName() . '.png') }}">{{ $review->user->getName() }}
                                 </p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
-                                        title="February 8th, 2022">{{ $review->getCreatedAt() }}</time></p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400"><time
+                                        pubdate>{{ $review->getCreatedAt() }}</time></p>
                             </div>
                             <!-- Dropdown menu -->
-                            @if (auth()->check())
-                                @if ($review->getUserId() == auth()->id())
-                                <button id="dropdownComment{{ $review->getId() }}Button" data-dropdown-toggle="dropdownComment{{ $review->getId() }}"
+                            @if (auth()->check() && $review->getUserId() == auth()->id())
+                                <button id="dropdownComment{{ $review->getId() }}Button"
+                                    data-dropdown-toggle="dropdownComment{{ $review->getId() }}"
                                     class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                                     type="button">
-                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                        viewBox="0 0 16 3">
+                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 16 3">
                                         <path
                                             d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
                                     </svg>
                                     <span class="sr-only">{{ __('comment_settings_review_show') }}</span>
                                 </button>
-                                    <div id="dropdownComment{{ $review->getId() }}"
-                                        class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                            aria-labelledby="dropdownMenuIconHorizontalButton">
-                                            <li>
-                                                <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}"
-                                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('app.edit_review_show') }}</a>
-                                            </li>
-                                            <li>
-                                                <form action="{{ route('reviews.destroy', ['id' => $review->getId()]) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('app.delete_review_show') }}</button>
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                @endif
+                                <div id="dropdownComment{{ $review->getId() }}"
+                                    class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                                        aria-labelledby="dropdownMenuIconHorizontalButton">
+                                        <li>
+                                            <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}"
+                                                class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('app.edit_review_show') }}</a>
+                                        </li>
+                                        <li>
+                                            <form action="{{ route('reviews.destroy', ['id' => $review->getId()]) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('app.delete_review_show') }}</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
                             @endif
                         </footer>
                         <p class="text-gray-500 dark:text-gray-400">{{ $review->getDescription() }}</p>

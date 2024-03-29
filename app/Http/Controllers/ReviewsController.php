@@ -66,6 +66,7 @@ class ReviewsController extends Controller
     {
         $review = Review::findOrFail($id);
         $review->update($request->all());
+        Session::flash('updated', __('app.success_update_review'));
 
         return redirect()->route('products.index');
     }
