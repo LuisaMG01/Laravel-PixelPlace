@@ -69,12 +69,12 @@ return [
     'index_user_challenge_not_done_challenge' => 'You have no done challenges',
     'index_user_challenge_not_in_progress_challenge' => 'You have no in progress challenges',
     'index_user_challenge_description' => 'Description: ',
-    'index_user_challenge_reward' => 'Reward: ',
-    'index_user_challenge_max_users' => 'Max Users: ',
+    'index_user_challenge_reward' => 'Reward Coins: ',
+    'index_user_challenge_max_users' => 'Maximum amount of Users: ',
     'index_user_challenge_current_users' => 'Current Users: ',
     'index_user_challenge_expiration_date' => 'Expiration Date: ',
-    'index_user_challenge_category' => 'Category: ',
-    'index_user_challenge_goal' => 'Goal: ',
+    'index_user_challenge_category' => 'Category of the challenge: ',
+    'index_user_challenge_goal' => 'Goal (quantity of products to buy of the category): ',
     'index_user_challenge_coins' => ' Coins',
 
     // Command
