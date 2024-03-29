@@ -85,7 +85,7 @@ class OrderController extends Controller
                 $newStock = $product->getStock() - $quantity;
                 $product->setStock($newStock);
                 $product->save();
-                
+
                 ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
             }
 
@@ -107,7 +107,7 @@ class OrderController extends Controller
         }
     }
 
-    public function index(): View | RedirectResponse
+    public function index(): View|RedirectResponse
     {
         if (Auth::check()) {
             $userId = Auth::user()->getId();

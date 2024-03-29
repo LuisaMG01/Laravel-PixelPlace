@@ -23,12 +23,12 @@ return [
     'content_two_second_banner_home' => 'Enjoy fast and secure shipping options worldwide. With our
     efficient logistics network, your gaming gear will be at your doorstep in no time, ready to fuel
     your gaming adventures.',
-    'subtitle_three_second_baner_home' => '24/7 Customer Support',
+    'subtitle_three_second_banner_home' => '24/7 Customer Support',
     'content_three_second_banner_home' => 'Got questions or need assistance? Our dedicated customer
     support team is available 24/7 to provide you with expert assistance and ensure a seamless shopping
     experience.',
 
-    // Footter messages
+    // Footer messages
     'caption_footer' => '© 2024',
     'all_rights_footer' => 'All Rights
     Reserved.',
@@ -38,6 +38,7 @@ return [
     'of_pagination' => 'of',
 
     //Index product messages
+    'success_creation_review' => 'Review has been created successfully',
     'success_product_index' => 'Success!',
     'filter_products_product_index' => 'Filter Products',
     'filter_product_index' => 'Filter',
@@ -61,6 +62,7 @@ return [
     'comment_product_show' => 'Comment',
     'see_comments_product_show' => 'See Comments',
     'add_to_cart_product_show' => 'Add to Cart',
+    'success_product_review' => 'Success!',
 
     //Edit review messages
     'update_review_edit' => 'Update Review',
@@ -97,7 +99,7 @@ return [
     'stock_error_cart_index' => 'out of stock',
     'added_succesfully_product_index' => 'was added successfully',
 
-    // Index order messages
+    // Order messages
     'title_order_preorder' => 'Preorder',
     'price_order_preorder' => 'Price',
     'product_order_preorder' => 'Product',
@@ -113,13 +115,13 @@ return [
     'table_action_order_index' => 'Action',
     'table_info_order_index' => 'More Info',
     'title_order_index' => 'Order #',
-    'table_procuct_order_purchase' => 'Product',
+    'table_product_order_purchase' => 'Product',
     'table_price_order_purchase' => 'Price',
     'table_quantity_order_purchase' => 'Quantity',
     'table_subtotal_order_purchase' => 'Subtotal',
     'table_total_order_purchase' => 'Total',
     'title_order_show' => 'Order #',
-    'table_procuct_order_show' => 'Product',
+    'table_product_order_show' => 'Product',
     'table_adquire_price_order_show' => 'Adquire Price',
     'table_quantity_order_show' => 'Quantity',
     'table_subtotal_order_show' => 'Subtotal',

@@ -92,7 +92,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">{{ __('app.subtitle_three_second_baner_home') }}
+                    <h3 class="mb-2 text-xl font-bold dark:text-white">{{ __('app.subtitle_three_second_banner_home') }}
                     </h3>
                     <p class="text-gray-500 dark:text-gray-400">{{ __('app.content_three_second_banner_home') }}</p>
                 </div>
