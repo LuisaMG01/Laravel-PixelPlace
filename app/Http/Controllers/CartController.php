@@ -13,7 +13,6 @@ class CartController extends Controller
 {
     public function index(Request $request): View
     {
-        $products = Product::all();
         $cartProducts = [];
         $cartProductData = $request->session()->get('cart_product_data');
 
@@ -22,7 +21,6 @@ class CartController extends Controller
         }
 
         $viewData = [
-            'products' => $products,
             'cartProducts' => $cartProducts,
         ];
 
@@ -36,7 +34,7 @@ class CartController extends Controller
             $cartProductData[$id] = $request->input('quantity');
             $request->session()->put('cart_product_data', $cartProductData);
             $product = Product::findOrFail($id);
-            Session::flash('success', $product->getName().' was added successfully.');
+            Session::flash('success', $product->getName());
 
             return back();
         } else {

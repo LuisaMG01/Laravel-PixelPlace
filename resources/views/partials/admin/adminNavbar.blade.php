@@ -20,7 +20,7 @@
                 <a href="{{ route('admin.home.index') }}" class="flex ml-2 md:mr-24">
                     <img src="{{ asset('icons/ghost.png') }}" class="h-8 mr-3" alt="FlowBite Logo" />
                     <span
-                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">PixelPlace</span>
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{ __('app.title_navbar_home') }}</span>
                 </a>
             </div>
             <div class="flex items-center">
@@ -31,9 +31,8 @@
                     <button type="button"
                         class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                         id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
-                        <span class="sr-only">Open user menu</span>
                         <img class="w-8 h-8 rounded-full"
-                            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                            src="{{ URL::asset('storage/' . Auth::user()->getName() . '.png') }}" alt="user photo">
                     </button>
                 </div>
                 <!-- Dropdown menu -->
@@ -49,16 +48,11 @@
                     </div>
                     <ul class="py-1" role="none">
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                role="menuitem">Settings</a>
-                        </li>
-
-                        <li>
                             <form action="{{ route('logout') }}" method="POST" id="logout">
                                 <a href="#"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    role="menuitem" onclick="document.getElementById('logout').submit();">Sign out</a>
+                                    role="menuitem"
+                                    onclick="document.getElementById('logout').submit();">{{ __('app.sign_out_dropdown_navbar') }}</a>
                                 @csrf
                             </form>
                         </li>
