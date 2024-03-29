@@ -5,7 +5,7 @@
         <table class="w-full">
             <thead>
                 <tr>
-                    <th class="text-left font-semibold">{{ __('app.table_procuct_order_show') }}</th>
+                    <th class="text-left font-semibold">{{ __('app.table_product_order_show') }}</th>
                     <th class="text-left font-semibold">{{ __('app.table_adquire_price_order_show') }}</th>
                     <th class="text-left font-semibold">{{ __('app.table_quantity_order_show') }}</th>
                     <th class="text-left font-semibold">{{ __('app.table_subtotal_order_show') }}</th>

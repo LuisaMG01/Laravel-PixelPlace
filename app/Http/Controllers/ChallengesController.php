@@ -50,7 +50,7 @@ class ChallengesController extends Controller
             'progressData' => $progressData,
             'categories' => $categories,
         ];
-        
+
         return view('challenge.authIndex')->with('viewData', $viewData);
     }
 
