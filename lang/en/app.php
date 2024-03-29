@@ -65,6 +65,7 @@ return [
     'success_product_review' => 'Success!',
 
     //Edit review messages
+    'success_update_review' => 'Review has been edited successfully',
     'update_review_edit' => 'Update Review',
     'description_review_edit' => 'Description',
     'rating_review_edit' => 'Rating',
