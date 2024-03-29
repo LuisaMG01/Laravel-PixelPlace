@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
-    /**
+    /*
      * USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the user primary key (id)
      * $this->attributes['name'] - string - contains the user name
@@ -19,6 +19,8 @@ class User extends Authenticatable
      * $this->attributes['balance'] - int - contains the user balance
      * $this->attributes['role'] - string - contains the user role
      * $this->attributes['password'] - string - contains the user password
+     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
+     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
     protected $fillable = [
         'name',
@@ -89,12 +91,17 @@ class User extends Authenticatable
         return $this->attributes['password'];
     }
 
-    public function setPassword(string $password): void
+    public function getCreatedAt(): string
     {
-        $this->attributes['password'] = $password;
+        return $this->attributes['created_at'];
     }
 
-    /** Model relations */
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    /* Model relations */
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);

@@ -8,14 +8,15 @@
     <link rel="icon" href="{{ asset('icons/ghost.png') }}" type="image/x-icon" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link href="{{ asset('css/review.css') }}" rel="stylesheet" />
-    
+    <link href="{{ asset('css/challenge.css') }}" rel="stylesheet" />
+
 </head>
 
 <body>
     @include('partials/navbar')
     <div class="container mx-auto">
         @yield('content')
-    
+
     </div>
     @include('partials/footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

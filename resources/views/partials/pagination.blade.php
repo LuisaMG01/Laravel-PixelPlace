@@ -23,8 +23,9 @@
             </a>
         @endif
 
-        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ __('app.showing_pagination') }} <span
                 class="font-semibold text-gray-900 dark:text-white">{{ $paginator->firstItem() }}-{{ $paginator->lastItem() }}</span>
-            of <span class="font-semibold text-gray-900 dark:text-white">{{ $paginator->total() }}</span></span>
+            {{ __('app.of_pagination') }} <span
+                class="font-semibold text-gray-900 dark:text-white">{{ $paginator->total() }}</span></span>
     </div>
 </div>

@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * Represents a user's progress in a challenge.
- */
 class ChallengeUser extends Model
 {
-    /**
+    /*
      * CHALLENGE USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the primary key (id) of the challenge user
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
@@ -62,7 +59,7 @@ class ChallengeUser extends Model
         return $this->updated_at;
     }
 
-    /** Model relations */
+    /* Model relations */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -73,7 +70,7 @@ class ChallengeUser extends Model
         return $this->belongsTo(Challenge::class);
     }
 
-    public static function changeProgress(string $userId, string $productId, int $amount): void
+    public static function changeProgress(int $userId, int $productId, int $amount): void
     {
         $user = User::find($userId);
         $product = Product::find($productId);

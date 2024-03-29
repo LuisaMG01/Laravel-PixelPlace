@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Challenge extends Model
 {
-    /**
+    /*
      * CHALLENGE ATTRIBUTES
-     * $this->attributes['id'] - string - contains the challenge primary key (string)
+     * $this->attributes['id'] - int - contains the challenge primary key (int)
      * $this->attributes['name'] - string - contains the challenge name
      * $this->attributes['description'] - string - contains the challenge description
      * $this->attributes['checked'] - bool - contains the challenge status
@@ -19,20 +19,24 @@ class Challenge extends Model
      * $this->attributes['max_users'] - int - contains the challenge maximum users
      * $this->attributes['current_users'] - int - contains the challenge current users
      * $this->attributes['expiration_date'] - datetime - contains the challenge expiration date
-     * $this->attributes['category_id'] - int - contains the challenge category id
-     * $this->attributes['category_quantity'] - int - contains the challenge category quantity
+     * $this->attributes['category_id'] - int - contains the challenge categeory id
+     * $this->attributes['product_quantity'] - int - contains the challenge product quantity
      */
     protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
-    protected static function booted()
+    public function __construct(array $attributes = [])
     {
-        static::creating(function ($challenge) {
-            $challenge->current_users = 0;
-            $challenge->checked = 0;
-        });
+        parent::__construct($attributes);
+
+        if (! isset($this->attributes['current_users'])) {
+            $this->attributes['current_users'] = 0;
+        }
+        if (! isset($this->attributes['checked'])) {
+            $this->attributes['checked'] = 0;
+        }
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->attributes['id'];
     }
@@ -112,6 +116,11 @@ class Challenge extends Model
         return $this->attributes['category_id'];
     }
 
+    public function setCategoryId(string $categoryId): void
+    {
+        $this->attributes['category_id'] = $categoryId;
+    }
+
     public function getCategoryQuantity(): int
     {
         return $this->attributes['category_quantity'];
@@ -122,7 +131,7 @@ class Challenge extends Model
         $this->attributes['category_quantity'] = $categoryQuantity;
     }
 
-    /** Model relations */
+    /* Model relations */
     public function challengeUser(): HasMany
     {
         return $this->hasMany(ChallengeUser::class);

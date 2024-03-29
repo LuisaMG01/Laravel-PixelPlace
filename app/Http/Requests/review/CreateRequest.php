@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Review;
+namespace App\Http\Requests\review;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,6 +16,7 @@ class UpdateRequest extends FormRequest
         return [
             'description' => 'required',
             'rating' => ['required', 'gt:0', 'lt:6'],
+            'product_id' => 'required',
         ];
     }
 }

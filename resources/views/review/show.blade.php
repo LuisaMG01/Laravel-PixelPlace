@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @if(count($viewData['reviews']) > 0)
+    @if (count($viewData['reviews']) > 0)
         @foreach ($viewData['reviews'] as $review)
             <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
                 <div class="max-w-2xl mx-auto px-4">
@@ -65,8 +65,10 @@
             </section>
         @endforeach
     @else
-        <div class="p-4 mb-4 text-lg text-purple-800 rounded-lg bg-purple-50 dark:bg-gray-800 dark:text-purple-300 text-center" role="alert">
-            <span class="font-medium">{{ __('app.hey_review_show') }}</span> {{ __('app.reviews_empty_message_review_show') }}
+        <div class="p-4 mb-4 text-lg text-purple-800 rounded-lg bg-purple-50 dark:bg-gray-800 dark:text-purple-300 text-center"
+            role="alert">
+            <span class="font-medium">{{ __('app.hey_review_show') }}</span>
+            {{ __('app.reviews_empty_message_review_show') }}
         </div>
     @endif
     <!-- Pagination -->
