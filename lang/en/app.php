@@ -98,6 +98,7 @@ return [
     'balance_error_cart_index' => 'Insufficient balance to complete the purchase',
     'stock_error_cart_index' => 'out of stock',
     'added_succesfully_product_index' => 'was added successfully',
+    'empty_cart_index' => 'You do not have any items in your cart, please add products to be able to purchase them',
 
     // Order messages
     'title_order_preorder' => 'Preorder',

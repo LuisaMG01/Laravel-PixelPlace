@@ -203,4 +203,24 @@ class Product extends Model
             $cartProductData[$id] = $quantity;
         }
     }
+
+    public static function calculateTotalAndSummary(array $productsInSession): array
+    {
+        $total = 0;
+        $productsSummary = [];
+
+        $productsInCart = static::findMany(array_keys($productsInSession));
+
+        foreach ($productsInCart as $product) {
+            $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
+            $subtotal = $product->getPrice() * $quantity;
+            $total += $subtotal;
+            $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];
+        }
+
+        return [
+            'total' => $total,
+            'productsSummary' => $productsSummary,
+        ];
+    }
 }
