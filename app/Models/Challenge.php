@@ -21,6 +21,8 @@ class Challenge extends Model
      * $this->attributes['expiration_date'] - datetime - contains the challenge expiration date
      * $this->attributes['category_id'] - int - contains the challenge categeory id
      * $this->attributes['product_quantity'] - int - contains the challenge product quantity
+     * $this->attributes['created_at'] - datetime - contains the challenge creation date
+     * $this->attributes['updated_at'] - datetime - contains the challenge update date
      */
     protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 

@@ -12,6 +12,10 @@ class ChallengeUser extends Model
      * $this->attributes['id'] - int - contains the primary key (id) of the challenge user
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
+     * $this->attributes['created_at'] - string - contains the date when the challenge user was created
+     * $this->attributes['updated_at'] - string - contains the date when the challenge user was updated
+     * $this->attributes['user_id'] - int - contains the foreign key of the user
+     * $this->attributes['challenge_id'] - int - contains the foreign key of the challenge
      */
     protected $fillable = ['progress', 'checked', 'created_at', 'updated_at', 'user_id', 'challenge_id'];
 
@@ -31,32 +35,32 @@ class ChallengeUser extends Model
 
     public function getProgress(): int
     {
-        return $this->progress;
+        return $this->attributes['progress'];
     }
 
     public function setProgress(int $progress): void
     {
-        $this->progress = $progress;
+        $this->attributes['progress'] = $progress;
     }
 
     public function getChecked(): bool
     {
-        return $this->checked;
+        return $this->attributes['checked'];
     }
 
     public function setChecked(bool $checked): void
     {
-        $this->checked = $checked;
+        $this->attributes['checked'] = $checked;
     }
 
     public function getCreatedAt(): string
     {
-        return $this->created_at;
+        return $this->attributes['created_at'];
     }
 
     public function getUpdatedAt(): string
     {
-        return $this->updated_at;
+        return $this->attributes['updated_at'];
     }
 
     /* Model relations */
@@ -99,6 +103,9 @@ class ChallengeUser extends Model
                 $challenge->save();
                 $user->setBalance($user->getBalance() + $challenge->getRewardCoins());
                 $user->save();
+
+                $message = "¡Felicidades! Has completado el desafío: " . $challenge->getName();
+                $user->notify(new ChallengeCompletedNotification($message));
             } else {
                 $challengeUser->setChecked(false);
             }
