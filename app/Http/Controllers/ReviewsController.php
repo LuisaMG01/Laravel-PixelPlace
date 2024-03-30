@@ -28,7 +28,7 @@ class ReviewsController extends Controller
         $userId = Auth::id();
         $request->merge(['user_id' => $userId]);
         Review::create($request->only(['description', 'rating', 'product_id', 'user_id']));
-        Session::flash('message', __('app.success_creation_product'));
+        Session::flash('message', __('app.success_creation_review'));
 
         return redirect()->route('products.index');
     }
@@ -66,6 +66,7 @@ class ReviewsController extends Controller
     {
         $review = Review::findOrFail($id);
         $review->update($request->all());
+        Session::flash('updated', __('app.success_update_review'));
 
         return redirect()->route('products.index');
     }

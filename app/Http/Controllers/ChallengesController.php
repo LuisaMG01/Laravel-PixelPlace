@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Challenge;
 use App\Models\ChallengeUser;
-use App\Models\User;
 use Illuminate\View\View;
 
 class ChallengesController extends Controller
 {
-    public function indexUser(string $userId): View
+    public function indexUser(int $userId): View
     {
-        $user = User::findOrFail($userId);
-
         $undoneChallengeIds = ChallengeUser::where('user_id', $userId)
             ->where('checked', false)
             ->where('progress', '=', 0)
@@ -27,8 +23,6 @@ class ChallengesController extends Controller
             ->where('checked', false)
             ->where('progress', '>', 0)
             ->pluck('challenge_id');
-
-        $categories = Category::all();
 
         $undoneChallenges = Challenge::whereIn('id', $undoneChallengeIds)->where('checked', 0)->get();
         $doneChallenges = Challenge::whereIn('id', $doneChallengeIds)->get();
@@ -48,20 +42,17 @@ class ChallengesController extends Controller
             'doneChallenges' => $doneChallenges,
             'inProgressChallenges' => $inProgressChallenges,
             'progressData' => $progressData,
-            'categories' => $categories,
         ];
-        
+
         return view('challenge.authIndex')->with('viewData', $viewData);
     }
 
     public function index(): View
     {
         $challenges = Challenge::all();
-        $categories = Category::all();
 
         $viewData = [
             'challenges' => $challenges,
-            'categories' => $categories,
         ];
 
         return view('challenge.noAuthIndex')->with('viewData', $viewData);

@@ -12,32 +12,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class OrderController extends Controller
+class OrdersController extends Controller
 {
     public function preorder(Request $request): View|RedirectResponse
     {
         $productsInSession = $request->session()->get('cart_product_data');
-        $productsSummary = [];
 
         if ($productsInSession) {
-            $total = 0;
-            $productsInCart = Product::findMany(array_keys($productsInSession));
-
-            foreach ($productsInCart as $product) {
-                $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
-                $subtotal = $product->getPrice() * $quantity;
-                $total += $subtotal;
-                $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];
-            }
+            $productsData = Product::calculateTotalAndSummary($productsInSession);
 
             $viewData = [
-                'products' => $productsSummary,
-                'total' => $total,
+                'products' => $productsData['productsSummary'],
+                'total' => $productsData['total'],
             ];
 
             return view('order.preorder')->with('viewData', $viewData);
         } else {
-            return redirect()->route('cart.index');
+            return redirect()->route('cart.index')->with('empty_cart', ' ');
         }
     }
 
@@ -49,13 +40,14 @@ class OrderController extends Controller
             $userId = Auth::user()->getId();
             $user = User::findOrFail($userId);
             $userBalance = $user->getBalance();
-            $total = 0;
+            $calculationResult = Product::calculateTotalAndSummary($productsInSession);
+            $total = $calculationResult['total'];
+            $productsSummary = $calculationResult['productsSummary'];
             $productsInCart = Product::findMany(array_keys($productsInSession));
 
-            foreach ($productsInCart as $product) {
-                $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
-                $subtotal = $product->getPrice() * $quantity;
-                $total += $subtotal;
+            foreach ($productsSummary as $productId => $productData) {
+                $product = $productData[0];
+                $quantity = $productData[2];
                 if ($product->getStock() < $quantity) {
                     return redirect()->route('cart.index')->with('stock_error', $product->getName());
                 }
@@ -85,7 +77,7 @@ class OrderController extends Controller
                 $newStock = $product->getStock() - $quantity;
                 $product->setStock($newStock);
                 $product->save();
-                
+
                 ChallengeUser::changeProgress($userId, $product->getId(), $quantity);
             }
 
@@ -93,7 +85,6 @@ class OrderController extends Controller
             $user->save();
             $order->setTotalCoins($total);
             $order->save();
-
             $request->session()->forget('cart_product_data');
 
             $viewData = [
@@ -107,12 +98,12 @@ class OrderController extends Controller
         }
     }
 
-    public function index(): View | RedirectResponse
+    public function index(): View|RedirectResponse
     {
         if (Auth::check()) {
             $userId = Auth::user()->getId();
             $user = User::findOrFail($userId);
-            $orders = $user->orders;
+            $orders = $user->orders()->paginate(8);
 
             $viewData = [
                 'orders' => $orders,

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -147,6 +148,37 @@ class Product extends Model
         return static::withCount('items')->orderByDesc('items_count')->limit($limit)->get();
     }
 
+    public static function filters(Request $request): object
+    {
+        $products = Product::query();
+
+        if ($request->filled('category')) {
+            $products->where('category_id', $request->category);
+        }
+
+        if ($request->filled('price')) {
+            $price = $request->price;
+            if ($price === '0-49') {
+                $products->where('price', '<', 50);
+            } elseif ($price === '301') {
+                $products->where('price', '>', 300);
+            } else {
+                $priceRange = explode('-', $price);
+                $products->whereBetween('price', [$priceRange[0], $priceRange[1]]);
+            }
+        }
+
+        if ($request->filled('brand')) {
+            $products->where('brand', 'like', '%'.$request->brand.'%');
+        }
+
+        if ($request->filled('name')) {
+            $products->where('name', 'like', '%'.$request->name.'%');
+        }
+
+        return $products;
+    }
+
     public function getRating(): float
     {
         $reviews = $this->review;
@@ -170,5 +202,25 @@ class Product extends Model
         if ($stock < $quantity) {
             $cartProductData[$id] = $quantity;
         }
+    }
+
+    public static function calculateTotalAndSummary(array $productsInSession): array
+    {
+        $total = 0;
+        $productsSummary = [];
+
+        $productsInCart = static::findMany(array_keys($productsInSession));
+
+        foreach ($productsInCart as $product) {
+            $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
+            $subtotal = $product->getPrice() * $quantity;
+            $total += $subtotal;
+            $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];
+        }
+
+        return [
+            'total' => $total,
+            'productsSummary' => $productsSummary,
+        ];
     }
 }

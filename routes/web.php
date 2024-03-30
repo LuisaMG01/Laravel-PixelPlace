@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 // User settings
-Route::get('/settings', 'UserController@settings')->name('user.settings');
-Route::put('/settings/update/{id}', 'UserController@update')->name('user.update');
+Route::get('/settings', 'UsersController@settings')->name('user.settings');
+Route::put('/settings/update/{id}', 'UsersController@update')->name('user.update');
 
 Auth::routes();
 
