@@ -17,6 +17,7 @@ class ChallengeUser extends Model
      * $this->attributes['user_id'] - int - contains the foreign key of the user
      * $this->attributes['challenge_id'] - int - contains the foreign key of the challenge
      */
+    
     protected $fillable = ['progress', 'checked', 'created_at', 'updated_at', 'user_id', 'challenge_id'];
 
     public function __construct(array $attributes = [])
@@ -104,8 +105,8 @@ class ChallengeUser extends Model
                 $user->setBalance($user->getBalance() + $challenge->getRewardCoins());
                 $user->save();
 
-                $message = "¡Felicidades! Has completado el desafío: " . $challenge->getName();
-                $user->notify(new ChallengeCompletedNotification($message));
+                $message = __('app.success_challenge') . $challenge->getName();
+                session()->flash('challengeCompleted', $message);
             } else {
                 $challengeUser->setChecked(false);
             }

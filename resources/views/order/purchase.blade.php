@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+
+    @if(session('challengeCompleted'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">{{ session('challengeCompleted') }}</span>
+        </div>
+    @endif
     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">{{ __('app.title_order_index') }}{{ $viewData['order']->getId() }}</h5>
     <div class="bg-white rounded-lg shadow-md p-6 mb-4">
         <table class="w-full">
