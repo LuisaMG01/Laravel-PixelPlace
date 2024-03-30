@@ -51,7 +51,8 @@ return [
     'keywords_placeholder_admin_product' => 'Type product keywords',
     'stock_placeholder_admin_product' => 'Type product stock',
 
-    // Category messages
+    // Admin 
+
     'title_admin_categories' => 'Categories',
     'name_table_admin_categories' => 'Categories',
     'button_entity_admin_categories' => 'category',

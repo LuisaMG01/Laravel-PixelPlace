@@ -48,62 +48,11 @@
         </div>
     </section>
 
-    <section class="bg-gray-50 dark:bg-gray-800">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-            <div class="max-w-screen-md mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">
-                    {{ __('app.title_second_banner_home') }}</h2>
-                <p class="text-gray-500 sm:text-xl dark:text-gray-400">{{ __('app.content_second_banner_home') }}</p>
-            </div>
-            <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-                <div>
-                    <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
-                        <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10 3a7 7 0 00-7 7c0 3.866 3.134 7 7 7s7-3.134 7-7a7 7 0 00-7-7zM8 7a1 1 0 011-1h2a1 1 0 010 2H9a1 1 0 01-1-1zm4 1a1 1 0 00-1-1H9a1 1 0 100 2h2a1 1 0 001-1zm-3 3a1 1 0 100 2h1a1 1 0 100-2H9z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">{{ __('app.subtitle_one_second_banner_home') }}</h3>
-                    <p class="text-gray-500 dark:text-gray-400">{{ __('app.content_one_second_banner_home') }}</p>
-                </div>
-                <div>
-                    <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
-                        <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M5.293 4.707a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">{{ __('app.subtitle_two_second_banner_home') }}</h3>
-                    <p class="text-gray-500 dark:text-gray-400">{{ __('app.content_two_second_banner_home') }}</p>
-                </div>
-                <div>
-                    <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
-                        <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M3.243 8a1 1 0 01.572-.912l8-3A1 1 0 0112 5v10a1 1 0 01-1.185.992l-8-2A1 1 0 012 13V8.618A1 1 0 013.243 8zM17 4a1 1 0 00-1 1v10a1 1 0 001.184.992l8-2A1 1 0 0020 13V5a1 1 0 00-1-1h-6z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">{{ __('app.subtitle_three_second_banner_home') }}
-                    </h3>
-                    <p class="text-gray-500 dark:text-gray-400">{{ __('app.content_three_second_banner_home') }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section>
         <div id="default-carousel" class="relative w-full max-w-screen-md mx-auto" data-carousel="slide">
             <div class="flex items-center justify-center h-full">
-                <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Top 5 most popular products</h2>
+                <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">
+                    {{ __('app.title_second_banner_images_products_home') }}</h2>
             </div>
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
@@ -111,7 +60,7 @@
                     <div class="hidden duration-700 ease-in-out flex justify-center items-center" data-carousel-item>
                         <a href="{{ route('products.show', ['id' => $product->getId()]) }}"
                             class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-lg shadow-md md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                            <img class="object-cover w-full h-72 md:w-72 md:h-72 rounded-t-lg md:rounded-none md:rounded-l-lg"
                                 src="{{ URL::asset('storage/' . $product->getName() . '.png') }}" alt="product image">
                             <div class="flex flex-col justify-between p-4 leading-normal">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -173,6 +122,59 @@
                     <span class="sr-only">Next</span>
                 </span>
             </button>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <div class="max-w-screen-md mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">
+                    {{ __('app.title_second_banner_home') }}</h2>
+                <p class="text-gray-500 sm:text-xl dark:text-gray-400">{{ __('app.content_second_banner_home') }}</p>
+            </div>
+            <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+                <div>
+                    <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
+                        <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10 3a7 7 0 00-7 7c0 3.866 3.134 7 7 7s7-3.134 7-7a7 7 0 00-7-7zM8 7a1 1 0 011-1h2a1 1 0 010 2H9a1 1 0 01-1-1zm4 1a1 1 0 00-1-1H9a1 1 0 100 2h2a1 1 0 001-1zm-3 3a1 1 0 100 2h1a1 1 0 100-2H9z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="mb-2 text-xl font-bold dark:text-white">{{ __('app.subtitle_one_second_banner_home') }}</h3>
+                    <p class="text-gray-500 dark:text-gray-400">{{ __('app.content_one_second_banner_home') }}</p>
+                </div>
+                <div>
+                    <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
+                        <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M5.293 4.707a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="mb-2 text-xl font-bold dark:text-white">{{ __('app.subtitle_two_second_banner_home') }}
+                    </h3>
+                    <p class="text-gray-500 dark:text-gray-400">{{ __('app.content_two_second_banner_home') }}</p>
+                </div>
+                <div>
+                    <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
+                        <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3.243 8a1 1 0 01.572-.912l8-3A1 1 0 0112 5v10a1 1 0 01-1.185.992l-8-2A1 1 0 012 13V8.618A1 1 0 013.243 8zM17 4a1 1 0 00-1 1v10a1 1 0 001.184.992l8-2A1 1 0 0020 13V5a1 1 0 00-1-1h-6z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="mb-2 text-xl font-bold dark:text-white">{{ __('app.subtitle_three_second_banner_home') }}
+                    </h3>
+                    <p class="text-gray-500 dark:text-gray-400">{{ __('app.content_three_second_banner_home') }}</p>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
