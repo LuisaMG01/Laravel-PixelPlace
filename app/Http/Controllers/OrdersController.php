@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class OrderController extends Controller
+class OrdersController extends Controller
 {
     public function preorder(Request $request): View|RedirectResponse
     {
@@ -98,12 +98,12 @@ class OrderController extends Controller
         }
     }
 
-    public function index(): View|RedirectResponse
+    public function index(Request $request): View|RedirectResponse
     {
         if (Auth::check()) {
             $userId = Auth::user()->getId();
-            $user = User::findOrFail($userId);
-            $orders = $user->orders;
+            $orders = Order::filters($request)->where('user_id', $userId)->paginate(10);
+            $orders->appends($request->all());
 
             $viewData = [
                 'orders' => $orders,

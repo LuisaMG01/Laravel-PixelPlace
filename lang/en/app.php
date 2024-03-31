@@ -54,6 +54,7 @@ return [
     'example_play_5_product_index' => 'E.g.: Play 5',
     'close_product_index' => 'Close',
     'add_to_cart_product_index' => 'Add to cart',
+    'success_message_product_index' => 'was successfully added',
 
     //Show product messages
     'category_product_show' => 'Category',
@@ -130,6 +131,11 @@ return [
     'table_date_order_show' => 'Date',
     'go_back_button_order_show' => 'Go Back',
     'orders_empty_message' => 'There are currently no orders.',
+    'filter_orders_order_index' => 'Filter Orders',
+    'date_before_filter_order_index' => 'Filter before',
+    'date_after_filter_order_index' => 'Filter after',
+    'filter_order_index' => 'Filter',
+    'close_order_index' => 'Close',
 
     // Navbar messages
     'title_navbar_home' => 'PixelPlace',

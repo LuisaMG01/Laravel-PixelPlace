@@ -11,20 +11,25 @@ use Illuminate\View\View;
 
 class CartController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request): View|RedirectResponse
     {
-        $cartProducts = [];
         $cartProductData = $request->session()->get('cart_product_data');
 
         if ($cartProductData) {
-            $cartProducts = Product::findMany(array_keys($cartProductData));
+            $cartProducts = [];
+
+            if ($cartProductData) {
+                $cartProducts = Product::findMany(array_keys($cartProductData));
+            }
+
+            $viewData = [
+                'cartProducts' => $cartProducts,
+            ];
+
+            return view('cart.index')->with('viewData', $viewData);
+        } else {
+            return redirect()->route('cart.index')->with('empty_cart', ' ');
         }
-
-        $viewData = [
-            'cartProducts' => $cartProducts,
-        ];
-
-        return view('cart.index')->with('viewData', $viewData);
     }
 
     public function add(int $id, Request $request): RedirectResponse
@@ -55,6 +60,6 @@ class CartController extends Controller
         unset($cartProductData[$id]);
         $request->session()->put('cart_product_data', $cartProductData);
 
-        return back();
+        return redirect()->route('cart.index');
     }
 }
