@@ -12,53 +12,76 @@
             <span class="block sm:inline">{{ session('message') }}</span>
         </div>
     @endif
+    @if (session('updated'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">{{ __('app.success_review_edit') }}</strong>
+            <span class="block sm:inline">{{ session('updated') }}</span>
+        </div>
+    @endif
+    <br>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="md:col-span-1 relative">
-            <div class="max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-md">
-                <div class="px-6 py-4">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ __('app.filter_products_product_index') }}</h2>
-                    <button id="toggleFilterBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter_product_index') }}</button>
-                    <div id="filterForm" class="hidden absolute bg-white rounded-lg border border-gray-300 shadow-md py-4 px-6 top-0 left-0 mt-12 z-10">
-                        <form action="{{ route('products.index') }}" method="GET">
-                            <div class="mb-4">
-                                <label for="category" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.category_product_index') }}:</label>
-                                <select name="category" id="category" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
-                                    <option value="">{{ __('app.all_categories_product_index') }}</option>
-                                    @foreach ($viewData['categories'] as $category)
-                                        <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label for="price" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.price_product_index') }}:</label>
-                                <select name="price" id="price" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
-                                    <option value="">{{ __('app.select_price_range_product_index') }}</option>
-                                    <option value="0-49">{{ __('app.less_than_50_product_index') }}</option>
-                                    @for ($i = 50; $i <= 300; $i += 50)
-                                        <option value="{{ $i}}-{{ $i + 49 }}">{{ $i.'$' }} - {{ ($i + 49).'$' }}</option>
-                                    @endfor
-                                    <option value="301">{{ __('app.more_than_300_product_index') }}</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label for="brand" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.brand_product_index') }}:</label>
-                                <input type="text" name="brand" id="brand" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="{{ __('app.example_sony_product_index') }}">
-                            </div>
-                            <div class="mb-4">
-                                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.name_product_index') }}:</label>
-                                <input type="text" name="name" id="name" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300" placeholder="{{ __('app.example_play_5_product_index') }}">
-                            </div>
-                            <div class="flex justify-end">
-                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter_product_index') }}</button>
-                                <button type="button" id="closeFilterBtn" class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.close_product_index') }}</button>
-                            </div>
-                        </form>
+            <div class="md:col-span-1 relative">
+                <div class="max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="px-6 py-4">
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ __('app.filter_products_product_index') }}
+                        </h2>
+                        <button id="toggleFilterBtn"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter_product_index') }}</button>
+                        <div id="filterForm"
+                            class="hidden absolute bg-white rounded-lg border border-gray-300 shadow-md py-4 px-6 top-0 left-0 mt-12 z-10">
+                            <form action="{{ route('products.index') }}" method="GET">
+                                <div class="mb-4">
+                                    <label for="category"
+                                        class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.category_product_index') }}:</label>
+                                    <select name="category" id="category"
+                                        class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
+                                        <option value="">{{ __('app.all_categories_product_index') }}</option>
+                                        @foreach ($viewData['categories'] as $category)
+                                            <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="price"
+                                        class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.price_product_index') }}:</label>
+                                    <select name="price" id="price"
+                                        class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
+                                        <option value="">{{ __('app.select_price_range_product_index') }}</option>
+                                        <option value="0-49">{{ __('app.less_than_50_product_index') }}</option>
+                                        @for ($i = 50; $i <= 300; $i += 50)
+                                            <option value="{{ $i }}-{{ $i + 49 }}">{{ $i . '$' }} -
+                                                {{ $i + 49 . '$' }}</option>
+                                        @endfor
+                                        <option value="301">{{ __('app.more_than_300_product_index') }}</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="brand"
+                                        class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.brand_product_index') }}:</label>
+                                    <input type="text" name="brand" id="brand"
+                                        class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
+                                        placeholder="{{ __('app.example_sony_product_index') }}">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="name"
+                                        class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.name_product_index') }}:</label>
+                                    <input type="text" name="name" id="name"
+                                        class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
+                                        placeholder="{{ __('app.example_play_5_product_index') }}">
+                                </div>
+                                <div class="flex justify-end">
+                                    <button type="submit"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter_product_index') }}</button>
+                                    <button type="button" id="closeFilterBtn"
+                                        class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.close_product_index') }}</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

@@ -27,6 +27,7 @@ return [
     'content_three_second_banner_home' => 'Got questions or need assistance? Our dedicated customer
     support team is available 24/7 to provide you with expert assistance and ensure a seamless shopping
     experience.',
+    'title_second_banner_images_products_home' => 'See our most selled products !',
 
     // Footer messages
     'caption_footer' => '© 2024',
@@ -70,6 +71,8 @@ return [
     'description_review_edit' => 'Description',
     'rating_review_edit' => 'Rating',
     'update_button_review_edit' => 'Update Review',
+    'success_update_review' => 'Review has been edited successfully',
+    'success_review_edit' => 'Success!',
 
     //Show review messages
     'comment_settings_review_show' => 'Comment settings',
@@ -183,6 +186,7 @@ return [
     'index_user_challenge_coins' => ' Coins',
     'index_user_challenge_progress' => 'March to the Goal: ',
     'index_user_products_word' => ' Products.',
+    'success_challenge' => 'Congratulations! You have completed the challenge: ',
 
     // Command
     'info_expired_challenges' => 'Expired challenges checked successfully.',
