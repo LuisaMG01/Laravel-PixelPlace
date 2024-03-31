@@ -20,10 +20,8 @@
     </div>
 
     <div id="initialImage" class="flex justify-center items-center flex-col mb-4">
-        <div style="position: relative; width: 50%; height: 0; padding-bottom: 37.5%;">
-            <iframe src="https://giphy.com/embed/NYBVJUGdiJdG8" width="240" height="181" frameBorder="0"
-                class="giphy-embed" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"
-                allowFullScreen></iframe>
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2xrYXNvZXFvdTBoZXA2em0zaTlkOXVwZ3Nzb2E0Mzl2cWpwMXltYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JGxxK2YX1ro3e/giphy.gif" class="gif-img">
         </div>
     </div>
     

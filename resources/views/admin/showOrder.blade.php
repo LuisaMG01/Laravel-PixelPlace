@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Order # {{ $viewData['order']->getId() }}</h5>
     <div class="bg-white rounded-lg shadow-md p-6 mb-4">
         <table class="w-full">

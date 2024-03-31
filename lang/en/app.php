@@ -180,6 +180,7 @@ return [
     'index_user_challenge_coins' => ' Coins',
     'index_user_challenge_progress' => 'March to the Goal: ',
     'index_user_products_word' => ' Products.',
+    'success_challenge' => 'Congratulations! You have completed the challenge: ',
 
     // Command
     'info_expired_challenges' => 'Expired challenges checked successfully.',
