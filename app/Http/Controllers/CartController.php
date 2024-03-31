@@ -14,22 +14,17 @@ class CartController extends Controller
     public function index(Request $request): View|RedirectResponse
     {
         $cartProductData = $request->session()->get('cart_product_data');
+        $cartProducts = [];
 
         if ($cartProductData) {
-            $cartProducts = [];
-
-            if ($cartProductData) {
-                $cartProducts = Product::findMany(array_keys($cartProductData));
-            }
-
-            $viewData = [
-                'cartProducts' => $cartProducts,
-            ];
-
-            return view('cart.index')->with('viewData', $viewData);
-        } else {
-            return redirect()->route('cart.index')->with('empty_cart', ' ');
+            $cartProducts = Product::findMany(array_keys($cartProductData));
         }
+
+        $viewData = [
+            'cartProducts' => $cartProducts,
+        ];
+
+        return view('cart.index')->with('viewData', $viewData);
     }
 
     public function add(int $id, Request $request): RedirectResponse
@@ -60,6 +55,6 @@ class CartController extends Controller
         unset($cartProductData[$id]);
         $request->session()->put('cart_product_data', $cartProductData);
 
-        return redirect()->route('cart.index');
+        return back();
     }
 }

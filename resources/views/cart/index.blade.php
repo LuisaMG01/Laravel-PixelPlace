@@ -8,7 +8,7 @@
     @elseif (session('empty_cart'))
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">{{ __('app.error_cart_index') }}</strong>
-            <span class="block sm:inline">{{ __('app.balance_error_cart_index') }}</span>
+            <span class="block sm:inline">{{ __('app.empty_cart_index') }}</span>
         </div>
     @elseif (session('stock_error'))
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">

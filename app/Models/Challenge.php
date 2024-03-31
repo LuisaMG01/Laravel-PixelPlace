@@ -24,7 +24,7 @@ class Challenge extends Model
      * $this->attributes['created_at'] - datetime - contains the challenge creation date
      * $this->attributes['updated_at'] - datetime - contains the challenge update date
      */
-    
+
     protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
     public function __construct(array $attributes = [])
