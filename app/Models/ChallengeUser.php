@@ -98,7 +98,7 @@ class ChallengeUser extends Model
 
             $challengeUser->setProgress($challengeUser->getProgress() + $amount);
 
-            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity() && $challengeUser->getChecked() === false) {
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity() && $challengeUser->getChecked() === false && $challenge->getChecked() === false){
                 $challengeUser->setChecked(true);
                 $challenge->setCurrentUsers($challenge->getCurrentUsers() + 1);
                 $challenge->save();
