@@ -39,6 +39,8 @@ return [
     'of_pagination' => 'of',
 
     //Index product messages
+    'welcome_to_product_section' => 'Welcome to the products section!',
+    'unleash_your_imagination' => 'Let your imagination fly!',
     'success_creation_review' => 'Review has been created successfully',
     'success_product_index' => 'Success!',
     'filter_products_product_index' => 'Filter Products',
@@ -66,7 +68,6 @@ return [
     'success_product_review' => 'Success!',
 
     //Edit review messages
-    'success_update_review' => 'Review has been edited successfully',
     'update_review_edit' => 'Update Review',
     'description_review_edit' => 'Description',
     'rating_review_edit' => 'Rating',
@@ -75,6 +76,7 @@ return [
     'success_review_edit' => 'Success!',
 
     //Show review messages
+    'reviews_section_review_show' => 'Take a look at the reviews!',
     'comment_settings_review_show' => 'Comment settings',
     'delete_review_show' => 'Delete',
     'edit_review_show' => 'Edit',
