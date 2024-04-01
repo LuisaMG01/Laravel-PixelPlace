@@ -98,12 +98,12 @@ class OrdersController extends Controller
         }
     }
 
-    public function index(): View|RedirectResponse
+    public function index(Request $request): View|RedirectResponse
     {
         if (Auth::check()) {
             $userId = Auth::user()->getId();
-            $user = User::findOrFail($userId);
-            $orders = $user->orders()->paginate(8);
+            $orders = Order::filters($request)->where('user_id', $userId)->paginate(10);
+            $orders->appends($request->all());
 
             $viewData = [
                 'orders' => $orders,

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 class Order extends Model
 {
@@ -63,5 +64,21 @@ class Order extends Model
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);
+    }
+
+    public static function filters(Request $request): object
+    {
+        $orders = Order::query();
+
+        if ($request->filled('date_before') && $request->filled('date_after')) {
+            $orders->whereDate('created_at', '>=', $request->date_after)
+                ->whereDate('created_at', '<=', $request->date_before);
+        } elseif ($request->filled('date_before')) {
+            $orders->whereDate('created_at', '<=', $request->date_before);
+        } elseif ($request->filled('date_after')) {
+            $orders->whereDate('created_at', '>=', $request->date_after);
+        }
+
+        return $orders;
     }
 }
