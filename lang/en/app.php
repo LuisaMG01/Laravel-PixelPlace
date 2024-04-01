@@ -39,8 +39,7 @@ return [
     'of_pagination' => 'of',
 
     //Index product messages
-    'welcome_to_product_section' => 'Welcome to the products section!',
-    'unleash_your_imagination' => 'Let your imagination fly!',
+    'welcome_to_product_section_product_index' => 'Welcome to the products section!',
     'success_creation_review' => 'Review has been created successfully',
     'success_product_index' => 'Success!',
     'filter_products_product_index' => 'Filter Products',
