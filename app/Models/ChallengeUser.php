@@ -12,10 +12,10 @@ class ChallengeUser extends Model
      * $this->attributes['id'] - int - contains the primary key (id) of the challenge user
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
-     * $this->attributes['created_at'] - string - contains the date when the challenge user was created
-     * $this->attributes['updated_at'] - string - contains the date when the challenge user was updated
      * $this->attributes['user_id'] - int - contains the foreign key of the user
      * $this->attributes['challenge_id'] - int - contains the foreign key of the challenge
+     * $this->attributes['created_at'] - string - contains the date when the challenge user was created
+     * $this->attributes['updated_at'] - string - contains the date when the challenge user was updated
      */
 
     protected $fillable = ['progress', 'checked', 'created_at', 'updated_at', 'user_id', 'challenge_id'];
@@ -24,7 +24,7 @@ class ChallengeUser extends Model
     {
         parent::__construct($attributes);
 
-        if (! isset($this->attributes['progress'])) {
+        if (!isset($this->attributes['progress'])) {
             $this->attributes['progress'] = 0;
         }
     }
@@ -90,7 +90,7 @@ class ChallengeUser extends Model
                 ->where('challenge_id', $challenge->getId())
                 ->first();
 
-            if (! $challengeUser) {
+            if (!$challengeUser) {
                 $challengeUser = new ChallengeUser();
                 $challengeUser->user_id = $user->getId();
                 $challengeUser->challenge_id = $challenge->getId();
@@ -98,14 +98,14 @@ class ChallengeUser extends Model
 
             $challengeUser->setProgress($challengeUser->getProgress() + $amount);
 
-            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity() && $challengeUser->getChecked() === false) {
+            if ($challengeUser->getProgress() >= $challenge->getCategoryQuantity() && $challengeUser->getChecked() === false && $challenge->getChecked() == false) {
                 $challengeUser->setChecked(true);
                 $challenge->setCurrentUsers($challenge->getCurrentUsers() + 1);
                 $challenge->save();
                 $user->setBalance($user->getBalance() + $challenge->getRewardCoins());
                 $user->save();
 
-                $message = __('app.success_challenge').$challenge->getName();
+                $message = __('app.success_challenge') . $challenge->getName();
                 session()->flash('challengeCompleted', $message);
             } else {
                 $challengeUser->setChecked(false);
