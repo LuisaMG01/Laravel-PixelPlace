@@ -20,10 +20,10 @@ class Product extends Model
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
      * $this->attributes['category_id'] - int - contains the ID of the associated category
-     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
-     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->items - Item[] - contains the associated items
      * $this->items - Review[] - contains the associated reviews
+     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
+     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
 
     protected $fillable = ['name', 'image', 'brand', 'keywords', 'price', 'stock', 'description', 'category_id'];
@@ -139,11 +139,7 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
 
-    /* Special methods
-    public function getTotalSalesAttribute()
-    {
-        return $this->items->sum('amount');
-    }*/
+    /* Special methods*/
 
     public static function getTopSellingProducts(int $limit = 5): object
     {
@@ -171,11 +167,11 @@ class Product extends Model
         }
 
         if ($request->filled('brand')) {
-            $products->where('brand', 'like', '%'.$request->brand.'%');
+            $products->where('brand', 'like', '%' . $request->brand . '%');
         }
 
         if ($request->filled('name')) {
-            $products->where('name', 'like', '%'.$request->name.'%');
+            $products->where('name', 'like', '%' . $request->name . '%');
         }
 
         return $products;
