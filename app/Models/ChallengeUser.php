@@ -24,7 +24,7 @@ class ChallengeUser extends Model
     {
         parent::__construct($attributes);
 
-        if (!isset($this->attributes['progress'])) {
+        if (! isset($this->attributes['progress'])) {
             $this->attributes['progress'] = 0;
         }
     }
@@ -90,7 +90,7 @@ class ChallengeUser extends Model
                 ->where('challenge_id', $challenge->getId())
                 ->first();
 
-            if (!$challengeUser) {
+            if (! $challengeUser) {
                 $challengeUser = new ChallengeUser();
                 $challengeUser->user_id = $user->getId();
                 $challengeUser->challenge_id = $challenge->getId();
@@ -105,7 +105,7 @@ class ChallengeUser extends Model
                 $user->setBalance($user->getBalance() + $challenge->getRewardCoins());
                 $user->save();
 
-                $message = __('app.success_challenge') . $challenge->getName();
+                $message = __('app.success_challenge').$challenge->getName();
                 session()->flash('challengeCompleted', $message);
             } else {
                 $challengeUser->setChecked(false);

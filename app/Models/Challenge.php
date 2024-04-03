@@ -31,10 +31,10 @@ class Challenge extends Model
     {
         parent::__construct($attributes);
 
-        if (!isset($this->attributes['current_users'])) {
+        if (! isset($this->attributes['current_users'])) {
             $this->attributes['current_users'] = 0;
         }
-        if (!isset($this->attributes['checked'])) {
+        if (! isset($this->attributes['checked'])) {
             $this->attributes['checked'] = 0;
         }
     }
