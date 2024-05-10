@@ -155,6 +155,7 @@ return [
     'products_navbar' => 'Products',
     'challenges_navbar' => 'Challenges',
     'contact_navbar' => 'Contact',
+    'marvel_navbar' => 'Marvel',
 
     // Index challenge messages
     'title_index_challenge' => 'All Challenges',
@@ -190,4 +191,7 @@ return [
 
     // Command
     'info_expired_challenges' => 'Expired challenges checked successfully.',
+
+    // Marvel API
+    'title_index_marvel' => 'Marvel Characters',
 ];
