@@ -13,7 +13,13 @@ class UsersController extends Controller
 {
     public function settings(): View
     {
-        return view('user.settings');
+        $breadCrumb = [__('app.user_breadcrumb'), __('app.settings_breadcrumb')];
+
+        $viewData = [
+            'breadCrumb' => $breadCrumb,
+        ];
+
+        return view('user.settings')->with('viewData', $viewData);
     }
 
     public function update(Request $request, int $id): RedirectResponse
