@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
-use App\Models\Product;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
-
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -49,7 +48,6 @@ class HomeController extends Controller
             'userCount' => $userCount,
             'chartData' => $chartData,
         ];
-
 
         return view('admin.index')->with('viewData', $viewData);
     }
