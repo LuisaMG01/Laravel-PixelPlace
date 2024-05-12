@@ -97,32 +97,4 @@ class OrdersController extends Controller
             return redirect()->route('cart.index');
         }
     }
-
-    public function index(Request $request): View|RedirectResponse
-    {
-        if (Auth::check()) {
-            $userId = Auth::user()->getId();
-            $orders = Order::filters($request)->where('user_id', $userId)->paginate(10);
-            $orders->appends($request->all());
-
-            $viewData = [
-                'orders' => $orders,
-            ];
-
-            return view('order.index')->with('viewData', $viewData);
-        } else {
-            return redirect()->route('home')->with('error', 'You must login first');
-        }
-    }
-
-    public function show(int $id): View
-    {
-        $order = Order::with('items')->findOrFail($id);
-
-        $viewData = [
-            'order' => $order,
-        ];
-
-        return view('order.show')->with('viewData', $viewData);
-    }
 }

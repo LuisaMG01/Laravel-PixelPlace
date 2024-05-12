@@ -54,7 +54,7 @@
                                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('app.settings_dropdown_navbar') }}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('orders.index') }}"
+                                    <a href="{{ route('user.orders') }}"
                                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('app.my_orders_dropdown_navbar') }}</a>
                                 </li>
                             </ul>
