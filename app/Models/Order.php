@@ -10,15 +10,16 @@ use Illuminate\Http\Request;
 
 class Order extends Model
 {
-    /**
+    /*
      * ORDER ATTRIBUTES
      * $this->attributes['id'] - int - contains the order primary key (id)
-     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
-     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['total_coins'] - int - contains the total value of the order
      * $this->attributes['user_id'] - int - contains the referenced user id
      * $this->items - Item[] - contains the associated items
+     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
+     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
+
     protected $fillable = ['total_coins', 'user_id'];
 
     public function getId(): int
@@ -80,5 +81,25 @@ class Order extends Model
         }
 
         return $orders;
+    }
+
+    public static function calculateTotalAndSummary(array $productsInSession): array
+    {
+        $total = 0;
+        $productsSummary = [];
+
+        $productsInCart = Product::findMany(array_keys($productsInSession));
+
+        foreach ($productsInCart as $product) {
+            $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
+            $subtotal = $product->getPrice() * $quantity;
+            $total += $subtotal;
+            $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];
+        }
+
+        return [
+            'total' => $total,
+            'productsSummary' => $productsSummary,
+        ];
     }
 }

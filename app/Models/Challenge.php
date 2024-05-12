@@ -109,7 +109,7 @@ class Challenge extends Model
         return $this->expiration_date;
     }
 
-    public function setExpirationDate(DateTime $expirationDate): void
+    public function setExpirationDate(string $expirationDate): void
     {
         $this->attributes['expiration_date'] = $expirationDate;
     }
@@ -117,11 +117,6 @@ class Challenge extends Model
     public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
-    }
-
-    public function setCategoryId(string $categoryId): void
-    {
-        $this->attributes['category_id'] = $categoryId;
     }
 
     public function getCategoryQuantity(): int
