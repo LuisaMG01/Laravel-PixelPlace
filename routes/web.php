@@ -8,6 +8,8 @@ Route::get('/', 'HomeController@index')->name('home');
 // User settings
 Route::get('/settings', 'UsersController@settings')->name('user.settings');
 Route::put('/settings/update/{id}', 'UsersController@update')->name('user.update');
+Route::get('user/orders/', 'UsersController@orderIndex')->name('user.orders');
+Route::get('user/orders/{id}', 'UsersController@orderShow')->name('user.order');
 
 Auth::routes();
 

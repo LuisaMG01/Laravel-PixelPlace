@@ -8,7 +8,7 @@
                         <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ __('app.filter_orders_order_index') }}</h2>
                         <button id="toggleFilterBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter_order_index') }}</button>
                         <div id="filterForm" class="hidden absolute bg-white rounded-lg border border-gray-300 shadow-md py-4 px-6 top-0 left-0 mt-12 z-10">
-                            <form action="{{ route('orders.index') }}" method="GET">
+                            <form action="{{ route('user.orders') }}" method="GET">
                                 <div class="mb-4">
                                     <label for="date_before" class="block text-gray-700 text-sm font-bold mb-2">{{ __('app.date_before_filter_order_index') }}:</label>
                                     <input type="date" name="date_before" id="date_before" class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300">
@@ -59,7 +59,7 @@
                             {{ $order->getCreatedAt() }}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="{{ route('orders.show', ['id' => $order->getId()]) }}"
+                            <a href="{{ route('user.order', ['id' => $order->getId()]) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ __('app.table_info_order_index') }}</a>
                         </td>
                     </tr>
