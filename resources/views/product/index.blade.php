@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
+<div class="col-span-full text-center font-bold text-3xl text-blue-700 mt-8 mb-4"> {{ __('app.welcome_to_product_section_product_index') }} </div>
     @if (session('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">{{ __('app.success_product_index') }}</strong>
-            <span class="block sm:inline">{{ session('success') }} {{ __('app.success_product_index') }}</span>
+            <span class="block sm:inline">{{ session('success') }} {{ __('app.added_succesfully_product_index') }}</span>
         </div>
     @endif
     @if (session('message'))
@@ -18,7 +19,6 @@
             <span class="block sm:inline">{{ session('updated') }}</span>
         </div>
     @endif
-    <br>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="md:col-span-1 relative">

@@ -26,17 +26,35 @@ First of all, you must have [PHP](https://www.php.net/) and [XAMPP](https://www.
     composer install
     ```
 
-4. **Run the migrations:**
+4. **.env file:**
+    ```
+    mv .env.example .env
+    ```
+
+5. **Set up database:**
+    ```
+    DB_DATABASE=PixelPlace
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+    Modify these parameters as you need.
+
+6. **Link storage:**
+    ```
+    php artisan storage:link
+    ```
+
+7. **Run the migrations:**
     ```
     php artisan migrate
     ```
 
-5. **Run server:**
+8. **Run server:**
     ```
     php artisan serve
     ```
 
-Now, you are able to use **Pixel Place**!
+Now, you are able to use **Pixel Place!**
 
 ## Contributors
 
