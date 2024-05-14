@@ -24,7 +24,7 @@ class Challenge extends Model
      * $this->attributes['created_at'] - datetime - contains the challenge creation date
      * $this->attributes['updated_at'] - datetime - contains the challenge update date
      */
-    
+
     protected $fillable = ['name', 'description', 'checked', 'reward_coins', 'max_users', 'current_users', 'expiration_date', 'category_id', 'category_quantity'];
 
     public function __construct(array $attributes = [])
@@ -109,7 +109,7 @@ class Challenge extends Model
         return $this->expiration_date;
     }
 
-    public function setExpirationDate(DateTime $expirationDate): void
+    public function setExpirationDate(string $expirationDate): void
     {
         $this->attributes['expiration_date'] = $expirationDate;
     }
@@ -117,11 +117,6 @@ class Challenge extends Model
     public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
-    }
-
-    public function setCategoryId(string $categoryId): void
-    {
-        $this->attributes['category_id'] = $categoryId;
     }
 
     public function getCategoryQuantity(): int

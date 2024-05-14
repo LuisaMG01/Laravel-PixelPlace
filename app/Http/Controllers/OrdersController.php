@@ -19,7 +19,7 @@ class OrdersController extends Controller
         $productsInSession = $request->session()->get('cart_product_data');
 
         if ($productsInSession) {
-            $productsData = Product::calculateTotalAndSummary($productsInSession);
+            $productsData = Order::calculateTotalAndSummary($productsInSession);
 
             $viewData = [
                 'products' => $productsData['productsSummary'],
@@ -40,7 +40,7 @@ class OrdersController extends Controller
             $userId = Auth::user()->getId();
             $user = User::findOrFail($userId);
             $userBalance = $user->getBalance();
-            $calculationResult = Product::calculateTotalAndSummary($productsInSession);
+            $calculationResult = Order::calculateTotalAndSummary($productsInSession);
             $total = $calculationResult['total'];
             $productsSummary = $calculationResult['productsSummary'];
             $productsInCart = Product::findMany(array_keys($productsInSession));
@@ -96,33 +96,5 @@ class OrdersController extends Controller
         } else {
             return redirect()->route('cart.index');
         }
-    }
-
-    public function index(): View|RedirectResponse
-    {
-        if (Auth::check()) {
-            $userId = Auth::user()->getId();
-            $user = User::findOrFail($userId);
-            $orders = $user->orders()->paginate(8);
-
-            $viewData = [
-                'orders' => $orders,
-            ];
-
-            return view('order.index')->with('viewData', $viewData);
-        } else {
-            return redirect()->route('home')->with('error', 'You must login first');
-        }
-    }
-
-    public function show(int $id): View
-    {
-        $order = Order::with('items')->findOrFail($id);
-
-        $viewData = [
-            'order' => $order,
-        ];
-
-        return view('order.show')->with('viewData', $viewData);
     }
 }

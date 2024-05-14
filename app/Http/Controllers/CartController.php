@@ -11,10 +11,10 @@ use Illuminate\View\View;
 
 class CartController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request): View|RedirectResponse
     {
-        $cartProducts = [];
         $cartProductData = $request->session()->get('cart_product_data');
+        $cartProducts = [];
 
         if ($cartProductData) {
             $cartProducts = Product::findMany(array_keys($cartProductData));
