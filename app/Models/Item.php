@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
-    /**
+    /*
      * ITEM ATTRIBUTES
      * $this->attributes['id'] - int - contains the item primary key (id)
-     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
-     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      * $this->attributes['acquire_price_coins'] - int - contains the acquire price coins value
      * $this->attributes['amount'] - float - contains the amount value
      * $this->attributes['product_id'] - int - contains the ID of the associated product
      * $this->attributes['order_id'] - int - contains the ID of the associated order
+     * $this->attributes['created_at'] - datetime - contains the record creation timestamp
+     * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
+
     public static function validate($request)
     {
         $request->validate([

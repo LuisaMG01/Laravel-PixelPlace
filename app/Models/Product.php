@@ -20,6 +20,8 @@ class Product extends Model
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
      * $this->attributes['category_id'] - int - contains the ID of the associated category
+     * $this->items - Item[] - contains the associated items
+     * $this->items - Review[] - contains the associated reviews
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
@@ -132,18 +134,14 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function review(): HasMany
+    public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
     }
 
     /* Special methods*/
-    public function getTotalSalesAttribute()
-    {
-        return $this->items->sum('amount');
-    }
 
-    public static function getTopSellingProducts(int $limit = 5)
+    public static function getTopSellingProducts(int $limit = 5): object
     {
         return static::withCount('items')->orderByDesc('items_count')->limit($limit)->get();
     }
@@ -169,11 +167,11 @@ class Product extends Model
         }
 
         if ($request->filled('brand')) {
-            $products->where('brand', 'like', '%'.$request->brand.'%');
+            $products->where('brand', 'like', '%' . $request->brand . '%');
         }
 
         if ($request->filled('name')) {
-            $products->where('name', 'like', '%'.$request->name.'%');
+            $products->where('name', 'like', '%' . $request->name . '%');
         }
 
         return $products;
@@ -181,7 +179,7 @@ class Product extends Model
 
     public function getRating(): float
     {
-        $reviews = $this->review;
+        $reviews = $this->reviews;
         $totalReviews = $reviews->count();
 
         if ($totalReviews === 0) {
@@ -202,25 +200,5 @@ class Product extends Model
         if ($stock < $quantity) {
             $cartProductData[$id] = $quantity;
         }
-    }
-
-    public static function calculateTotalAndSummary(array $productsInSession): array
-    {
-        $total = 0;
-        $productsSummary = [];
-
-        $productsInCart = static::findMany(array_keys($productsInSession));
-
-        foreach ($productsInCart as $product) {
-            $quantity = ($productsInSession[$product->getId()] > 0) ? $productsInSession[$product->getId()] : 1;
-            $subtotal = $product->getPrice() * $quantity;
-            $total += $subtotal;
-            $productsSummary[$product->getId()] = [$product, $subtotal, $quantity];
-        }
-
-        return [
-            'total' => $total,
-            'productsSummary' => $productsSummary,
-        ];
     }
 }

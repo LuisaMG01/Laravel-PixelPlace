@@ -10,10 +10,13 @@ class Category extends Model
     /*
      * CATEGORY ATTRIBUTES
      * $this->attributes['id'] - int - contains the category primary key (id)
+     * $this->attributes['name'] - string - contains the category name
+     * $this->items - Product[] - contains the associated products
+     * $this->items - Challenge[] - contains the associated challenges
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
-     * $this->attributes['name'] - string - contains the category name
      */
+
     protected $fillable = ['name'];
 
     public function getId(): int
