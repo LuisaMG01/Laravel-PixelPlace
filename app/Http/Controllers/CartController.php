@@ -15,12 +15,14 @@ class CartController extends Controller
     {
         $cartProductData = $request->session()->get('cart_product_data');
         $cartProducts = [];
+        $breadCrumb = [__('app.cart_breadcrumb')];
 
         if ($cartProductData) {
             $cartProducts = Product::findMany(array_keys($cartProductData));
         }
 
         $viewData = [
+            'breadCrumb' => $breadCrumb,
             'cartProducts' => $cartProducts,
         ];
 

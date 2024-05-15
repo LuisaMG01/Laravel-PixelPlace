@@ -15,10 +15,10 @@ class Order extends Model
      * $this->attributes['id'] - int - contains the order primary key (id)
      * $this->attributes['total_coins'] - int - contains the total value of the order
      * $this->attributes['user_id'] - int - contains the referenced user id
-     * $this->items - Item[] - contains the associated items
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
-     */
+     * $this->items - Item[] - contains the associated items
+    */
 
     protected $fillable = ['total_coins', 'user_id'];
 
