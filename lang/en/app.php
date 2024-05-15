@@ -39,6 +39,7 @@ return [
     'of_pagination' => 'of',
 
     //Index product messages
+    'welcome_to_product_section_product_index' => 'Welcome to the products section!',
     'success_creation_review' => 'Review has been created successfully',
     'success_product_index' => 'Success!',
     'filter_products_product_index' => 'Filter Products',
@@ -75,6 +76,7 @@ return [
     'success_review_edit' => 'Success!',
 
     //Show review messages
+    'reviews_section_review_show' => 'Take a look at the reviews!',
     'comment_settings_review_show' => 'Comment settings',
     'delete_review_show' => 'Delete',
     'edit_review_show' => 'Edit',
