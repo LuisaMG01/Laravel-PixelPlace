@@ -50,6 +50,9 @@ return [
     'brand_placeholder_admin_product' => 'Type product brand',
     'keywords_placeholder_admin_product' => 'Type product keywords',
     'stock_placeholder_admin_product' => 'Type product stock',
+    'input_label_storage_admin_products' => 'Where do you want to store the image?',
+    'input_label_storage_local_admin_products' => 'Local',
+    'input_label_storage_gcp_admin_products' => 'GCP',
 
     // Admin
 
