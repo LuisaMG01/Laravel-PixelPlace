@@ -36,7 +36,7 @@ class ReviewsController extends Controller
     public function show(int $productId): view
     {
         $product = Product::findOrFail($productId);
-        $reviews = $product->review()->with('user')->paginate(3);
+        $reviews = $product->reviews()->with('user')->paginate(3);
         $viewData = [
             'reviews' => $reviews,
         ];

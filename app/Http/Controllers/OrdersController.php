@@ -19,7 +19,7 @@ class OrdersController extends Controller
         $productsInSession = $request->session()->get('cart_product_data');
 
         if ($productsInSession) {
-            $productsData = Product::calculateTotalAndSummary($productsInSession);
+            $productsData = Order::calculateTotalAndSummary($productsInSession);
 
             $viewData = [
                 'products' => $productsData['productsSummary'],
@@ -40,7 +40,7 @@ class OrdersController extends Controller
             $userId = Auth::user()->getId();
             $user = User::findOrFail($userId);
             $userBalance = $user->getBalance();
-            $calculationResult = Product::calculateTotalAndSummary($productsInSession);
+            $calculationResult = Order::calculateTotalAndSummary($productsInSession);
             $total = $calculationResult['total'];
             $productsSummary = $calculationResult['productsSummary'];
             $productsInCart = Product::findMany(array_keys($productsInSession));
