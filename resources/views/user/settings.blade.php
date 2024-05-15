@@ -14,8 +14,9 @@
             <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">{{ __('app.title_settings_index') }}
             </h1>
             <div class="btn-container">
-                <a href="{{ route('orders.index') }}"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('app.button_orders_settings_index') }}</a>
+                <a href="{{ route('user.orders') }}"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">My
+                    Orders</a>
             </div>
         </div>
         <!-- Image -->
