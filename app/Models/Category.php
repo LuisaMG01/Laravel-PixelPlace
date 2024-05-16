@@ -47,22 +47,22 @@ class Category extends Model
 
     public function getProducts(): Collection
     {
-        return $this->products()->get();
+        return $this->products;
     }
 
     public function setProducts(Collection $products): void
     {
-        $this->products()->saveMany($products);
+        $this->products = $products;
     }
 
     public function getChallenges(): Collection
     {
-        return $this->challenges()->get();
+        return $this->challenges;
     }
 
     public function setChallenges(Collection $challenges): void
     {
-        $this->challenges()->saveMany($challenges);
+        $this->challenges = $challenges;
     }
 
     /**Model relations */
