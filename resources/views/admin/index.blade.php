@@ -22,8 +22,6 @@
             <p class="font-normal text-gray-700 dark:text-gray-400">Total Products: {{ $viewData['productCount'] }}</p>
         </div>
 
-        <!-- Otras cards aquí -->
-
     </div>
 
     <br>
