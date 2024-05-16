@@ -29,8 +29,6 @@
                 {{ $viewData['productCount'] }}</p>
         </div>
 
-        <!-- Otras cards aquí -->
-
     </div>
 
     <br>
