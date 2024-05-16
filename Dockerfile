@@ -12,7 +12,8 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-RUN service mysql start \
+RUN apt-get update && apt-get install -y mysql-server
+RUN sudo service mysql start \
     && mysql -e "CREATE DATABASE IF NOT EXISTS PixelPlace" \
     && service mysql stop
 RUN mv .env.example .env
