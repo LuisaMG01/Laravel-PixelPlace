@@ -11,7 +11,10 @@ RUN composer install \
     --no-plugins \
     --no-scripts \
     --prefer-dist
-    
+
+RUN service mysql start \
+    && mysql -e "CREATE DATABASE IF NOT EXISTS PixelPlace" \
+    && service mysql stop
 RUN mv .env.example .env
 RUN php artisan key:generate
 RUN php artisan storage:link
