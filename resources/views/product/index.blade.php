@@ -20,6 +20,7 @@
         </div>
     @endif
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        @include('partials.breadcrumb', ['viewData' => $viewData])
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="md:col-span-1 relative">
                 <div class="max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-md">
