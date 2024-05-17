@@ -16,7 +16,10 @@ class ProductsController extends Controller
         $filteredProducts = Product::filters($request);
         $filteredProducts = $filteredProducts->paginate(12);
 
+        $breadCrumb = [__('app.products_breadcrumb')];
+
         $viewData = [
+            'breadCrumb' => $breadCrumb,
             'products' => $filteredProducts,
             'categories' => $categories,
         ];

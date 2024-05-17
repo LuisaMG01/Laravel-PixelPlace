@@ -9,8 +9,10 @@ class HomeController extends Controller
 {
     public function index(): View
     {
+        $breadCrumb = [];
         $products = Product::getTopSellingProducts(5);
         $viewData = [
+            'breadCrumb' => $breadCrumb,
             'products' => $products,
         ];
 

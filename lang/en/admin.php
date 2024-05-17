@@ -2,6 +2,16 @@
 
 return [
 
+    // Home Messages
+    'welcome_message_home' => 'Welcome ',
+    'orders_home' => 'Orders',
+    'total_orders_home' => 'Total Orders : ',
+    'users_home' => 'Users',
+    'total_users_home' => 'Total Users : ',
+    'products_home' => 'Products',
+    'total_products_home' => 'Total Products : ',
+    'sales_message_home' => 'See your Sales !',
+
     // Menu messages
     'sidebar_home' => 'Home',
     'sidebar_products_index' => 'Products',
@@ -50,6 +60,9 @@ return [
     'brand_placeholder_admin_product' => 'Type product brand',
     'keywords_placeholder_admin_product' => 'Type product keywords',
     'stock_placeholder_admin_product' => 'Type product stock',
+    'input_label_storage_admin_products' => 'Where do you want to store the image?',
+    'input_label_storage_local_admin_products' => 'Local',
+    'input_label_storage_gcp_admin_products' => 'GCP',
 
     // Admin
 

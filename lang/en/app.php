@@ -39,6 +39,7 @@ return [
     'of_pagination' => 'of',
 
     //Index product messages
+    'welcome_to_product_section_product_index' => 'Welcome to the products section!',
     'success_creation_review' => 'Review has been created successfully',
     'success_product_index' => 'Success!',
     'filter_products_product_index' => 'Filter Products',
@@ -75,6 +76,7 @@ return [
     'success_review_edit' => 'Success!',
 
     //Show review messages
+    'reviews_section_review_show' => 'Take a look at the reviews!',
     'comment_settings_review_show' => 'Comment settings',
     'delete_review_show' => 'Delete',
     'edit_review_show' => 'Edit',
@@ -155,6 +157,7 @@ return [
     'products_navbar' => 'Products',
     'challenges_navbar' => 'Challenges',
     'contact_navbar' => 'Contact',
+    'marvel_navbar' => 'Marvel',
 
     // Index challenge messages
     'title_index_challenge' => 'All Challenges',
@@ -188,6 +191,26 @@ return [
     'index_user_products_word' => ' Products.',
     'success_challenge' => 'Congratulations! You have completed the challenge: ',
 
+    // User settings index
+    'title_settings_index' => 'User Settings',
+    'button_orders_settings_index' => 'My Orders',
+    'profile_picture_settings_index' => 'Profile Picture',
+    'format_image_settings_index' => 'JPG, GIF or PNG.',
+    'form_name_settings_index' => 'Name',
+    'form_email_settings_index' => 'Email',
+    'form_button_settings_index' => 'Save All',
+
     // Command
     'info_expired_challenges' => 'Expired challenges checked successfully.',
+
+    // Marvel API
+    'title_index_marvel' => 'Marvel Characters',
+
+    // BreadCrumbs
+    'home_breadcrumb' => 'Home',
+    'settings_breadcrumb' => 'Settings',
+    'user_breadcrumb' => 'User',
+    'api_breadcrumb' => 'Api',
+    'marvel_breadcrumb' => 'Marvel',
+    'products_breadcrumb' => 'Products'
 ];
