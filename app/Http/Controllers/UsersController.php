@@ -43,8 +43,11 @@ class UsersController extends Controller
             $orders = Order::filters($request)->where('user_id', $userId)->paginate(10);
             $orders->appends($request->all());
 
+            $breadCrumb = [__('app.user_breadcrumb'), __('app.orders_breadcrumb')];
+
             $viewData = [
                 'orders' => $orders,
+                'breadCrumb' => $breadCrumb,
             ];
 
             return view('user.orders')->with('viewData', $viewData);
@@ -56,9 +59,11 @@ class UsersController extends Controller
     public function orderShow(int $id): View
     {
         $order = Order::with('items')->findOrFail($id);
+        $breadCrumb = [__('app.user_breadcrumb'), __('app.orders_breadcrumb'), __('app.order_breadcrumb')];
 
         $viewData = [
             'order' => $order,
+            'breadCrumb' => $breadCrumb,
         ];
 
         return view('user.order')->with('viewData', $viewData);

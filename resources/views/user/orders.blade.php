@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @include('partials.breadcrumb', ['viewData' => $viewData])
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="md:col-span-1 relative">
