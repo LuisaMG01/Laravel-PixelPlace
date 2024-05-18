@@ -216,4 +216,9 @@ return [
     'preorder_breadcrumb' => 'Preorder',
     'order_breadcrumb' => 'Order',
     'orders_breadcrumb' => 'Orders',
+
+    //  Language
+    'language' => 'Language',
+    'english' => 'English',
+    'spanish' => 'Spanish',
 ];
