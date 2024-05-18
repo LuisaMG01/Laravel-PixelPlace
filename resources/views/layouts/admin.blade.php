@@ -11,17 +11,18 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
+
     @include('partials.admin.adminNavbar')
 
-    <div class="flex flex-1">
-        <aside class="md:w-64 w-full md:flex-shrink-0">
-            @include('partials.admin.adminSidebar')
-        </aside>
-        <main class="flex-1 pt-16 px-6">
-            <div class="bg-white rounded-lg shadow-lg p-6 max-w-screen-lg mx-auto">
-                @yield('content')
-            </div>
-        </main>
+
+    <div class="flex flex-1 pt-16">
+        @include('partials.admin.adminSidebar')
+    </div>
+
+    <div class="p-4 sm:ml-64">
+        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+            @yield('content')
+        </div>
     </div>
 
     @yield('chart')
@@ -31,6 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="{{ asset('js/area-chart.js') }}"></script>
+    <script src="{{ asset('js/asidebar.js') }}"></script>
 </body>
 
 
