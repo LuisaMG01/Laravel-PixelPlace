@@ -13,8 +13,8 @@
 <body class="flex flex-col min-h-screen">
     @include('partials.admin.adminNavbar')
 
-    <div class="flex flex-col md:flex-row flex-1">
-        <aside class="md:w-64 md:flex-shrink-0">
+    <div class="flex flex-1">
+        <aside class="md:w-64 w-full md:flex-shrink-0">
             @include('partials.admin.adminSidebar')
         </aside>
         <main class="flex-1 pt-16 px-6">
