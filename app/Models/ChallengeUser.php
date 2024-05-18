@@ -64,6 +64,26 @@ class ChallengeUser extends Model
         return $this->attributes['updated_at'];
     }
 
+    public function getChallenge(): Challenge
+    {
+        return $this->challenge;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setChallenge(): void
+    {
+        $this->challenge = $challenge;
+    }
+
+    public function setUser(): void
+    {
+        $this->user = $user;
+    }
+
     /* Model relations */
     public function user(): BelongsTo
     {

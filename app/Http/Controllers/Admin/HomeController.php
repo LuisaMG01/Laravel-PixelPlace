@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\View\View;
+use App\Utils\ChartData;
 
 class HomeController extends Controller
 {
@@ -17,30 +17,7 @@ class HomeController extends Controller
         $orderCount = Order::count();
         $userCount = User::count();
 
-        $startDate = Carbon::now()->subDays(5);
-        $endDate = Carbon::now();
-
-        $orders = Order::query()
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as total')
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->groupByRaw('DATE(created_at)')
-            ->get()
-            ->keyBy('date');
-
-        $chartData = [
-            'categories' => [],
-            'series' => [],
-        ];
-
-        while ($startDate <= $endDate) {
-            $date = $startDate->format('d F');
-            $chartData['categories'][] = $date;
-
-            $order = $orders->get($startDate->format('Y-m-d'), (object) ['total' => 0]);
-            $chartData['series'][] = $order->total;
-
-            $startDate->addDay();
-        }
+        $chartData = ChartData::getChartData();
 
         $viewData = [
             'productCount' => $productCount,

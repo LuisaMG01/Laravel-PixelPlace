@@ -2,6 +2,16 @@
 
 return [
 
+    // Home Messages
+    'welcome_message_home' => 'Welcome ',
+    'orders_home' => 'Orders',
+    'total_orders_home' => 'Total Orders : ',
+    'users_home' => 'Users',
+    'total_users_home' => 'Total Users : ',
+    'products_home' => 'Products',
+    'total_products_home' => 'Total Products : ',
+    'sales_message_home' => 'See your Sales !',
+
     // Menu messages
     'sidebar_home' => 'Home',
     'sidebar_products_index' => 'Products',

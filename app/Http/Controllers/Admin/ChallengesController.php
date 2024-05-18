@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\challenge\CreateRequest;
-use App\Http\Requests\challenge\UpdateRequest;
+use App\Http\Requests\Challenge\CreateRequest;
+use App\Http\Requests\Challenge\UpdateRequest;
 use App\Models\Category;
 use App\Models\Challenge;
 use App\Models\ChallengeUser;
