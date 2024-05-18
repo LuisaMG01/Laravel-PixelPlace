@@ -212,5 +212,6 @@ return [
     'user_breadcrumb' => 'User',
     'api_breadcrumb' => 'Api',
     'marvel_breadcrumb' => 'Marvel',
-    'products_breadcrumb' => 'Products'
+    'products_breadcrumb' => 'Products',
+    'challenges_breadcrumb' => 'Challenges',
 ];

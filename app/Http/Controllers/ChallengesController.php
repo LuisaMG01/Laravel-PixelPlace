@@ -10,6 +10,8 @@ class ChallengesController extends Controller
 {
     public function indexUser(int $userId): View
     {
+        $breadCrumb = [__('app.challenges_breadcrumb')];
+
         $undoneChallengeIds = ChallengeUser::where('user_id', $userId)
             ->where('checked', false)
             ->where('progress', '=', 0)
@@ -42,6 +44,7 @@ class ChallengesController extends Controller
             'doneChallenges' => $doneChallenges,
             'inProgressChallenges' => $inProgressChallenges,
             'progressData' => $progressData,
+            'breadCrumb' => $breadCrumb,
         ];
 
         return view('challenge.authIndex')->with('viewData', $viewData);
@@ -50,9 +53,10 @@ class ChallengesController extends Controller
     public function index(): View
     {
         $challenges = Challenge::all();
-
+        $breadCrumb = [__('app.challenges_breadcrumb')];
         $viewData = [
             'challenges' => $challenges,
+            'breadCrumb' => $breadCrumb,
         ];
 
         return view('challenge.noAuthIndex')->with('viewData', $viewData);
