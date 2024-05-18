@@ -46,8 +46,8 @@
                             {{ $order->getCreatedAt() }}
                         </td>
                         <td class="p-4 text-base font-semibold text-red-700 whitespace-nowrap dark:text-white">
-                            <a href="{{ route('admin.orders.show', ['id' => $order->getId()]) }}">More
-                                details...</a>
+                            <a
+                                href="{{ route('admin.orders.show', ['id' => $order->getId()]) }}">{{ __('admin.more_details_message') }}</a>
                         </td>
                     </tr>
                 @endforeach
