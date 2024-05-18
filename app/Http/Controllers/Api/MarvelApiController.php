@@ -21,7 +21,10 @@ class MarvelApiController extends Controller
         $privateKey = env('MARVEL_PRIVATE_KEY');
         $characters = $this->apiService->fetchCharacters($publicKey, $privateKey);
 
+        $breadCrumb = [__('app.api_breadcrumb'), __('app.marvel_breadcrumb')];
+
         $viewData = [
+            'breadCrumb' => $breadCrumb,
             'characters' => $characters,
         ];
 
