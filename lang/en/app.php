@@ -212,9 +212,21 @@ return [
     'user_breadcrumb' => 'User',
     'api_breadcrumb' => 'Api',
     'marvel_breadcrumb' => 'Marvel',
+
     'products_breadcrumb' => 'Products',
     'reviews_breadcrumb' => 'Reviews',
     'show_reviews_breadcrumb' => 'Show',
     'edit_reviews_breadcrumb' => 'Edit',
     'create_reviews_breadcrumb' => 'Create'
+
+    'cart_breadcrumb' => 'Cart',
+    'preorder_breadcrumb' => 'Preorder',
+    'order_breadcrumb' => 'Order',
+    'orders_breadcrumb' => 'Orders',
+
+    //  Language
+    'language' => 'Language',
+    'english' => 'English',
+    'spanish' => 'Spanish',
+
 ];

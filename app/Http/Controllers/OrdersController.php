@@ -19,9 +19,11 @@ class OrdersController extends Controller
         $productsInSession = $request->session()->get('cart_product_data');
 
         if ($productsInSession) {
+            $breadCrumb = [__('app.cart_breadcrumb'), __('app.preorder_breadcrumb')];
             $productsData = Order::calculateTotalAndSummary($productsInSession);
 
             $viewData = [
+                'breadCrumb' => $breadCrumb,
                 'products' => $productsData['productsSummary'],
                 'total' => $productsData['total'],
             ];
@@ -42,7 +44,7 @@ class OrdersController extends Controller
             $userBalance = $user->getBalance();
             $calculationResult = Order::calculateTotalAndSummary($productsInSession);
             $total = $calculationResult['total'];
-            $productsSummary = $calculationResult['productsSummary'];
+            $productsSummary = $calculationResult['productsSummary']; 
             $productsInCart = Product::findMany(array_keys($productsInSession));
 
             foreach ($productsSummary as $productId => $productData) {
@@ -87,7 +89,10 @@ class OrdersController extends Controller
             $order->save();
             $request->session()->forget('cart_product_data');
 
+            $breadCrumb = [__('app.cart_breadcrumb'), __('app.preorder_breadcrumb'), __('app.order_breadcrumb')];
+
             $viewData = [
+                'breadCrumb' => $breadCrumb,
                 'order' => $order,
                 'items' => $order->getItems(),
             ];

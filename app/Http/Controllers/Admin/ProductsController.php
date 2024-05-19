@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\product\CreateRequest;
-use App\Http\Requests\product\UpdateRequest;
+use App\Http\Requests\Product\CreateRequest;
+use App\Http\Requests\Product\UpdateRequest;
 use App\Interfaces\ImageStorage;
 use App\Models\Category;
 use App\Models\Product;

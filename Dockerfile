@@ -12,7 +12,6 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-RUN mv .env.example .env
 RUN php artisan key:generate
 RUN php artisan storage:link
 RUN php artisan migrate
