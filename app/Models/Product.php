@@ -126,22 +126,22 @@ class Product extends Model
 
     public function getItems(): Collection
     {
-        return $this->items()->get();
+        return $this->items;
     }
 
     public function setItems(Collection $items): void
     {
-        $this->items()->saveMany($items);
+        $this->items = $items;
     }
 
     public function getReviews(): Collection
     {
-        return $this->reviews()->get();
+        return $this->reviews;
     }
 
     public function setReviews(Collection $reviews): void
     {
-        $this->reviews()->saveMany($reviews);
+        $this->reviews = $reviews;
     }
 
 
