@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="mb-4 text-xl " >
+<div class="mb-4 text-xl ">
 </br>
     @include('partials.breadcrumb', ['viewData' => $viewData])
 </div>
