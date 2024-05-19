@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+    @include('partials.breadcrumb', ['viewData' => $viewData])
         <div class="mx-auto max-w-lg mt-10">
             <div class="bg-white p-8 rounded-lg shadow-md">
                 <h1 class="text-2xl font-semibold mb-6">{{ __('app.add_comment_review_create') }}</h1>

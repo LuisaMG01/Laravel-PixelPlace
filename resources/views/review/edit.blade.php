@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('partials.breadcrumb', ['viewData' => $viewData])
     <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
         <div class="px-6 py-4">
             <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ __('app.update_button_review_edit') }}</h2>

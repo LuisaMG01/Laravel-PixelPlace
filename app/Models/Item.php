@@ -12,11 +12,13 @@ class Item extends Model
      * $this->attributes['id'] - int - contains the item primary key (id)
      * $this->attributes['acquire_price_coins'] - int - contains the acquire price coins value
      * $this->attributes['amount'] - float - contains the amount value
-     * $this->attributes['product_id'] - int - contains the ID of the associated product
-     * $this->attributes['order_id'] - int - contains the ID of the associated order
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
-     */
+     * $this->attributes['product_id'] - int - contains the ID of the associated product
+     * $this->attributes['order_id'] - int - contains the ID of the associated order
+     * $this->order - Order - contains the associated order
+     * $this->product - Product - contains the associated product
+    */
 
     public static function validate($request)
     {
@@ -81,8 +83,28 @@ class Item extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function getProduct(): Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(Product $product): void
+    {
+        $this->product = $product;
+    }
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function getOrder(): Order
+    {
+        return $this->order;
+    }
+
+    public function setOrder(Order $order): void
+    {
+        $this->order = $order;
     }
 }
