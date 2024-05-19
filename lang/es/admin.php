@@ -2,7 +2,18 @@
 
 return [
 
-    // Menu messages
+    // Mensajes de inicio
+    'welcome_message_home' => 'Bienvenido ',
+    'orders_home' => 'Pedidos',
+    'total_orders_home' => 'Pedidos Totales: ',
+    'users_home' => 'Usuarios',
+    'total_users_home' => 'Usuarios Totales: ',
+    'products_home' => 'Productos',
+    'total_products_home' => 'Productos Totales: ',
+    'sales_message_home' => '¡Mira tus ventas!',
+    'close_menu_message' => 'Cerrar Menú',
+
+    // Mensajes del menú
     'sidebar_home' => 'Inicio',
     'sidebar_products_index' => 'Productos',
     'sidebar_challenges_index' => 'Desafíos',
@@ -11,12 +22,13 @@ return [
     'sidebar_orders_index' => 'Pedidos',
     'sidebar_settings' => 'Configuración',
 
-    // Product messages
+    // Mensajes de productos
     'title_admin_products' => 'Productos',
     'name_table_admin_products' => 'Productos',
     'button_entity_admin_products' => 'producto',
     'success_message_admin_products' => '¡Éxito!',
     'table_header_product_name_admin_products' => 'Nombre del Producto',
+    'form_name_label' => 'Nombre',
     'table_header_brand_admin_products' => 'Marca',
     'table_header_keywords_admin_products' => 'Palabras clave',
     'table_header_stock_admin_products' => 'Stock',
@@ -54,7 +66,7 @@ return [
     'input_label_storage_local_admin_products' => 'Local',
     'input_label_storage_gcp_admin_products' => 'GCP',
 
-    // Admin
+    // Administración
 
     'title_admin_categories' => 'Categorías',
     'name_table_admin_categories' => 'Categorías',
@@ -82,14 +94,14 @@ return [
     'deleted_succesfully_admin_category' => 'Categoría eliminada con éxito.',
     'name_placeholder_admin_category' => 'Escribe el nombre de la categoría',
 
-    // User messages
+    // Mensajes de usuario
     'title_admin_users' => 'Usuarios',
     'name_table_admin_users' => 'Usuarios',
     'button_entity_admin_users' => 'usuario',
     'success_message_admin_users' => '¡Éxito!',
-    'table_header_user_nickname_admin_users' => 'Nombre de Usuario',
-    'table_header_user_email_admin_users' => 'Correo Electrónico',
-    'table_header_user_balance_admin_users' => 'Saldo',
+    'table_header_user_nickname_admin_users' => 'Nombre de usuario',
+    'table_header_user_email_admin_users' => 'Correo electrónico',
+    'table_header_user_balance_admin_users' => 'Balance',
     'table_header_user_role_admin_users' => 'Rol',
     'table_header_actions_admin_users' => 'Acciones',
     'table_header_user_password_admin_users' => 'Contraseña',
@@ -100,9 +112,9 @@ return [
     'delete_confirmation_admin_users' => '¿Estás seguro de que deseas eliminar este usuario?',
     'delete_confirm_button_admin_users' => 'Sí, estoy seguro',
     'delete_cancel_button_admin_users' => 'No, cancelar',
-    'input_label_nickname_admin_users' => 'Nombre de Usuario',
-    'input_label_email_admin_users' => 'Correo Electrónico',
-    'input_label_balance_admin_users' => 'Saldo',
+    'input_label_nickname_admin_users' => 'Nombre de usuario',
+    'input_label_email_admin_users' => 'Correo electrónico',
+    'input_label_balance_admin_users' => 'Balance',
     'input_label_role_admin_users' => 'Rol',
     'input_label_password_admin_users' => 'Contraseña',
     'button_add_new_user_admin_users' => 'Añadir nuevo usuario',
@@ -111,13 +123,13 @@ return [
     'updated_succesfully_admin_user' => 'Usuario actualizado con éxito.',
     'deleted_succesfully_admin_user' => 'Usuario eliminado con éxito.',
     'nickname_placeholder_admin_user' => 'Escribe el nombre de usuario',
-    'email_placeholder_admin_user' => 'Escribe el correo electrónico',
-    'balance_placeholder_admin_user' => 'Escribe el saldo del usuario',
+    'email_placeholder_admin_user' => 'Escribe el correo electrónico del usuario',
+    'balance_placeholder_admin_user' => 'Escribe el balance del usuario',
     'password_placeholder_admin_user' => 'Escribe la contraseña del usuario',
-    'select_admin_admin_user' => 'admin',
+    'select_admin_admin_user' => 'administrador',
     'select_client_admin_user' => 'cliente',
 
-    // Order Messages
+    // Mensajes de pedidos
     'title_admin_orders' => 'Pedidos',
     'name_table_admin_orders' => 'Pedidos',
     'table_header_order_id_admin_orders' => 'ID del Pedido',
@@ -125,20 +137,29 @@ return [
     'table_header_total_admin_orders' => 'Total',
     'table_header_date_admin_orders' => 'Fecha',
     'table_header_items_admin_orders' => 'Artículos',
+    'more_details_message' => 'Más detalles ...',
+    'show_order_number' => 'Pedido # ',
+    'product_summary_order' => 'Producto',
+    'acquire_price_summary_order' => 'Precio de adquisición',
+    'quantity_summary_order' => 'Cantidad',
+    'subtotal_summary_order' => 'Subtotal',
+    'user_show_order' => 'Usuario: ',
+    'total_show_order' => 'Total: ',
+    'date_show_order' => 'Fecha: ',
 
-    // Challenge messages
+    // Mensajes de desafíos
     'title_admin_challenges' => 'Desafíos',
     'name_table_admin_challenges' => 'Desafíos',
     'button_entity_admin_challenges' => 'desafío',
     'table_header_challenge_name_admin_challenges' => 'Nombre',
     'table_header_challenge_description_admin_challenges' => 'Descripción',
     'table_header_challenge_checked_admin_challenges' => 'Terminado',
-    'table_header_challenge_coins_admin_challenges' => 'Recompensa en Monedas',
-    'table_header_challenge_users_admin_challenges' => 'Cantidad de Usuarios',
-    'table_header_challenge_current_users_admin_challenges' => 'Usuarios Actuales',
-    'table_header_challenge_expiration_date_admin_challenges' => 'Fecha de Expiración',
+    'table_header_challenge_coins_admin_challenges' => 'Monedas de recompensa',
+    'table_header_challenge_users_admin_challenges' => 'Cantidad de usuarios',
+    'table_header_challenge_current_users_admin_challenges' => 'Usuarios actuales',
+    'table_header_challenge_expiration_date_admin_challenges' => 'Fecha de expiración',
     'table_header_challenge_category_admin_challenges' => 'Categoría',
-    'table_header_challenge_product_quantity_admin_challenges' => 'Cantidad Objetivo',
+    'table_header_challenge_product_quantity_admin_challenges' => 'Cantidad objetivo',
     'challenge_checked_admin_challenges' => 'Activo',
     'challenge_unchecked_admin_challenges' => 'Inactivo',
     'button_update_admin_challenges' => 'Actualizar',
@@ -152,13 +173,12 @@ return [
     'delete_cancel_button_admin_challenges' => 'No, cancelar',
     'drawer_title_create_admin_challenges' => 'Nuevo Desafío',
     'action_title_add_challenge_admin_challenges' => 'Añadir Desafío',
-    'table_header_challenge_checked_admin_challenges' => 'Terminado',
     'added_succesfully_admin_challenge' => 'Desafío creado con éxito.',
     'updated_succesfully_admin_challenge' => 'Desafío actualizado con éxito.',
     'deleted_succesfully_admin_challenge' => 'Desafío eliminado con éxito.',
     'name_placeholder_admin_challenge' => 'Escribe el nombre del desafío',
     'description_placeholder_admin_challenge' => 'Escribe la descripción del desafío',
-    'reward_coins_placeholder_admin_challenge' => 'Escribe la recompensa del desafío en monedas',
+    'reward_coins_placeholder_admin_challenge' => 'Escribe las monedas de recompensa del desafío',
     'amount_users_placeholder_admin_challenge' => 'Escribe la cantidad de usuarios del desafío',
     'goal_quantity_placeholder_admin_challenge' => 'Escribe la cantidad objetivo del desafío',
 ];
