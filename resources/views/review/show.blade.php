@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('content')
-
+@include('partials.breadcrumb', ['viewData' => $viewData])
     @if (count($viewData['reviews']) > 0)
     <div class="col-span-full text-center font-bold text-3xl text-blue-700 mt-8 mb-4"> {{ __('app.reviews_section_review_show') }} </div>
-
         @foreach ($viewData['reviews'] as $review)
             <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
                 <div class="max-w-2xl mx-auto px-4">
