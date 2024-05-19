@@ -12,8 +12,8 @@ class Review extends Model
      * $this->attributes['id'] - int - contains the review primary key (id)
      * $this->attributes['description'] - string - contains the description of the review
      * $this->attributes['rating'] - int - contains the comment rating
-     * $this->attributes['product_id'] - int - contains the ID of the associated product
-     * $this->attributes['user_id'] - int - contains the ID of the user who made the review
+     * $this->product - Product - contains of the associated product
+     * $this->user - User - contains the user who made the review
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
@@ -54,14 +54,24 @@ class Review extends Model
         return $this->attributes['updated_at'];
     }
 
-    public function getUserId(): int
+    public function getUser(): User
     {
-        return $this->attributes['user_id'];
+        return $this->user;
     }
 
-    public function getProductId(): int
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
+    }
+
+    public function getProduct(): Product
     {
         return $this->attributes['product_id'];
+    }
+
+    public function setProduct(Product $product): void
+    {
+        $this->product = $product;
     }
 
     /* Model relations */

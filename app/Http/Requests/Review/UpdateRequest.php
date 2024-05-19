@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\user;
+namespace App\Http\Requests\Review;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,10 +14,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'balance' => 'required|numeric|min:0',
-            'role' => 'required',
+            'description' => 'required',
+            'rating' => ['required', 'gt:0', 'lt:6'],
         ];
     }
 }

@@ -182,4 +182,8 @@ return [
     'reward_coins_placeholder_admin_challenge' => 'Type challenge reward coins',
     'amount_users_placeholder_admin_challenge' => 'Type challenge amount users',
     'goal_quantity_placeholder_admin_challenge' => 'Type challenge goal quantity',
+
+    'table_header_all' => 'All',
+    'table_header_home' => 'Home',
+    'add_new_button' => 'Add new',
 ];

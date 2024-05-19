@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\PlantService;
 use Illuminate\Http\Request;
 
-class PlantApiController extends Controller
+class PlantsController extends Controller
 {
     protected $plantService;
 

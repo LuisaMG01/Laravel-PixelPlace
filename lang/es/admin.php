@@ -182,4 +182,7 @@ return [
     'reward_coins_placeholder_admin_challenge' => 'Escribe las monedas de recompensa del desafío',
     'amount_users_placeholder_admin_challenge' => 'Escribe la cantidad de usuarios del desafío',
     'goal_quantity_placeholder_admin_challenge' => 'Escribe la cantidad objetivo del desafío',
+
+    'table_header_all' => '',
+    'add_new_button' => 'Agregar ',
 ];
