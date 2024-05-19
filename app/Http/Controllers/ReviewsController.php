@@ -15,8 +15,10 @@ class ReviewsController extends Controller
 {
     public function create(int $productId): View
     {
+        $breadCrumb = [__('app.products_breadcrumb'), __('app.reviews_breadcrumb'), __('app.create_reviews_breadcrumb')];
 
         $viewData = [
+            'breadCrumb' => $breadCrumb,
             'productId' => $productId,
         ];
 
@@ -37,7 +39,11 @@ class ReviewsController extends Controller
     {
         $product = Product::findOrFail($productId);
         $reviews = $product->reviews()->with('user')->paginate(3);
+
+        $breadCrumb = [__('app.products_breadcrumb'), __('app.reviews_breadcrumb'), __('app.show_reviews_breadcrumb')];
+
         $viewData = [
+            'breadCrumb' => $breadCrumb,
             'reviews' => $reviews,
         ];
 
@@ -55,7 +61,11 @@ class ReviewsController extends Controller
     public function edit(int $id): View
     {
         $review = Review::findOrFail($id);
+
+        $breadCrumb = [__('app.products_breadcrumb'), __('app.reviews_breadcrumb'), __('app.edit_reviews_breadcrumb')];
+
         $viewData = [
+            'breadCrumb' => $breadCrumb,
             'review' => $review,
         ];
 

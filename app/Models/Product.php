@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -21,7 +22,7 @@ class Product extends Model
      * $this->attributes['description'] - string - contains the product description
      * $this->attributes['category_id'] - int - contains the ID of the associated category
      * $this->items - Item[] - contains the associated items
-     * $this->items - Review[] - contains the associated reviews
+     * $this->reviews - Review[] - contains the associated reviews
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
@@ -122,6 +123,27 @@ class Product extends Model
     {
         $this->attributes['category_id'] = $categoryId;
     }
+
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function setItems(Collection $items): void
+    {
+        $this->items = $items;
+    }
+
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function setReviews(Collection $reviews): void
+    {
+        $this->reviews = $reviews;
+    }
+
 
     /* Model relations */
     public function items(): HasMany

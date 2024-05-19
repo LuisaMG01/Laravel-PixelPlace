@@ -30,7 +30,11 @@ class ProductsController extends Controller
     public function show(int $id): View
     {
         $product = Product::findOrFail($id);
+
+        $breadCrumb = [__('app.products_breadcrumb'), $product->getName()];
+
         $viewData = [
+            'breadCrumb' => $breadCrumb,
             'product' => $product,
             'category' => Category::findOrFail($product->category->getId()),
         ];
