@@ -158,6 +158,7 @@ return [
     'challenges_navbar' => 'Challenges',
     'contact_navbar' => 'Contact',
     'marvel_navbar' => 'Marvel',
+    'plants_navbar' => 'Plants',
 
     // Index challenge messages
     'title_index_challenge' => 'All Challenges',
@@ -206,6 +207,11 @@ return [
     // Marvel API
     'title_index_marvel' => 'Marvel Characters',
 
+    // Plant API
+    'title_index_plant' => 'Plants',
+    'plant_price'=> 'Price: ',
+    'plant_category' => 'Category:',
+
     // BreadCrumbs
     'home_breadcrumb' => 'Home',
     'settings_breadcrumb' => 'Settings',
@@ -214,4 +220,5 @@ return [
     'marvel_breadcrumb' => 'Marvel',
     'products_breadcrumb' => 'Products',
     'challenges_breadcrumb' => 'Challenges',
+    'plant_breadcrumb' => 'Plants',
 ];
