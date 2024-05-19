@@ -28,6 +28,6 @@ class MarvelController extends Controller
             'characters' => $characters,
         ];
 
-        return view('Api.Marvel.index')->with('viewData', $viewData);
+        return view('Marvel.index')->with('viewData', $viewData);
     }
 }

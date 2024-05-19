@@ -210,7 +210,7 @@ return [
     // Plant API
     'title_index_plant' => 'Plants',
     'plant_price' => 'Price: ',
-    'plant_category' => 'Category:',
+    'plant_stock' => 'Stock:',
 
     // BreadCrumbs
     'home_breadcrumb' => 'Home',

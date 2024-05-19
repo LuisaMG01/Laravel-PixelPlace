@@ -24,6 +24,6 @@ class PlantsController extends Controller
             'breadCrumb' => $breadCrumb,
         ];
 
-        return view('Api.Plant.index')->with('viewData', $viewData);
+        return view('Plant.index')->with('viewData', $viewData);
     }
 }
