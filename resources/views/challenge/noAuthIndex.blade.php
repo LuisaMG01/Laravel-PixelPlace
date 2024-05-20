@@ -3,6 +3,7 @@
 
 <div class="col-span-full text-center font-bold text-3xl text-blue-700 mt-8 mb-4">⭐ {{__('app.title_index_challenge')}} ⭐</div>
 </br>
+@include('partials.breadcrumb', ['viewData' => $viewData])
 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center">
     @foreach($viewData['challenges'] as $challenge)
         <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">

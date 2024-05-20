@@ -11,6 +11,7 @@ return [
     'products_home' => 'Products',
     'total_products_home' => 'Total Products : ',
     'sales_message_home' => 'See your Sales !',
+    'close_menu_message' => 'Close Menu',
 
     // Menu messages
     'sidebar_home' => 'Home',
@@ -27,6 +28,7 @@ return [
     'button_entity_admin_products' => 'product',
     'success_message_admin_products' => 'Success!',
     'table_header_product_name_admin_products' => 'Product Name',
+    'form_name_label' => 'Name',
     'table_header_brand_admin_products' => 'Brand',
     'table_header_keywords_admin_products' => 'Keywords',
     'table_header_stock_admin_products' => 'Stock',
@@ -135,6 +137,15 @@ return [
     'table_header_total_admin_orders' => 'Total',
     'table_header_date_admin_orders' => 'Date',
     'table_header_items_admin_orders' => 'Items',
+    'more_details_message' => 'More Details ...',
+    'show_order_number' => 'Order # ',
+    'product_summary_order' => 'Product',
+    'acquire_price_summary_order' => 'Acquire Price',
+    'quantity_summary_order' => 'Quantity',
+    'subtotal_summary_order' => 'Subtotal',
+    'user_show_order' => 'User: ',
+    'total_show_order' => 'Total: ',
+    'date_show_order' => 'Date: ',
 
     // Challenge messages
     'title_admin_challenges' => 'Challenges',
@@ -171,4 +182,8 @@ return [
     'reward_coins_placeholder_admin_challenge' => 'Type challenge reward coins',
     'amount_users_placeholder_admin_challenge' => 'Type challenge amount users',
     'goal_quantity_placeholder_admin_challenge' => 'Type challenge goal quantity',
+
+    'table_header_all' => 'All',
+    'table_header_home' => 'Home',
+    'add_new_button' => 'Add new',
 ];

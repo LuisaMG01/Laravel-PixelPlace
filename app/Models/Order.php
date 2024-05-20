@@ -14,11 +14,11 @@ class Order extends Model
      * ORDER ATTRIBUTES
      * $this->attributes['id'] - int - contains the order primary key (id)
      * $this->attributes['total_coins'] - int - contains the total value of the order
-     * $this->attributes['user_id'] - int - contains the referenced user id
      * $this->items - Item[] - contains the associated items
+     * $this->user - User - contains the associated user
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
-     */
+    */
 
     protected $fillable = ['total_coins', 'user_id'];
 
@@ -32,11 +32,6 @@ class Order extends Model
         return $this->attributes['user_id'];
     }
 
-    public function getItems(): Collection
-    {
-        return $this->items;
-    }
-
     public function getTotalCoins(): int
     {
         return $this->attributes['total_coins'];
@@ -45,6 +40,26 @@ class Order extends Model
     public function setTotalCoins(int $totalCoins): void
     {
         $this->attributes['total_coins'] = $totalCoins;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
+    }
+
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function setItems(Collection $items): void
+    {
+        $this->items = $items;
     }
 
     public function getCreatedAt(): string
@@ -57,6 +72,7 @@ class Order extends Model
         return $this->attributes['updated_at'];
     }
 
+    /*Model relations */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -66,6 +82,7 @@ class Order extends Model
     {
         return $this->hasMany(Item::class);
     }
+
 
     public static function filters(Request $request): object
     {

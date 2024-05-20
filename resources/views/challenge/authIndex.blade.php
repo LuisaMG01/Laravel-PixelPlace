@@ -2,6 +2,11 @@
 
 @section('content')
 
+<div class="mb-4 text-xl ">
+</br>
+    @include('partials.breadcrumb', ['viewData' => $viewData])
+</div>
+
 <div class="flex justify-center items-center flex-col mb-4">
     </br>
     <h3 class="mb-4 text-xl font-medium text-gray-500 dark:text-black-400">{{__('app.title_index_user_challenge')}}</h3>

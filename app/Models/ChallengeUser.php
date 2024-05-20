@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Collection;
 
 class ChallengeUser extends Model
 {
@@ -12,8 +13,8 @@ class ChallengeUser extends Model
      * $this->attributes['id'] - int - contains the primary key (id) of the challenge user
      * $this->attributes['progress'] - int - contains the user's progress in the challenge
      * $this->attributes['checked'] - bool - indicates whether the user's progress is checked
-     * $this->attributes['user_id'] - int - contains the foreign key of the user
-     * $this->attributes['challenge_id'] - int - contains the foreign key of the challenge
+     * $this->user - User - contains the user asociated
+     * $this->challenge - Challenge - contains the challenge asociated
      * $this->attributes['created_at'] - string - contains the date when the challenge user was created
      * $this->attributes['updated_at'] - string - contains the date when the challenge user was updated
      */
@@ -24,7 +25,7 @@ class ChallengeUser extends Model
     {
         parent::__construct($attributes);
 
-        if (! isset($this->attributes['progress'])) {
+        if (!isset($this->attributes['progress'])) {
             $this->attributes['progress'] = 0;
         }
     }
@@ -64,6 +65,26 @@ class ChallengeUser extends Model
         return $this->attributes['updated_at'];
     }
 
+    public function getChallenge(): Challenge
+    {
+        return $this->challenge;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setChallenge(Collection $challenge): void
+    {
+        $this->challenge = $challenge;
+    }
+
+    public function setUser(Collection $user): void
+    {
+        $this->user = $user;
+    }
+
     /* Model relations */
     public function user(): BelongsTo
     {
@@ -90,7 +111,7 @@ class ChallengeUser extends Model
                 ->where('challenge_id', $challenge->getId())
                 ->first();
 
-            if (! $challengeUser) {
+            if (!$challengeUser) {
                 $challengeUser = new ChallengeUser();
                 $challengeUser->user_id = $user->getId();
                 $challengeUser->challenge_id = $challenge->getId();
@@ -105,7 +126,7 @@ class ChallengeUser extends Model
                 $user->setBalance($user->getBalance() + $challenge->getRewardCoins());
                 $user->save();
 
-                $message = __('app.success_challenge').$challenge->getName();
+                $message = __('app.success_challenge') . $challenge->getName();
                 session()->flash('challengeCompleted', $message);
             } else {
                 $challengeUser->setChecked(false);

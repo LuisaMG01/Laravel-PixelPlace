@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('content')
+    @include('partials.breadcrumb', ['viewData' => $viewData])
+    <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ __('app.filter_orders_order_index') }}</h2>
+    <button id="toggleFilterBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter_order_index') }}</button>    
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="md:col-span-1 relative">
                 <div class="max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-md">
                     <div class="px-6 py-4">
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ __('app.filter_orders_order_index') }}</h2>
-                        <button id="toggleFilterBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('app.filter_order_index') }}</button>
                         <div id="filterForm" class="hidden absolute bg-white rounded-lg border border-gray-300 shadow-md py-4 px-6 top-0 left-0 mt-12 z-10">
                             <form action="{{ route('user.orders') }}" method="GET">
                                 <div class="mb-4">

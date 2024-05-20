@@ -19,6 +19,7 @@
     <div class="flex justify-center">
         <div class="grid grid-cols-4 gap-4">
             <div class="col-span-3">
+                @include('partials.breadcrumb', ['viewData' => $viewData])
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
                     {{ __('app.shopping_cart') }}</h5>
                 <div class="bg-white rounded-lg shadow-md p-6 mb-4">

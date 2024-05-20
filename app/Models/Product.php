@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,9 +20,9 @@ class Product extends Model
      * $this->attributes['price'] - int - contains the product price
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
-     * $this->attributes['category_id'] - int - contains the ID of the associated category
+     * $this->category - Category - contains the associated category
      * $this->items - Item[] - contains the associated items
-     * $this->items - Review[] - contains the associated reviews
+     * $this->reviews - Review[] - contains the associated reviews
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
      * $this->attributes['updated_at'] - datetime - contains the record last update timestamp
      */
@@ -113,6 +114,36 @@ class Product extends Model
         return $this->attributes['updated_at'];
     }
 
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
+    }
+
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function setItems(Collection $items): void
+    {
+        $this->items = $items;
+    }
+
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function setReviews(Collection $reviews): void
+    {
+        $this->reviews = $reviews;
+    }
+
     public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
@@ -122,6 +153,7 @@ class Product extends Model
     {
         $this->attributes['category_id'] = $categoryId;
     }
+
 
     /* Model relations */
     public function items(): HasMany
@@ -167,11 +199,11 @@ class Product extends Model
         }
 
         if ($request->filled('brand')) {
-            $products->where('brand', 'like', '%'.$request->brand.'%');
+            $products->where('brand', 'like', '%' . $request->brand . '%');
         }
 
         if ($request->filled('name')) {
-            $products->where('name', 'like', '%'.$request->name.'%');
+            $products->where('name', 'like', '%' . $request->name . '%');
         }
 
         return $products;

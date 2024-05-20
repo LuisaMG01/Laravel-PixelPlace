@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\MarvelService;
 use Illuminate\View\View;
 
-class MarvelApiController extends Controller
+class MarvelController extends Controller
 {
     protected $apiService;
 
@@ -28,6 +28,6 @@ class MarvelApiController extends Controller
             'characters' => $characters,
         ];
 
-        return view('Api.Marvel.index')->with('viewData', $viewData);
+        return view('Marvel.index')->with('viewData', $viewData);
     }
 }
