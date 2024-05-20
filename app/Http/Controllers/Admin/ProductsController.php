@@ -44,7 +44,7 @@ class ProductsController extends Controller
         $keys = JsonParser::parseStrToJson($request->input('keywords'));
         $request->merge(['keywords' => $keys]);
         $product->update($request->all());
-        $storeInterface = app(ImageStorage::class);
+        $storeInterface = app(ImageStorage::class, ['storage' => $request->get('storage')]);
         $storeInterface->store($request, $product->getName());
 
         Session::flash('success', __('admin.updated_succesfully_admin_product'));
