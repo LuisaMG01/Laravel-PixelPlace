@@ -217,7 +217,7 @@ return [
     'reviews_breadcrumb' => 'Reviews',
     'show_reviews_breadcrumb' => 'Show',
     'edit_reviews_breadcrumb' => 'Edit',
-    'create_reviews_breadcrumb' => 'Create'
+    'create_reviews_breadcrumb' => 'Create',
 
     'cart_breadcrumb' => 'Cart',
     'preorder_breadcrumb' => 'Preorder',
