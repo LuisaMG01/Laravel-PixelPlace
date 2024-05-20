@@ -21,7 +21,7 @@ class CartTest extends TestCase
         $cartController = new CartController();
         $response = $cartController->add($productId, $request);
 
-        $this->assertEquals(302, $response->getStatusCode()); // 302 is the status code for a redirect
+        $this->assertEquals(302, $response->getStatusCode());
         $this->assertEquals(url('register'), $response->headers->get('Location'));
     }
 }

@@ -20,7 +20,7 @@ class Product extends Model
      * $this->attributes['price'] - int - contains the product price
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['description'] - string - contains the product description
-     * $this->attributes['category_id'] - int - contains the ID of the associated category
+     * $this->category - Category - contains the associated category
      * $this->items - Item[] - contains the associated items
      * $this->reviews - Review[] - contains the associated reviews
      * $this->attributes['created_at'] - datetime - contains the record creation timestamp
@@ -114,14 +114,14 @@ class Product extends Model
         return $this->attributes['updated_at'];
     }
 
-    public function getCategoryId(): int
+    public function getCategory(): Category
     {
-        return $this->attributes['category_id'];
+        return $this->category;
     }
 
-    public function setCategoryId(int $categoryId): void
+    public function setCategory(Category $category): void
     {
-        $this->attributes['category_id'] = $categoryId;
+        $this->category = $category;
     }
 
     public function getItems(): Collection
@@ -142,6 +142,16 @@ class Product extends Model
     public function setReviews(Collection $reviews): void
     {
         $this->reviews = $reviews;
+    }
+
+    public function getCategoryId(): int
+    {
+        return $this->attributes['category_id'];
+    }
+
+    public function setCategoryId(int $categoryId): void
+    {
+        $this->attributes['category_id'] = $categoryId;
     }
 
 
@@ -189,11 +199,11 @@ class Product extends Model
         }
 
         if ($request->filled('brand')) {
-            $products->where('brand', 'like', '%'.$request->brand.'%');
+            $products->where('brand', 'like', '%' . $request->brand . '%');
         }
 
         if ($request->filled('name')) {
-            $products->where('name', 'like', '%'.$request->name.'%');
+            $products->where('name', 'like', '%' . $request->name . '%');
         }
 
         return $products;

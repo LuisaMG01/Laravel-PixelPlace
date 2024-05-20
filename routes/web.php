@@ -17,9 +17,12 @@ Route::middleware(LocaleCookieMiddleware::class)->group(function () {
 
     Auth::routes();
 
-    include __DIR__.'/product/routes.php';
-    include __DIR__.'/cart/routes.php';
-    include __DIR__.'/order/routes.php';
-    include __DIR__.'/challenge/routes.php';
-    include __DIR__.'/admin/routes.php';
+    Route::get('/plants', 'PlantsController@index')->name('plant.index');
+    Route::get('/characters', 'MarvelController@index')->name('marvel.index');
+
+    include __DIR__ . '/product/routes.php';
+    include __DIR__ . '/cart/routes.php';
+    include __DIR__ . '/order/routes.php';
+    include __DIR__ . '/challenge/routes.php';
+    include __DIR__ . '/admin/routes.php';
 });

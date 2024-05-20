@@ -18,7 +18,7 @@ class UsersTest extends TestCase
         $usersController = new UsersController();
         $response = $usersController->orderIndex($request);
 
-        $this->assertEquals(302, $response->getStatusCode()); // 302 is the status code for a redirect
+        $this->assertEquals(302, $response->getStatusCode());
         $this->assertEquals(url('/'), $response->headers->get('Location'));
     }
 }

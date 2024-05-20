@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -99,6 +100,36 @@ class User extends Authenticatable
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function getChallengeUsers(): Collection
+    {
+        return $this->challengeUsers;
+    }
+
+    public function setReviews(Collection $reviews): void
+    {
+        $this->reviews = $reviews;
+    }
+
+    public function setOrders(Collection $orders): void
+    {
+        $this->orders = $orders;
+    }
+
+    public function setChallengeUsers(Collection $challengeUsers): void
+    {
+        $this->challengeUsers = $challengeUsers;
     }
 
     /* Model relations */

@@ -11,7 +11,7 @@
                                 d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
                             </path>
                         </svg>
-                        Home
+                        {{ __('admin.table_header_home') }}
                     </a>
                 </li>
                 <li>
@@ -28,7 +28,8 @@
                 </li>
             </ol>
         </nav>
-        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All @yield('nameTable')</h1>
+        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">{{ __('admin.table_header_all') }}
+            @yield('nameTable')</h1>
     </div>
     <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
         <button id="createProductButton"
@@ -36,7 +37,7 @@
             type="button" data-drawer-target="drawer-create-product-default"
             data-drawer-show="drawer-create-product-default" aria-controls="drawer-create-product-default"
             data-drawer-placement="right">
-            Add new @yield('buttonEntity')
+            {{ __('admin.add_new_button') }} @yield('buttonEntity')
         </button>
 
     </div>

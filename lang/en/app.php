@@ -229,4 +229,5 @@ return [
     'english' => 'English',
     'spanish' => 'Spanish',
 
+    'products_breadcrumb' => 'Products'
 ];

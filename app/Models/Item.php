@@ -57,14 +57,24 @@ class Item extends Model
         $this->attributes['amount'] = $amount;
     }
 
-    public function getProductId()
+    public function getProduct(): Product
     {
-        return $this->attributes['product_id'];
+        return $this->product;
     }
 
-    public function getOrderId()
+    public function setProduct(Product $product): void
     {
-        return $this->attributes['order_id'];
+        $this->product = $product;
+    }
+
+    public function getOrder(): Order
+    {
+        return $this->order;
+    }
+
+    public function setOrder(Order $order): void
+    {
+        $this->order = $order;
     }
 
     public function getCreatedAt(): string
@@ -83,28 +93,8 @@ class Item extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function getProduct(): Product
-    {
-        return $this->product;
-    }
-
-    public function setProduct(Product $product): void
-    {
-        $this->product = $product;
-    }
-
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
-    }
-
-    public function getOrder(): Order
-    {
-        return $this->order;
-    }
-
-    public function setOrder(Order $order): void
-    {
-        $this->order = $order;
     }
 }
