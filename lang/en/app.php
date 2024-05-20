@@ -158,6 +158,7 @@ return [
     'challenges_navbar' => 'Challenges',
     'contact_navbar' => 'Contact',
     'marvel_navbar' => 'Marvel',
+    'plants_navbar' => 'Plants',
 
     // Index challenge messages
     'title_index_challenge' => 'All Challenges',
@@ -206,19 +207,24 @@ return [
     // Marvel API
     'title_index_marvel' => 'Marvel Characters',
 
+    // Plant API
+    'title_index_plant' => 'Plants',
+    'plant_price' => 'Price: ',
+    'plant_stock' => 'Stock:',
+
     // BreadCrumbs
     'home_breadcrumb' => 'Home',
     'settings_breadcrumb' => 'Settings',
     'user_breadcrumb' => 'User',
     'api_breadcrumb' => 'Api',
     'marvel_breadcrumb' => 'Marvel',
-
     'products_breadcrumb' => 'Products',
+    'challenges_breadcrumb' => 'Challenges',
+    'plant_breadcrumb' => 'Plants',
     'reviews_breadcrumb' => 'Reviews',
     'show_reviews_breadcrumb' => 'Show',
     'edit_reviews_breadcrumb' => 'Edit',
     'create_reviews_breadcrumb' => 'Create',
-
     'cart_breadcrumb' => 'Cart',
     'preorder_breadcrumb' => 'Preorder',
     'order_breadcrumb' => 'Order',
@@ -229,5 +235,18 @@ return [
     'english' => 'English',
     'spanish' => 'Spanish',
 
-    'products_breadcrumb' => 'Products'
+    // Auth
+    'sign_in_login' => 'Sign in to platform',
+    'email_login' => 'Your email',
+    'password_login' => 'Your password',
+    'remember_login' => 'Remember me',
+    'forgot_password_login' => 'Forgot password?',
+    'title_login' => 'Login to your account',
+    'not_register_login' => 'Not registered? ',
+    'create_account_login' => 'Create account',
+    'create_account_register' => 'Create a Free Account',
+    'name_register' => 'Your name',
+    'confirm_pass_register' => 'Confirm password',
+    'already_account_register' => 'Already have an account?',
+    'login_register' => 'Login here',
 ];
