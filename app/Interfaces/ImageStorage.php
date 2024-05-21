@@ -6,5 +6,5 @@ use Illuminate\Http\Request;
 
 interface ImageStorage
 {
-    public function store(Request $request, string $productName): void;
+    public function store(Request $request, string $productName): string;
 }

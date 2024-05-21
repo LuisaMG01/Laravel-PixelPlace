@@ -89,8 +89,11 @@
                 @foreach ($viewData['products'] as $product)
                     <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
                         <a href="{{ route('products.show', ['id' => $product->getId()]) }}">
-                            <img class="p-8 rounded-t-lg" src="{{ URL::asset('storage/' . $product->getName() . '.png') }}"
-                                alt="product image">
+                            @if (filter_var($product->getImage(), FILTER_VALIDATE_URL))
+                                <img class="p-8 rounded-t-lg" src="{{ $product->getImage() }}" alt="{{ $product->getName() }}">
+                            @else
+                                <img class="p-8 rounded-t-lg" src="{{ asset('storage/' . $product->getName() . '.png') }}" alt="{{ $product->getName() }}">
+                            @endif
                         </a>
                         <div class="px-5 pb-5">
                             <a href="{{ route('products.show', ['id' => $product->getId()]) }}">

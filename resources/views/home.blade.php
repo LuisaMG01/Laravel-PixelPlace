@@ -61,8 +61,11 @@
                     <div class="hidden duration-700 ease-in-out flex justify-center items-center" data-carousel-item>
                         <a href="{{ route('products.show', ['id' => $product->getId()]) }}"
                             class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-lg shadow-md md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                            <img class="object-cover w-full h-72 md:w-72 md:h-72 rounded-t-lg md:rounded-none md:rounded-l-lg"
-                                src="{{ URL::asset('storage/' . $product->getName() . '.png') }}" alt="product image">
+                            @if (filter_var($product->getImage(), FILTER_VALIDATE_URL))
+                                <img class="p-8 rounded-t-lg" src="{{ $product->getImage() }}" alt="{{ $product->getName() }}">
+                            @else
+                                <img class="p-8 rounded-t-lg" src="{{ asset('storage/' . $product->getName() . '.png') }}" alt="{{ $product->getName() }}">
+                            @endif
                             <div class="flex flex-col justify-between p-4 leading-normal">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     {{ $product->getName() }}</h5>

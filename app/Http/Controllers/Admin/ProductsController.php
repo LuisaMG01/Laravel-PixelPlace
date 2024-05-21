@@ -58,8 +58,9 @@ class ProductsController extends Controller
         $request->merge(['keywords' => $keys]);
         $productName = $request->input('name');
         $storeInterface = app(ImageStorage::class, ['storage' => $request->get('storage')]);
-        $storeInterface->store($request, $productName);
+        $url = $storeInterface->store($request, $productName);
         Product::create($request->all());
+        Product::where('name', $productName)->update(['image' => $url]);
         Session::flash('success', __('admin.added_succesfully_admin_product'));
 
         return redirect()->route('admin.products.index');

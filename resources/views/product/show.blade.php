@@ -40,8 +40,11 @@
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-4 mt-8">
-                <img class="w-full rounded-lg" src="{{ URL::asset('storage/' . $viewData['product']->getName() . '.png') }}"
-                    alt="office content 1">
+                @if (filter_var($viewData['product']->getImage(), FILTER_VALIDATE_URL))
+                    <img class="p-8 rounded-t-lg" src="{{ $viewData['product']->getImage() }}" alt="{{ $viewData['product']->getName() }}">
+                @else
+                    <img class="p-8 rounded-t-lg" src="{{ asset('storage/' . $viewData['product']->getName() . '.png') }}" alt="{{ $viewData['product']->getName() }}">
+                @endif
             </div>
         </div>
     </section>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageLocalStorage implements ImageStorage
 {
-    public function store(Request $request, string $productName): void
+    public function store(Request $request, string $productName): string
     {
         if ($request->file('image')) 
         {
@@ -17,5 +17,7 @@ class ImageLocalStorage implements ImageStorage
                 file_get_contents($request->file('image')->getRealPath())
             );
         }
+
+        return asset("storage/$productName.png");
     }
 }

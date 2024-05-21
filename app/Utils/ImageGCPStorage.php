@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ImageGCPStorage implements ImageStorage
 {
-    public function store(Request $request, string $productName): void
+    public function store(Request $request, string $productName): string
     {
         if ($request->file('image')) {
             $gcpKeyFile = file_get_contents(env('GCP_KEY_FILE'));
@@ -21,6 +21,10 @@ class ImageGCPStorage implements ImageStorage
                     'name' => $gcpStoragePath,
                 ]
             );
+
+            $bucketName = env('GCP_BUCKET');
+            $url = sprintf('https://storage.googleapis.com/%s/%s', $bucketName, $gcpStoragePath);
+            return $url;
         }
     }
 }
