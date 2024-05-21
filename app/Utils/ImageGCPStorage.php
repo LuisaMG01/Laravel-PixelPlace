@@ -14,7 +14,7 @@ class ImageGCPStorage implements ImageStorage
             $gcpKeyFile = file_get_contents(env('GCP_KEY_FILE'));
             $storage = new StorageClient(['keyFile' => json_decode($gcpKeyFile, true)]);
             $bucket = $storage->bucket(env('GCP_BUCKET'));
-            $gcpStoragePath = 'test.png';
+            $gcpStoragePath = $productName;
             $bucket->upload(
                 file_get_contents($request->file('image')->getRealPath()),
                 [
